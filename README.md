@@ -58,6 +58,10 @@
   - Default username: `admin`
   - Default password: `password`
   - New password: `Admin2024`  *Password must meet the specified criteria*
+  - Select Base URL: http://YOUR_JFROG_PUBLIC_IP:8082
+  - Configure Default Proxy: `Skip`
+  - Create Repositories: Select `Maven` and click `Next`
+  - Click `Finish`
 
 ### Jenkins setup
 1) #### Access Jenkins
@@ -144,12 +148,25 @@
 
     
 3)  #### Configure System:
+    #### 3.1) Configure SonarQube
     - Click on ``Manage Jenkins`` 
       - Click on ``Configure System`` and navigate to the `SonarQube Servers` section
       - Click on `Add SonarQube`
       - Server URL: http://YOUR_SONARQUBE_PRIVATE_IP:9000
       - Server authentication token: Select `SonarQube-Token`
       ![SonarQubeServerSetup!](https://github.com/awanmbandi/realworld-cicd-pipeline-project/raw/zdocs/images/Screen%20Shot%202023-04-24%20at%2010.13.39%20AM.png)
+
+3)  #### Configure System:
+    #### 3.1) Configure JFrog Artifactory
+    - Click on ``Manage Jenkins`` 
+      - Click on ``Configure System`` and navigate to the `SonarQube Servers` section
+      - Click on `Add JFrog Platform Instances`
+      - Instance ID: `jfrog`
+      - JFrog Platform URL: http://YOUR_SONARQUBE_PRIVATE_IP:8082/artifactory
+      - Server authentication token: Select `SonarQube-Token`
+      ![SonarQubeServerSetup!](https://github.com/awanmbandi/realworld-cicd-pipeline-project/raw/zdocs/images/Screen%20Shot%202023-04-24%20at%2010.13.39%20AM.png)
+
+
 
 
 
