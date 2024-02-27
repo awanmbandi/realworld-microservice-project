@@ -46,13 +46,19 @@
     - AMI: `Amazon Linux 2`
     - Instance type: `t2.medium`
     - Key pair: `Select a keypair`
-    - Security Group (Eit/Open): `8081, 9100` and `22 to 0.0.0.0/0`
+    - Security Group (Eit/Open): `8081, 8082` and `22 to 0.0.0.0/0`
     - User data (Copy the following user data): https://github.com/awanmbandi/realworld-cicd-pipeline-project/blob/maven-nexus-sonarqube-jenkins-install/nexus-install.sh
     - Launch Instance
 
 
 
 ## CONFIGURE TOOLS
+### JFrog Artifactory
+  - Navigate to http://JFROG_PUBLIC_IP:8082
+  - Default username: `admin`
+  - Default password: `password`
+  - New password: `Admin2024`  *Password must meet the specified criteria*
+
 ### Jenkins setup
 1) #### Access Jenkins
     Copy your Jenkins Public IP Address and paste on the browser = ExternalIP:8080
@@ -85,32 +91,65 @@
     - Once all plugins are installed
     - Select/Check the Box **Restart Jenkins when installation is complete and no jobs are running**
 
+4)  #### Credentials setup(SonarQube, Nexus, Ansible and Slack):
+    - Click on `Manage Jenkins` 
+      - Click on `Credentials` 
+      - Click on `Global` (unrestricted)
+      - Click on `Add Credentials`
+      1)  ##### SonarQube secret token (SonarQube-Token)
+          - ###### Generating SonarQube secret token:
+              - Login to your SonarQube Application (http://SonarServer-Sublic-IP:9000)
+                - Default username: **`admin`** 
+                - Default password: **`admin`**
+              - Click on `Projects`
+              - Click on `Create New Project`
+                - Project key: `Webapp-Project`
+                - Display name: `Webapp-Project`
+              - Click on `Set Up`
+              - Generate a Tokens: Provide Name ``Webapp-SonarQube-Token``
+              - Click on `Generate`
+              - Click on `Continue`
+              - Run analysis on your project: Select `Java`
+              - Build technology: Select `Maven`
+              - COPY the `TOKEN`
+          - ###### Store SonarQube Secret Token in Jenkins:
+              - Navigate back to Jenkins
+              - Click on ``Add Credentials``
+              - Kind: Secret text!! 
+              - Secret: `Paste the SonarQube token` value that we have created on the SonarQube server
+              - ID: ``SonarQube-Token``
+              - Description: `SonarQube-Token`
+              - Click on Create
+
+    3)  ##### JFrog Artifactory Credentials (Username and Password)
+          - ###### JFrog credentials (username & password)
+	          - Click on ``Add Credentials``
+	          - Kind: Username with password                  
+	          - Username: ``admin``
+	          - Password: ``Admin2024``
+	          - ID: ``JFrog-Credential``
+	          - Description: `JFrog-Credential`
+	          - Click on `Create`
+
 3)  #### Global tools configuration:
     - Click on Manage Jenkins -->> Global Tool Configuration
     ![JDKSetup!](https://github.com/awanmbandi/realworld-cicd-pipeline-project/blob/zdocs/images/sdsdsdsdsd.png)
 
     - **Maven** 
       - Click on `Add Maven` 
-      - Enable **`Install automatically`** is enabled 
+      - Disable/Uncheck **`Install automatically`**  
       * Name: **`maven`**
-      * Version: Keep the default version as it is to latest
       - Click on `SAVE`
-      ![MavenSetup!](https://github.com/awanmbandi/realworld-cicd-pipeline-project/raw/zdocs/images/Screen%20Shot%202023-04-24%20at%209.44.14%20AM.png)
+      ![MavenSetup!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/agasdgbsfdb.png)
 
-    - **JDK** 
-        - Click on `Add JDK` -->> Make sure **Install automatically** is enabled 
-        
-        **Note:** By default the **Install Oracle Java SE Development Kit from the website** make sure to close that option by clicking on the image as shown below.
-
-        ![JDKSetup!](https://github.com/awanmbandi/realworld-cicd-pipeline-project/blob/zdocs/images/dsdsdsdsdsd.png)
-
-        * Click on `Add installer`
-        * Select `Extract *.zip/*.tar.gz` 
-        * Name: **`localJdk`**
-        * Download URL for binary archive: **https://download.java.net/java/GA/jdk11/13/GPL/openjdk-11.0.1_linux-x64_bin.tar.gz**
-        * Subdirectory of extracted archive: **`jdk-11.0.1`**
     
-    - **SonarQube Scanner** 
-      - Click on `Add SonarQube Scanner` 
-      - Enable: `Install automatically` (Optional)
-      ![SonarQubeScanner!](https://github.com/awanmbandi/realworld-cicd-pipeline-project/raw/zdocs/images/Screen%20Shot%202023-04-24%20at%209.35.20%20AM.png)
+3)  #### Configure System:
+    - Click on ``Manage Jenkins`` 
+      - Click on ``Configure System`` and navigate to the `SonarQube Servers` section
+      - Click on `Add SonarQube`
+      - Server URL: http://YOUR_SONARQUBE_PRIVATE_IP:9000
+      - Server authentication token: Select `SonarQube-Token`
+      ![SonarQubeServerSetup!](https://github.com/awanmbandi/realworld-cicd-pipeline-project/raw/zdocs/images/Screen%20Shot%202023-04-24%20at%2010.13.39%20AM.png)
+
+
+
