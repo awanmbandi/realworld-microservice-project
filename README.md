@@ -49,3 +49,68 @@
     - Security Group (Eit/Open): `8081, 9100` and `22 to 0.0.0.0/0`
     - User data (Copy the following user data): https://github.com/awanmbandi/realworld-cicd-pipeline-project/blob/maven-nexus-sonarqube-jenkins-install/nexus-install.sh
     - Launch Instance
+
+
+
+## CONFIGURE TOOLS
+### Jenkins setup
+1) #### Access Jenkins
+    Copy your Jenkins Public IP Address and paste on the browser = ExternalIP:8080
+    - Login to your Jenkins instance using your Shell (GitBash or your Mac Terminal)
+    - Copy the Path from the Jenkins UI to get the Administrator Password
+        - Run: `sudo cat /var/lib/jenkins/secrets/initialAdminPassword`
+        - Copy the password and login to Jenkins
+    ![JenkinsSetup1!](https://github.com/awanmbandi/realworld-cicd-pipeline-project/raw/zdocs/images/jenkins-signup.png) 
+    - Plugins: Choose `Install Suggested Plugings` 
+    - Provide 
+        - Username: **`admin`**
+        - Password: **`admin`**
+        - `Name` and `Email` can also be admin. You can use `admin` all, as its a poc.
+    - Click `Continue`
+    - Click on `Start using Jenkins`
+    ![JenkinsSetup2!](https://github.com/awanmbandi/realworld-cicd-pipeline-project/raw/zdocs/images/Screen%20Shot%202023-04-24%20at%208.49.43%20AM.png) 
+
+2)  #### Plugin installations:
+    - Click on `Manage Jenkins`
+    - Click on `Plugins`
+    - Click `Available`
+    - Search and Install the following Plugings and `"Install"`
+        - **SonarQube Scanner**
+        - **Artifactory**
+        - **Maven Integration**
+        - **Pipeline Maven Integration**
+        - **Maven Release Plug-In**
+        - **Build Timestamp (Needed for Artifact versioning)**
+    - Click on `Install`
+    - Once all plugins are installed
+    - Select/Check the Box **Restart Jenkins when installation is complete and no jobs are running**
+
+3)  #### Global tools configuration:
+    - Click on Manage Jenkins -->> Global Tool Configuration
+    ![JDKSetup!](https://github.com/awanmbandi/realworld-cicd-pipeline-project/blob/zdocs/images/sdsdsdsdsd.png)
+
+    - **Maven** 
+      - Click on `Add Maven` 
+      - Enable **`Install automatically`** is enabled 
+      * Name: **`maven`**
+      * Version: Keep the default version as it is to latest
+      - Click on `SAVE`
+      ![MavenSetup!](https://github.com/awanmbandi/realworld-cicd-pipeline-project/raw/zdocs/images/Screen%20Shot%202023-04-24%20at%209.44.14%20AM.png)
+
+    - **JDK** 
+        - Click on `Add JDK` -->> Make sure **Install automatically** is enabled 
+        
+        **Note:** By default the **Install Oracle Java SE Development Kit from the website** make sure to close that option by clicking on the image as shown below.
+
+        ![JDKSetup!](https://github.com/awanmbandi/realworld-cicd-pipeline-project/blob/zdocs/images/dsdsdsdsdsd.png)
+
+        * Click on `Add installer`
+        * Select `Extract *.zip/*.tar.gz` 
+        * Name: **`localJdk`**
+        * Download URL for binary archive: **https://download.java.net/java/GA/jdk11/13/GPL/openjdk-11.0.1_linux-x64_bin.tar.gz**
+        * Subdirectory of extracted archive: **`jdk-11.0.1`**
+    
+    - **SonarQube Scanner** 
+      - Click on `Add SonarQube Scanner` 
+      - Enable: `Install automatically` (Optional)
+      ![SonarQubeScanner!](https://github.com/awanmbandi/realworld-cicd-pipeline-project/raw/zdocs/images/Screen%20Shot%202023-04-24%20at%209.35.20%20AM.png)
