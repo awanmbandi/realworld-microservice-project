@@ -4,12 +4,12 @@
   <servers>
     <server>
       <username>admin</username>
-      <password>Admin123</password>
+      <password>admin</password>
       <id>central</id>
     </server>
     <server>
       <username>admin</username>
-      <password>Admin123</password>
+      <password>admin</password>
       <id>snapshots</id>
     </server>
   </servers>
@@ -21,8 +21,8 @@
             <enabled>false</enabled>
           </snapshots>
           <id>central</id>
-          <name>iwayq-libs-release-local</name>
-          <url>http://18.207.136.250:8082/artifactory/iwayq-libs-release</url>
+          <name>webapp-libs-release-local</name>
+          <url>http://18.207.136.250:8082/artifactory/webapp-libs-release</url>
 	  
         </repository>
        
@@ -33,8 +33,8 @@
             <enabled>false</enabled>
           </snapshots>
           <id>central</id>
-          <name>iwayq-libs-release-local</name>
-          <url>http://18.207.136.250:8082/artifactory/iwayq-libs-release</url>
+          <name>webapp-libs-release-local</name>
+          <url>http://18.207.136.250:8082/artifactory/webapp-libs-release</url>
 	  <blocked>false</blocked>
         </pluginRepository>
         </pluginRepositories>
