@@ -5,7 +5,7 @@ pipeline{
         nodejs 'NodeJS16'
     }
     environment {
-        SCANNER_HOME=tool 'SonarScanner'
+        SCANNER_HOME=tool 'sonar-scanner'
     }
     stages {
         stage('clean workspace'){
@@ -26,7 +26,7 @@ pipeline{
         stage("Sonarqube Analysis "){
             steps{
                 withSonarQubeEnv('Sonar-Server') {
-                    sh ''' $SCANNER_HOME/bin/SonarScanner -Dsonar.projectName=Redit-NodeJs-App \
+                    sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=Redit-NodeJs-App \
                     -Dsonar.projectKey=Redit-NodeJs-App '''
                 }
             }
