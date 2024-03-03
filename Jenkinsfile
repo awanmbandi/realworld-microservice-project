@@ -25,7 +25,7 @@ pipeline{
         }
         stage("Sonarqube Analysis "){
             steps{
-                withSonarQubeEnv('SonarScanner') {
+                withSonarQubeEnv('Sonar-Server') {
                     sh ''' $SCANNER_HOME/bin/SonarScanner -Dsonar.projectName=Redit-NodeJs-App \
                     -Dsonar.projectKey=Redit-NodeJs-App '''
                 }
