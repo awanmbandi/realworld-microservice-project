@@ -23,6 +23,7 @@ sudo usermod -aG docker ubuntu
 newgrp docker
 sudo chmod 777 /var/run/docker.sock
 docker version
+sudo usermod -aG docker jenkins
 
 # Install Trivy
 sudo apt-get install wget apt-transport-https gnupg lsb-release -y

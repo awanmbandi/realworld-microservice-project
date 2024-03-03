@@ -70,5 +70,16 @@ pipeline{
                 sh 'docker run -d --name reddit -p 3000:3000 awanmbandi/reddit:latest'
             }
         }
+        stage('Deploy to kubernets'){
+            steps{
+                script{
+                    withKubeConfig(caCertificate: '', clusterName: '', contextName: '', credentialsId: 'Kubernetes-Credential', namespace: '', restrictKubeConfigAccess: false, serverUrl: '') {
+                       sh 'kubectl apply -f deployment.yml'
+                       sh 'kubectl apply -f service.yml'
+                       sh 'kubectl apply -f ingress.yml'
+                  }
+                }
+            }
+        }
     }
 }
