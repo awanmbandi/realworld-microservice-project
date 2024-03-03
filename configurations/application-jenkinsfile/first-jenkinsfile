@@ -5,7 +5,7 @@ pipeline{
         nodejs 'NodeJS16'
     }
     environment {
-        SCANNER_HOME=tool 'sonar-scanner'
+        SCANNER_HOME=tool 'SonarQube-Scanner'
     }
     stages {
         stage('clean workspace'){
@@ -25,22 +25,22 @@ pipeline{
         }
         stage("Sonarqube Analysis "){
             steps{
-                withSonarQubeEnv('sonar-server') {
-                    sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=Reddit \
-                    -Dsonar.projectKey=Reddit '''
+                withSonarQubeEnv('SonarQube-Scanner') {
+                    sh ''' $SCANNER_HOME/bin/SonarQube-Scanner -Dsonar.projectName=Redit-NodeJs-App \
+                    -Dsonar.projectKey=Redit-NodeJs-App '''
                 }
             }
         }
-        stage("quality gate"){
+        stage("SonarQube GateKeeper"){
            steps {
                 script {
-                    waitForQualityGate abortPipeline: false, credentialsId: 'Sonar-token'
+                    waitForQualityGate abortPipeline: false, credentialsId: 'SonarQube-Credential'
                 }
             }
         }
         stage('OWASP FS SCAN') {
             steps {
-                dependencyCheck additionalArguments: '--scan ./ --disableYarnAudit --disableNodeAudit', odcInstallation: 'DP-Check'
+                dependencyCheck additionalArguments: '--scan ./ --disableYarnAudit --disableNodeAudit', odcInstallation: 'OWASP-Dependency-Check'
                 dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
             }
         }
@@ -52,7 +52,7 @@ pipeline{
         stage("Docker Build & Push"){
             steps{
                 script{
-                   withDockerRegistry(credentialsId: 'docker', toolName: 'docker'){
+                   withDockerRegistry(credentialsId: 'DockerHub-Credential', toolName: 'Docker'){
                        sh "docker build -t reddit ."
                        sh "docker tag reddit awanmbandi/reddit:latest "
                        sh "docker push awanmbandi/reddit:latest "
@@ -62,7 +62,7 @@ pipeline{
         }
         stage("TRIVY"){
             steps{
-                sh "trivy image awanmbandi/reddit:latest > trivy.txt"
+                sh "trivy image awanmbandi/reddit:latest > trivyimageanalysisreport.txt"
             }
         }
         stage('Deploy to container'){
