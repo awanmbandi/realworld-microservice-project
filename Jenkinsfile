@@ -85,9 +85,9 @@ pipeline{
             steps{
                 script{
                     withKubeConfig(caCertificate: '', clusterName: '', contextName: '', credentialsId: 'Kubernetes-Credential', namespace: '', restrictKubeConfigAccess: false, serverUrl: '') {
-                       sh 'kubectl apply -f deployment.yml'
-                       sh 'kubectl apply -f service.yml'  //LoadBalancer Service
-                       sh 'kubectl apply -f ingress.yml'
+                       sh 'kubectl apply -f k8s-manifests/prod-env/deployment.yml'
+                       sh 'kubectl apply -f k8s-manifests/prod-env/service.yml'  //LoadBalancer Service
+                       sh 'kubectl apply -f k8s-manifests/prod-env/ingress.yml'
                     }
                 }
             }
