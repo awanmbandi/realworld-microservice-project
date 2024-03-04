@@ -76,6 +76,22 @@ pipeline{
                 }
             }
         }
+        stage('Install Selenium Dependencies') {
+            steps {
+                sh "npm install selenium-webdriver"
+            }
+        }
+        stage('Run Selenium Test') {
+            steps {
+                script {
+                    // Execute the Selenium script
+                    sh 'node selenium/selenium-test.js'
+
+                    // Copy the status file to Jenkins workspace
+                    sh 'cp status.txt ${WORKSPACE}/selenium-test-report.txt'
+                }
+            }
+        }
         stage('Approve Prod Deployment') {
         steps {
                 input('Do you want to proceed?')
