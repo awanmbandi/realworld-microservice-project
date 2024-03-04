@@ -46,7 +46,7 @@ pipeline{
         }
         stage('TRIVY FS SCAN') {
             steps {
-                sh "trivy fs . > trivyfs.txt"
+                sh "trivy fs . > trivyfstestreport.txt"
             }
         }
         stage("Docker Build & Push"){
@@ -65,19 +65,30 @@ pipeline{
                 sh "trivy image awanmbandi/reddit:latest > trivyimageanalysisreport.txt"
             }
         }
-        stage('Deploy to container'){
+        stage('Deploy to K8S Stage Environment'){
             steps{
-                sh 'docker run -d --name reddit -p 3000:3000 awanmbandi/reddit:latest'
+                script{
+                    withKubeConfig(caCertificate: '', clusterName: '', contextName: '', credentialsId: 'Kubernetes-Credential', namespace: '', restrictKubeConfigAccess: false, serverUrl: '') {
+                       sh 'kubectl apply -f k8s-manifests/test-env/test-namespace.yml'
+                       sh 'kubectl apply -f k8s-manifests/test-env/deployment.yml'
+                       sh 'kubectl apply -f k8s-manifests/test-env/service.yml'  //NodePort Service
+                  }
+                }
             }
         }
-        stage('Deploy to kubernets'){
+        stage('Approve Prod Deployment') {
+        steps {
+                input('Do you want to proceed?')
+            }
+        }
+        stage('Deploy to K8S Prod Environment'){
             steps{
                 script{
                     withKubeConfig(caCertificate: '', clusterName: '', contextName: '', credentialsId: 'Kubernetes-Credential', namespace: '', restrictKubeConfigAccess: false, serverUrl: '') {
                        sh 'kubectl apply -f deployment.yml'
-                       sh 'kubectl apply -f service.yml'
+                       sh 'kubectl apply -f service.yml'  //LoadBalancer Service
                        sh 'kubectl apply -f ingress.yml'
-                  }
+                    }
                 }
             }
         }
