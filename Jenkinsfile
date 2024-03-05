@@ -94,7 +94,7 @@ pipeline{
         }
         stage("CIS Cluster Compliance Report"){ 
             steps{
-                sh "trivy k8s cluster --compliance=k8s-cis --report summary > trivy_cis_compliace_report.txt" 
+                sh "trivy k8s cluster --compliance=k8s-cis --report summary --namespace default > trivy_cis_compliace_report.txt" 
             }
             post {
                 success {
@@ -107,7 +107,7 @@ pipeline{
         }
         stage("NSA Cluster Compliance Report"){ 
             steps{
-                sh "trivy k8s cluster --compliance=k8s-nsa --report all > trivy_nsa_compliace_report.txt"
+                sh "trivy k8s cluster --compliance=k8s-nsa --report all --namespace default > trivy_nsa_compliace_report.txt"
             }
             post {
                 success {
