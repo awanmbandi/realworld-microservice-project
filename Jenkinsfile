@@ -69,9 +69,9 @@ pipeline{
             steps{
                 script{
                     withKubeConfig(caCertificate: '', clusterName: '', contextName: '', credentialsId: 'Kubernetes-Credential', namespace: '', restrictKubeConfigAccess: false, serverUrl: '') {
-                       sh 'kubectl apply -f k8s-manifests/test-env/test-namespace.yml'
-                       sh 'kubectl apply -f k8s-manifests/test-env/deployment.yml'
-                       sh 'kubectl apply -f k8s-manifests/test-env/service.yml'  //NodePort Service
+                       sh 'kubectl apply -f deployment-configs/test-env/test-namespace.yml'
+                       sh 'kubectl apply -f deployment-configs/test-env/deployment.yml'
+                       sh 'kubectl apply -f deployment-configs/test-env/service.yml'  //NodePort Service
                   }
                 }
             }
@@ -85,9 +85,9 @@ pipeline{
             steps{
                 script{
                     withKubeConfig(caCertificate: '', clusterName: '', contextName: '', credentialsId: 'Kubernetes-Credential', namespace: '', restrictKubeConfigAccess: false, serverUrl: '') {
-                       sh 'kubectl apply -f k8s-manifests/prod-env/deployment.yml'
-                       sh 'kubectl apply -f k8s-manifests/prod-env/service.yml'  //LoadBalancer Service
-                       sh 'kubectl apply -f k8s-manifests/prod-env/ingress.yml'
+                       sh 'kubectl apply -f deployment-configs/prod-env/deployment.yml'
+                       sh 'kubectl apply -f deployment-configs/prod-env/service.yml'  //LoadBalancer Service
+                       sh 'kubectl apply -f deployment-configs/prod-env/ingress.yml'
                     }
                 }
             }
