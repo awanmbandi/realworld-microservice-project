@@ -46,7 +46,7 @@ pipeline{
         }
         stage('Trivy FS Scan') {
             steps {
-                sh "trivy fs . > trivyfstestreport.txt"
+                sh "trivy fs . > trivy_fs_test_report.txt"
             }
         }
         stage("Docker Build & Push"){
@@ -62,7 +62,7 @@ pipeline{
         }
         stage("Trivy App Image Scan"){
             steps{
-                sh "trivy image awanmbandi/reddit:latest > trivyimageanalysisreport.txt"
+                sh "trivy image awanmbandi/reddit:latest > trivy_image_analysis_report.txt"
             }
         }
         stage('Deploy to K8S Stage Environment'){
@@ -89,6 +89,32 @@ pipeline{
                        sh 'kubectl apply -f k8s-manifests/prod-env/service.yml'  //LoadBalancer Service
                        sh 'kubectl apply -f k8s-manifests/prod-env/ingress.yml'
                     }
+                }
+            }
+        }
+        stage("CIS Cluster Compliance Report"){ 
+            steps{
+                sh "trivy k8s cluster --compliance=k8s-cis --report summary > trivy_cis_compliace_report.txt" 
+            }
+            post {
+                success {
+                    echo 'CIS compliance benchmark test completed successfully.' 
+                }
+                failure {
+                    echo 'CIS compliance benchmark test failed.'
+                }
+            }
+        }
+        stage("NSA Cluster Compliance Report"){ 
+            steps{
+                sh "trivy k8s cluster --compliance=k8s-nsa --report all > trivy_nsa_compliace_report.txt"
+            }
+            post {
+                success {
+                    echo 'NSA compliance benchmark test completed successfully.'
+                }
+                failure {
+                    echo 'NSA compliance benchmark test failed.'
                 }
             }
         }
