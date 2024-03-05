@@ -1,7 +1,7 @@
 # DevSecOps CI/CD Pipeline Project Automation Arch
 ![ProjectArch](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sdgsbdfbdbfdfdfdbgdgfdgdg.png)
 
-# Continuous Observability (Monitoring & Logging) Arch
+## Continuous Observability (Monitoring & Logging) Arch
 ![PromGrafEFKArch](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/prom-graf-efk.avif)
 
 ###### Project ToolBox 🧰
