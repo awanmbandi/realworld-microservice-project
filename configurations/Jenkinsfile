@@ -92,20 +92,20 @@ pipeline{
                 }
             }
         }
-        stage("CIS Cluster Compliance Report"){
+        stage("CIS Cluster Compliance Report"){ 
             steps{
-                sh "trivy k8s cluster --compliance=k8s-cis --report summary > trivy_cis_compliace_report.txt"
+                sh "trivy k8s cluster --compliance=k8s-cis --report summary > trivy_cis_compliace_report.txt" 
             }
             post {
                 success {
-                    echo 'CIS compliance benchmark test completed successfully.'
+                    echo 'CIS compliance benchmark test completed successfully.' 
                 }
                 failure {
                     echo 'CIS compliance benchmark test failed.'
                 }
             }
         }
-        stage("NSA Cluster Compliance Report"){
+        stage("NSA Cluster Compliance Report"){ 
             steps{
                 sh "trivy k8s cluster --compliance=k8s-nsa --report all > trivy_nsa_compliace_report.txt"
             }
