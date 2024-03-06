@@ -249,12 +249,12 @@ terraform apply --auto-approve
           - ###### Store SonarQube Secret Token in Jenkins:
               - Navigate back to Jenkins http://JENKINS_PUBLIC_IP:8080
               - Click on `Manage Jenkins`
-                - Click on ``Add Credentials``
-                - Kind: `Secret text`
-                - Secret: `Paste the SonarQube TOKEN` value that we have created on the SonarQube server
-                - ID: ``SonarQube-Credential``
-                - Description: `SonarQube-Credential`
-                - Click on `Create`
+              - Click on ``Add Credentials``
+              - Kind: `Secret text`
+              - Secret: `Paste the SonarQube TOKEN` value that we have created on the SonarQube server
+              - ID: ``SonarQube-Credential``
+              - Description: `SonarQube-Credential`
+              - Click on `Create`
 
       2)  ##### Slack secret token (slack-token)
           - ###### Get The Slack Token: 
@@ -278,9 +278,9 @@ terraform apply --auto-approve
       3)  ##### DockerHub Credential (Username and Password)
           - ###### Login to Your DockerHub Account (You can create one if you don't have one)
               - Access DockerHub at: https://hub.docker.com/
-                - Provide Username: `YOUR USERNAME`
-                - Provide Username: `YOUR PASSWORD`
-                - Click on `Sign In`
+              - Provide Username: `YOUR USERNAME`
+              - Provide Username: `YOUR PASSWORD`
+              - Click on `Sign In`
 
           - ###### DockerHub Credential (Username and Password)
 	          - Click on ``Add Credentials``
