@@ -349,4 +349,5 @@ terraform apply --auto-approve
             - ID: ``Kubernetes-Credential``
             - Description: `Kubernetes-Credential`
             - Click on `Create`   
-        ![KubeCredential!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sdsdsds.png)
+        ![KubeCredential!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/dsgdfgs.png)
+        
