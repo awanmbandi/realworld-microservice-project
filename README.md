@@ -103,6 +103,24 @@ aws --version
 docker ps | grep sonarqube:lts-community
 ```
 
+### 4B) Deploy Your EKS Cluster Environment
+- Confirm you're still logged into the `Jenkins-CI` Server
+- Run the following commands to deploy the `EKS Cluster`
+```bash
+# Clone your project reporisoty
+git clone https://github.com/awanmbandi/realworld-microservice-project.git
+
+# cd and checkout into the DevSecOps project branch
+cd && git checkout dev-sec-ops-cicd-pipeline-project-one
+cd eks-terraform
+
+# Deploy EKS Environment
+terraform init
+terraform plan
+terraform apply --auto-approve
+```
+
+
 ### Jenkins setup
 1) #### Access Jenkins
     Copy your Jenkins Public IP Address and paste on the browser = ExternalIP:8080
