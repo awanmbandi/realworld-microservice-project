@@ -471,6 +471,16 @@ kubectl get svc -n monitoring
     - Password: `prom-operator`
 ![Prom&Graf1](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sddsds.png)
 
+#### Access Your Project Pre-Build Dashboards
+- Click on `HOME`
+- These are the three most `Important Dashboards` which you can click and open any
+    - `Node Exporter / USE Method / Node` 
+    - `Node Exporter / USE Method / Cluster`
+    - `Kubernetes / Networking / Pod`
+
+- Click on the `Node Exporter / USE Method / Node` 
+![Prom&Graf1](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sdvsdv.png)
+
 
 
 
