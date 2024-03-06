@@ -121,6 +121,7 @@ terraform apply --auto-approve
 ```
 - Navigate to EKS and confirm your Cluster was created successfully
 - Also confirmthere's no issue regarding your Terraform execution
+![JenkinsSetup1!]()
 
 
 ### Jenkins setup
@@ -218,3 +219,85 @@ terraform apply --auto-approve
         - NOTE: *Please Do Not Check The ``Install automatically`*
       - Install directory: provide `/usr/bin/`
       ![SonarQubeScanner!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/ASFADAD.png)
+
+4)  #### Credentials setup(SonarQube, Nexus, Ansible and Slack):
+    - Click on `Manage Jenkins` 
+      - Click on `Credentials` 
+      - Click on `Global` (unrestricted)
+      - Click on `Add Credentials`
+      1)  ##### SonarQube secret token (SonarQube-Token)
+          - ###### Generating SonarQube secret token:
+              - Login to your SonarQube Application (http://SonarServer-Sublic-IP:9000)
+                - Default username: **`admin`** 
+                - Default password: **`admin`**
+                - Old Password: **`admin`**
+                - New Password: **`adminadmin`**
+                - Confirm Password: **`adminadmin`**
+              - Click on `Manually`
+                - Project display name: `NodeJS-WebApp-Project`
+                - Display key: `NodeJS-WebApp-Project`
+                - Main branch name: `dev-sec-ops-cicd-pipeline-project-one` 
+              - Click on `Set Up`
+                - Click on `Locally` 
+                - Token Name ``NodeJS-WebApp-SonarQube-Token``
+                - **NOTE:** *Copy the TOKEN and SAVE somwhere on your NodePad*
+              - Click on `Generate`
+              - Click on `Continue`
+              - Run analysis on your project: Select `Other (for JS, TS, Go, Python, PHP, ...)`
+              - What is your OS?: Select `Linux`
+              - `COPY` the Execute the Scanner and `SAVE` on your NodePad as well
+          - ###### Store SonarQube Secret Token in Jenkins:
+              - Navigate back to Jenkins http://JENKINS_PUBLIC_IP:8080
+              - Click on `Manage Jenkins`
+                - Click on ``Add Credentials``
+                - Kind: `Secret text`
+                - Secret: `Paste the SonarQube TOKEN` value that we have created on the SonarQube server
+                - ID: ``SonarQube-Credential``
+                - Description: `SonarQube-Credential`
+                - Click on `Create`
+
+      2)  ##### Slack secret token (slack-token)
+          - ###### Get The Slack Token: 
+              - Slack: https://join.slack.com/t/jjtechtowerba-zuj7343/shared_invite/zt-24mgawshy-EhixQsRyVuCo8UD~AbhQYQ
+              - Navigate to the Slack "Channel you created": `YOUR_INITIAL-devsecops-cicd-alerts`
+              - Click on your `Channel Drop Down`
+              - Click on `Integrations` and Click on `Add an App`
+              - Click on `Jenkins CI VIEW` and Click on `Configuration`
+              - Click on `Add to Slack`, Click on the Drop Down and `Select your Channel`
+              - Click on `Add Jenkins CI Integration`
+              - **`NOTE:`** *The TOKEN is on Step 3*
+
+          - ###### Create The Slack Credential For Jenkins:
+              - Click on ``Add Credentials``
+              - Kind: Secret text            
+              - Secret: Place the Integration Token Credential ID (Note: Generate for slack setup)
+              - ID: ``Slack-Credential``
+              - Description: `slack-Credential`
+              - Click on `Create`  
+
+      3)  ##### DockerHub Credential (Username and Password)
+          - ###### Login to Your DockerHub Account (You can create one if you don't have one)
+              - Access DockerHub at: https://hub.docker.com/
+                - Provide Username: `YOUR USERNAME`
+                - Provide Username: `YOUR PASSWORD`
+                - Click on `Sign In`
+
+          - ###### DockerHub Credential (Username and Password)
+	          - Click on ``Add Credentials``
+	          - Kind: Username with password                  
+	          - Username: ``YOUR USERNAME``
+	          - Password: ``YOUR PASSWORD``
+	          - ID: ``DockerHub-Credential``
+	          - Description: `DockerHub-Credential`
+	          - Click on `Create`   
+
+      4)  ##### Kubernetes Cluster Credential (kubeconfig)
+          - Click on ``Add Credentials``
+          - Kind: Username with password          
+          - Username: ``ansibleadmin``
+          - Enable Treat username as secret
+          - Password: ``ansibleadmin``
+          - ID: ``Ansible-Credential``
+          - Description: `Ansible-Credential`
+          - Click on `Create`   
+      ![SonarQubeServerSetup!](https://github.com/awanmbandi/realworld-cicd-pipeline-project/raw/zdocs/images/Screen%20Shot%202023-04-27%20at%202.10.40%20PM.png)
