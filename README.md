@@ -47,7 +47,7 @@
     - Once you sign up, you should have a page that looks like this...
     ![GitGuardian!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/ererere.png)
 
-2) Create An IAM Profile/Role For The Ansible Automation Engine (Dynamic Inventory)
+3) Create An IAM Profile/Role For The Ansible Automation Engine (Dynamic Inventory)
 - Create an EC2 Service Role in IAM with AmazonEC2FullAccess Privilege 
 - Navigate to IAM
 ![IAM!](https://github.com/awanmbandi/realworld-cicd-pipeline-project/blob/zdocs/images/Screen%20Shot%202023-10-03%20at%206.20.44%20PM.png)
@@ -61,7 +61,7 @@
     - Role Name: `AWS-EC2FullAccess-Role`
     - Click `Create`
 
-3) Jenkins CI
+4) Jenkins CI
     - Create a Jenkins VM instance 
     - Name: `Jenkins-CI`
     - AMI: `Ubuntu 22.04`
@@ -74,4 +74,26 @@
     - User data (Copy the following user data): https://github.com/awanmbandi/realworld-microservice-project/blob/dev-sec-ops-cicd-pipeline-project-one/installations.sh
     - Launch Instance
 
+##### 4A) Verify the Following Services are running in the Jenkins Instance
+- SSH into the `Jenkins-CI` server
+    - Run the following commands and confirm that the `services` are all `Running`
+```bash
+# Confirm that Jenkins is running
+sudo systemctl status jenkins
+
+# Confirm that docker is running
+sudo systemctl status docker
+
+# Confirm that Trivy is running
+sudo systemctl status trivy
+
+# Confirm that Terraform is running
+terraform version
+
+# Confirm that the Kubectl utility is running 
+kubectl version --client
+
+# Confirm that AWS CLI is running
+aws --version
+```
 
