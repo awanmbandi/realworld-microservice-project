@@ -396,6 +396,7 @@ terraform apply --auto-approve
      - **(OPTIONAL)** Go back and Update the Quality Gate value to 10. The Exercise was just to see how Quality Gate Works
 
 ### Deploy Monitoring and Logging Solution Using EFK Stack, Prometheus & Grafana 
+1) ### Deploy and Configure EFK Stack
 - SSH Back into your `Jenkins-CI` instance
     - Run the Following Commands to Deploy the `EFK Stack including Prometheus and Grafana k8s manifest`
 ```bash
@@ -429,7 +430,24 @@ kubectl get all -n efklog
   - Confirm that you atleast have some `Logs` displayed on the `Kibana Discovery Page`
   ![Kibana1](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sgfsgs.png) 
 
+1) ### Deploy and Configure Prometheus and Grafana
+- Navigate back to your `Jenkins-CI SSH Shell` where you're logged in
+- Run the following commands
+```bash
+# Navigate to the monitoring directory
+cd ../monitoring/
 
+# Start by Deploying the Kubernetes CRDs Configuration/Manifest
+kubectl apply -f crds.yaml
+
+# The Deploy the `eks-monitoring.yaml` config
+kubectl apply -f eks-monitoring.yaml
+
+# Resources created Pods, Deployments, ReplicaSets and Services deployed in the `Monitoring` Namespace
+kubectl get pods -n monitoring
+kubectl get svc -n monitoring
+```
+![Kibana1](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sfgsfg.png)
 
 
 
