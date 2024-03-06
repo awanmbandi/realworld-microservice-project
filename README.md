@@ -395,6 +395,26 @@ terraform apply --auto-approve
      - **(OPTIONAL)** Run/Test Your Pipeline Again and This Time Your Quality Gate Should Fail 
      - **(OPTIONAL)** Go back and Update the Quality Gate value to 10. The Exercise was just to see how Quality Gate Works
 
+5)  #### Configure system:    
+    1)  - Click on ``Manage Jenkins`` 
+        - Click on ``System`` and navigate to the `SonarQube Servers` section
+        - Click on Add `SonarQube`
+        - Name: `Sonar-Server`
+        - Server URL: http://YOUR_SONARQUBE_PRIVATE_IP:9000
+        - Server authentication token: Select `SonarQube-Credential`
+        ![SonarQubeServerSetup!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/vfsvfs.png)
+
+    2)  - Still on `Manage Jenkins` and `Configure System`
+        - Scroll down to the `Slack` Section (at the very bottom)
+        - Go to section `Slack`
+            - `NOTE:` *Make sure you still have the Slack Page that has the `team subdomain` & `integration token` open*
+            - Workspace: **Provide the `Team Subdomain` value** (created above)
+            - Credentials: select the `Slack-Credential` credentials (created above) 
+            - Default channel / member id: `#PROVIDE_YOUR_CHANNEL_NAME_HERE`
+            - Click on `Test Connection`
+            - Click on `Apply` and `Save`
+        ![SlackSetup!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sdgsdfg.png)
+
 ### Deploy Monitoring and Logging Solution Using EFK Stack, Prometheus & Grafana 
 1) ### Deploy and Configure EFK Stack
 - SSH Back into your `Jenkins-CI` instance
