@@ -135,3 +135,6 @@ docker ps | grep sonarqube:lts-community
     - Click on `Install`
     - Once all plugins are installed
     - Select/Check the Box **Restart Jenkins when installation is complete and no jobs are running**
+    ![PluginInstallation!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/afda.png)
+    - Refresh your Browser and Log back into Jenkins
+    - Once you log back into Jenkins
