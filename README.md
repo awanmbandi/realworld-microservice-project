@@ -259,7 +259,7 @@ terraform apply --auto-approve
               - Login to your SonarQube Application (http://SonarServer-Sublic-IP:9000)
                 - Default username: **`admin`** 
                 - Default password: **`admin`**
-                - Click on `Login`
+            - Click on `Login`
                 - Old Password: **`admin`**
                 - New Password: **`adminadmin`**
                 - Confirm Password: **`adminadmin`**
@@ -367,8 +367,10 @@ terraform apply --auto-approve
     ![SonarQubeSetup2!](https://github.com/awanmbandi/realworld-cicd-pipeline-project/blob/zdocs/images/dsdsdsdsdsdsds.png)
     - Click on `Save` to Create
     ![SonarQubeSetup2!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sdsds.png)
+    - Click on `Unlock Editing`
+        - **NOTE:** *IMPORTANT*
     - Click `Add Condition` to Add a Quality Gate Condition to Validate the Code Against (Code Smells or Bugs)
-    ![SonarQubeSetup3!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sdsdsd.png)
+    ![SonarQubeSetup3!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sdvfsv.png)
     
     - Add Quality to SonarQube Project
     -  ``NOTE:`` Make sure to update the `SonarQube` stage in your `Jenkinsfile` and Test the Pipeline so your project will be visible on the SonarQube Project Dashboard.
