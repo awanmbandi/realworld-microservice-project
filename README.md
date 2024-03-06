@@ -534,12 +534,7 @@ kubectl get svc -n monitoring
     - Click on `SAVE`
     - Click on `Build Now` to *TEST Pipeline* 
 
-    ### A. Pipeline Test Results 
-    - Jenkins Pipeline Job
-    ![JenkinsJobResult!]()
-
-
-    ### B. Test Application Access From the `Test-Environment` Using `NodePort` of one of your Workers
+    ### A. Test Application Access From the `Test-Environment` Using `NodePort` of one of your Workers
     - SSH Back into your `Jenkins-CI` Server
         - RUN: `kubectl get svc -n test-env`
         - **NOTE:** COPY the Exposed `NodePort Pod Number`
