@@ -501,7 +501,52 @@ kubectl get svc -n monitoring
 - Click on the `Node Exporter / USE Method / Node` 
 ![Prom&Graf1](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sdvsdv.png)
 
+### Pipeline creation
+- Update The ``Jenkinsfile`` If Neccessary
+- Update `SonarQube projectName` in your `Jenkinsfile` On `Line 29`
+- Update the `SonarQube projectKey` in your `Jenkinsfile` On `Line 30`
+- Update your `Slack Channel Name` in the `Jenkinsfile` on `Line 99`
+    
+    - Log into Jenkins: http://Jenkins-Public-IP:8080/
+    - Click on `New Item`
+    - Enter an item name: `DevSecOps-CICD-Pipeline-Automation` 
+    - Select the category as **`Pipeline`**
+    - Click `OK`
+    - Select GitHub project: Project url `Provide Your Project Repo Git URL`
+    - GitHub hook trigger for GITScm polling: `Check the box` 
+      - **NOTE:** Make sure to also configure it on *GitHub's side*
+    - Pipeline Definition: Select `Pipeline script from SCM`
+      - SCM: `Git`
+      - Repositories
+        - Repository URL: `Provide Your Project Repo Git URL` (the one you created in the initial phase)
+        - Credentials: `none` *since the repository is public*
+        - Branch Specifier (blank for 'any'): ``*/dev-sec-ops-cicd-pipeline-project-one``
+        - Script Path: ``Jenkinsfile``
+    - Click on `SAVE`
+    - Click on `Build Now` to *TEST Pipeline* 
 
+    ### A. Pipeline Test Results 
+    - Jenkins Pipeline Job
+    ![JenkinsJobResult!]()
+
+    - SonarQube Code Inspection Result
+    ![SonarQubeResult!]()
+
+    - Slack Continuous Feedback Alert
+    ![SlackResult!]()
+
+    - SonarQube GateKeeper Webhook Payload
+    ![SonarQubeGateKeeper!]()
+
+    ### B. Troubleshooting (Possible Issues You May Encounter and Suggested Solutions)
+    1) **1st ISSUE:** If you experience a long wait time at the level of `GateKeeper`, please check if your `Sonar Webhook` is associated with your `SonarQube Project` with `SonarQube Results`
+    - If you check your jenkins Pipeline you'll most likely find the below message at the `SonarQube GateKeper` stage
+    ```bash
+    JENKINS CONSOLE OUTPUT
+
+    Checking status of SonarQube task 'AYfEB4IQ3rP3Y6VQ_yIa' on server 'SonarQube'
+    SonarQube task 'AYfEB4IQ3rP3Y6VQ_yIa' status is 'PENDING'
+    ```
 
 
 
