@@ -51,4 +51,6 @@ unzip awscliv2.zip
 sudo ./aws/install
 
 # Deploy a SonarQube Container
-docker run -d --name sonar -p 9000:9000 sonarqube:lts-community
+docker volume create sonarqube-volume
+docker volume inspect volume sonarqube-volume
+docker run -d --name sonarqube -v sonarqube-volume:/opt/sonarqube/data -p 9000:9000 sonarqube:lts-community

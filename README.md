@@ -259,11 +259,16 @@ terraform apply --auto-approve
               - Login to your SonarQube Application (http://SonarServer-Sublic-IP:9000)
                 - Default username: **`admin`** 
                 - Default password: **`admin`**
-             - Click on `Projects`
-             - Click on `Create New Project`
-                - Project key: `NodeJS-WebApp-Project`
-                - Display name: `NodeJS-WebApp-Project`
+                - Click on `Login`
+                - Old Password: **`admin`**
+                - New Password: **`adminadmin`**
+                - Confirm Password: **`adminadmin`**
+              - Click on `Manually`
+                - Project display name: `NodeJS-WebApp-Project`
+                - Display key: `NodeJS-WebApp-Project`
+                - Main branch name: `dev-sec-ops-cicd-pipeline-project-one` 
               - Click on `Set Up`
+                - Click on `Locally` 
                 - Token Name ``NodeJS-WebApp-SonarQube-Token``
                 - **NOTE:** *Copy the TOKEN and SAVE somwhere on your NodePad*
               - Click on `Generate`
