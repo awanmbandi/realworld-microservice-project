@@ -74,7 +74,7 @@
     - User data (Copy the following user data): https://github.com/awanmbandi/realworld-microservice-project/blob/dev-sec-ops-cicd-pipeline-project-one/installations.sh
     - Launch Instance
 
-##### 4A) Verify the Following Services are running in the Jenkins Instance
+### 4A) Verify the Following Services are running in the Jenkins Instance
 - SSH into the `Jenkins-CI` server
     - Run the following commands and confirm that the `services` are all `Running`
 ```bash
