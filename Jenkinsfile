@@ -31,10 +31,10 @@ pipeline{
                 }
             }
         }
-        stage("SonarQube GateKeeper"){
-           steps {
-                script {
-                    waitForQualityGate abortPipeline: false, credentialsId: 'SonarQube-Credential'
+        stage('SonarQube GateKeeper') {
+            steps {
+                timeout(time : 1, unit : 'HOURS'){
+                waitForQualityGate abortPipeline: true, credentialsId: 'SonarQube-Credential'
                 }
             }
         }

@@ -370,10 +370,11 @@ terraform apply --auto-approve
       - Click on `Quality Gate`
       - Select your QG `NodeJS-Webapp-QualityGate`
 
-    ![SonarQubeSetup3!](https://github.com/awanmbandi/realworld-cicd-pipeline-project/blob/zdocs/images/SDFVDSFVDFV.png)
+    ![SonarQubeSetup3!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/WEFWEFW.png)
 
 3)  ### Setup SonarQube Webhook to Integrate Jenkins (To pass the results to Jenkins)
-    - Click on `Administration` and Select `Webhook`
+    - Click on `Administration` 
+    - Click on `Configuration` and Select `Webhook`
     - Click on `Create Webhook` 
       - Name: `jenkinswebhook`
       - URL: `http://Jenkins-Server-Private-IP:8080/sonarqube-webhook`
@@ -384,7 +385,7 @@ terraform apply --auto-approve
     stage('SonarQube GateKeeper') {
         steps {
           timeout(time : 1, unit : 'HOURS'){
-          waitForQualityGate abortPipeline: true
+          waitForQualityGate abortPipeline: true, credentialsId: 'SonarQube-Credential'
           }
        }
     }
@@ -393,4 +394,4 @@ terraform apply --auto-approve
      - **(OPTIONAL)** FAIL Your Quality Gate: Go back to SonarQube -->> Open your Project -->> Click on Quality Gates at the top -->> Select your Project Quality Gate -->> Click EDIT -->> Change the Value to “0” -->> Update Condition
      - **(OPTIONAL)** Run/Test Your Pipeline Again and This Time Your Quality Gate Should Fail 
      - **(OPTIONAL)** Go back and Update the Quality Gate value to 10. The Exercise was just to see how Quality Gate Works
-        
+
