@@ -272,9 +272,9 @@ terraform apply --auto-approve
             - Generate a `Global Analysis Token`    *This is the Token you need for Authorization*
               - Click on the `User Profile` icon at top right of SonarQube
               - Click on `My Account`
-              - Generate Token:   *Generate this TOKEN and Use in the Next Step to Create The SonarQube Credential*
-              ![Sonar!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sfdsgsf.png)
-              - Click `Generate`
+              - Generate Token:   *Generate this TOKEN and Use in the Next Step to Create The SonarQube Credential* 
+              ![Sonar!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sfdsgsf.png) 
+              - Click `Generate` 
 
           - ###### Store SonarQube Secret Token in Jenkins:
               - Navigate back to Jenkins http://JENKINS_PUBLIC_IP:8080
