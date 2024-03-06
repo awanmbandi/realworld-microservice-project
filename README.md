@@ -74,6 +74,16 @@
     - User data (Copy the following user data): https://github.com/awanmbandi/realworld-microservice-project/blob/dev-sec-ops-cicd-pipeline-project-one/installations.sh
     - Launch Instance
 
+4) SonarQube
+    - Create a SonarQube VM instance 
+    - Name: `SonarQube`
+    - AMI: `Ubuntu 20.04`
+    - Instance type: `t2.medium`
+    - Key pair: `Select a keypair`
+    - Security Group (Eit/Open): `9000, 9100` and `22 to 0.0.0.0/0`
+    - User data (Copy the following user data): https://github.com/awanmbandi/realworld-cicd-pipeline-project/blob/maven-nexus-sonarqube-jenkins-install/sonarqube-install.sh
+    - Launch Instance
+
 ### 4A) Verify the Following Services are running in the Jenkins Instance
 - SSH into the `Jenkins-CI` server
     - Run the following commands and confirm that the `services` are all `Running`
@@ -119,9 +129,9 @@ terraform init
 terraform plan
 terraform apply --auto-approve
 ```
-- Navigate to EKS and confirm your Cluster was created successfully
+- Navigate to `EKS` and confirm your Cluster was created successfully
 - Also confirmthere's no issue regarding your Terraform execution
-![JenkinsSetup1!]()
+![JenkinsSetup1!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sdsdsdas.png)
 
 
 ### Jenkins setup
@@ -220,7 +230,8 @@ terraform apply --auto-approve
       - Install directory: provide `/usr/bin/`
       ![SonarQubeScanner!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/ASFADAD.png)
 
-4)  #### Credentials setup(SonarQube, Nexus, Ansible and Slack):
+4)  #### Credentials setup(SonarQube, Nexus, Ansible and Slack):  
+    *BE AWARE THAT SINCE WE'RE USING CONTAINERS TO DEPLOY THE SONARQUBE CONTAINER, IF YOU STOP THE INSTANCE THE CONTAINER DIES*
     - Click on `Manage Jenkins` 
       - Click on `Credentials` 
       - Click on `Global` (unrestricted)
@@ -230,13 +241,10 @@ terraform apply --auto-approve
               - Login to your SonarQube Application (http://SonarServer-Sublic-IP:9000)
                 - Default username: **`admin`** 
                 - Default password: **`admin`**
-                - Old Password: **`admin`**
-                - New Password: **`adminadmin`**
-                - Confirm Password: **`adminadmin`**
-              - Click on `Manually`
+             - Click on `Projects`
+             - Click on `Create New Project`
                 - Project display name: `NodeJS-WebApp-Project`
                 - Display key: `NodeJS-WebApp-Project`
-                - Main branch name: `dev-sec-ops-cicd-pipeline-project-one` 
               - Click on `Set Up`
                 - Click on `Locally` 
                 - Token Name ``NodeJS-WebApp-SonarQube-Token``
