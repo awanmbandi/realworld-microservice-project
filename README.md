@@ -562,11 +562,17 @@ kubectl get svc -n monitoring
     - SonarQube Code Inspection Result
     ![SonarQubeResult!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sdsdsdsdsdsdsdsds.png)
 
+    - OWASP Dependency Inspection Result
+    ![SonarQubeResult!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/OWASP.png)
+
     - Slack Continuous Feedback Alert
     ![SlackResult!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sdsddsdsdsdsds.png)
 
     - SonarQube GateKeeper Webhook Payload
     ![SonarQubeGateKeeper!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sdsdsdsdsdsdsdsd.png)
+
+    - Trivy CIS, NSA and PSS Cluster and Application Reports
+    ![SonarQubeResult!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sdsdsdsdsdsdsdssdsdsds.png)
 
     - EFK - Kibana Dashbaord
     ![Kibana!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/kibana.png)
