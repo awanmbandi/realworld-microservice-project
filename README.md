@@ -78,6 +78,9 @@
 - SSH into the `Jenkins-CI` server
     - Run the following commands and confirm that the `services` are all `Running`
 ```bash
+# Confirm Java version
+sudo /usr/bin/java --version
+
 # Confirm that Jenkins is running
 sudo systemctl status jenkins
 
