@@ -111,7 +111,7 @@ docker ps | grep sonarqube:lts-community
 git clone https://github.com/awanmbandi/realworld-microservice-project.git
 
 # cd and checkout into the DevSecOps project branch
-cd && git checkout dev-sec-ops-cicd-pipeline-project-one
+cd realworld-microservice-project && git checkout dev-sec-ops-cicd-pipeline-project-one
 cd eks-terraform
 
 # Deploy EKS Environment
@@ -119,6 +119,8 @@ terraform init
 terraform plan
 terraform apply --auto-approve
 ```
+- Navigate to EKS and confirm your Cluster was created successfully
+- Also confirmthere's no issue regarding your Terraform execution
 
 
 ### Jenkins setup
