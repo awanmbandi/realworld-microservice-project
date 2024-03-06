@@ -395,3 +395,42 @@ terraform apply --auto-approve
      - **(OPTIONAL)** Run/Test Your Pipeline Again and This Time Your Quality Gate Should Fail 
      - **(OPTIONAL)** Go back and Update the Quality Gate value to 10. The Exercise was just to see how Quality Gate Works
 
+### Deploy Monitoring and Logging Solution Using EFK Stack, Prometheus & Grafana 
+- SSH Back into your `Jenkins-CI` instance
+    - Run the Following Commands to Deploy the `EFK Stack including Prometheus and Grafana k8s manifest`
+```bash
+# Get cluster nodes
+kubectl get nodes
+
+# Get cluster pods
+kubectl get pods
+
+# Get all kubernets Objects
+kubectl get all
+
+# Deploy EFK Stack and give it about 10 Minutes before deploying the Prom & Graf..
+cd ../efk-stack
+ls -al
+kubectl apply -f .
+
+# Confirm EFK Resources
+kubectl get ns
+kubectl get all -n efklog
+```
+![EFKStack!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sdsfbsfb.png)
+  - Access the `Kibana Dashboard`: KIBANA_LOADBALANCER_URL:5601
+  - Click on `Discovery` and create an `Index Pattern`
+  ![Kibana1](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/asfsbsfb.png)
+
+  - Time Filter field name: Select `@timestamp`
+  - Click `Create Index Pattern`
+  ![Kibana1](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sdgsvd.png)
+
+  - Confirm that you atleast have some `Logs` displayed on the `Kibana Discovery Page`
+  ![Kibana1](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sgfsgs.png)
+
+
+
+
+
+
