@@ -365,10 +365,10 @@ terraform apply --auto-approve
     - Add Quality to SonarQube Project
     -  ``NOTE:`` Make sure to update the `SonarQube` stage in your `Jenkinsfile` and Test the Pipeline so your project will be visible on the SonarQube Project Dashboard.
     - Click on `Projects` 
-    - Click on your project name `JavaWebApp-Project` 
+    - Click on your project name `NodeJS-Webapp-Project` 
       - Click on `Project Settings`
       - Click on `Quality Gate`
-      - Select your QG `JavaWebApp-QualityGate`
+      - Select your QG `NodeJS-Webapp-QualityGate`
 
     ![SonarQubeSetup3!](https://github.com/awanmbandi/realworld-cicd-pipeline-project/blob/zdocs/images/SDFVDSFVDFV.png)
 
