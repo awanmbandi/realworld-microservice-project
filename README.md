@@ -130,8 +130,11 @@ docker ps | grep sonarqube:lts-community
 ```
 
 ### 4B) Deploy Your EKS Cluster Environment
-- Confirm you're still logged into the `Jenkins-CI` Server
-- Run the following commands to deploy the `EKS Cluster`
+- `UPDATE` Your Terraform Provider Region to `Your Choice REGION`*
+    - **NOTE:ALERT!** *Do Not Use North Virginia, that's US-EAST-1*
+    - **NOTE:ALERT!** *Also Confirm that The Selected Region Has A Default VPC You're Confident Has Internet Connection*
+- Confirm you're still logged into the `Jenkins-CI` Server via `SSH`
+- Run the following commands to deploy the `EKS Cluster` in the `Jenkins-CI`
 ```bash
 # Clone your project reporisoty
 git clone https://github.com/awanmbandi/realworld-microservice-project.git
@@ -512,7 +515,6 @@ kubectl get svc -n monitoring
     - Enter an item name: `DevSecOps-CICD-Pipeline-Automation` 
     - Select the category as **`Pipeline`**
     - Click `OK`
-    - Select GitHub project: Project url `Provide Your Project Repo Git URL`
     - GitHub hook trigger for GITScm polling: `Check the box` 
       - **NOTE:** Make sure to also configure it on *GitHub's side*
     - Pipeline Definition: Select `Pipeline script from SCM`
