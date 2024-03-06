@@ -148,7 +148,7 @@ terraform apply --auto-approve
 - Navigate to `EKS` and confirm your Cluster was created successfully
 - Also confirmthere's no issue regarding your Terraform execution
 ![JenkinsSetup1!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sdsdsdas.png)
-
+![JenkinsSetup2!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sfgsfs.png)
 
 ### Jenkins setup
 1) #### Access Jenkins
@@ -377,7 +377,7 @@ terraform apply --auto-approve
     - Click on `Configuration` and Select `Webhook`
     - Click on `Create Webhook` 
       - Name: `jenkinswebhook`
-      - URL: `http://Jenkins-Server-Private-IP:8080/sonarqube-webhook`
+      - URL: `http://Jenkins-Server-Private-IP:8080/sonarqube-webhook/`
     ![SonarQubeSetup4!](https://github.com/awanmbandi/realworld-cicd-pipeline-project/raw/zdocs/images/Screen%20Shot%202023-04-24%20at%2011.08.26%20AM.png)
 
     - Go ahead and Confirm in the Jenkinsfile you have the “Quality Gate Stage”. The stage code should look like the below;
