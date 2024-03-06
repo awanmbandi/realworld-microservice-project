@@ -23,5 +23,55 @@
 - [Grafana](https://grafana.com/) Grafana is a multi-platform open source analytics and interactive visualization web application. It provides charts, graphs, and alerts for the web when connected to supported data sources.
 - [Slack](https://slack.com/) Slack is a communication platform designed for collaboration which can be leveraged to build and develop a very robust DevOps culture. Will be used for Continuous feedback loop.
 
+# Jenkins Complete CI/CD Pipeline Project Runbook
+1) Create a GitHub Repository with the name `DevSecOps-Realworld-CICD-Project` and push the code in this branch(main) to 
+    your remote repository (your newly created repository). 
+    - Go to GitHub: https://github.com
+    - Login to `Your GitHub Account`
+    - Create a Repository called `DevSecOps-Realworld-CICD-Project`
+    - Clone the Repository in the `Repository` directory/folder on your `local machine`
+    - Download the code in in this repository `"Main branch"`: https://github.com/awanmbandi/realworld-microservice-project.git
+    - `Unzip` the `code/zipped file`
+    - `Copy` and `Paste` everything `from the zipped file` into the `repository you cloned` in your local
+    - Open your `Terminal`
+        - Add the code to git, commit and push it to your upstream branch "main or master"
+        - Add the changes: `git add -A`
+        - Commit changes: `git commit -m "adding project source code"`
+        - Push to GitHub: `git push`
+    - Confirm that the code is now available on GitHub
+
+2) Sign Up For GitGuardian for continuous Secrete scanning
+- Click on the following link to access GitGuardian: https://www.gitguardian.com/
+    - Click on `Start For Free`
+    - Select `Sign up with GitHub`
+    - Once you sign up, you should have a page that looks like this...
+    ![GitGuardian!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/ererere.png)
+
+2) Create An IAM Profile/Role For The Ansible Automation Engine (Dynamic Inventory)
+- Create an EC2 Service Role in IAM with AmazonEC2FullAccess Privilege 
+- Navigate to IAM
+![IAM!](https://github.com/awanmbandi/realworld-cicd-pipeline-project/blob/zdocs/images/Screen%20Shot%202023-10-03%20at%206.20.44%20PM.png)
+    - Click on `Roles`
+    - Click on `Create Role`
+    - Select `Service Role`
+    - Use Case: Select `EC2`
+    - Click on `Next` 
+    - Attach Policy: `AmazonEC2FullAccess`
+    - Click `Next` 
+    - Role Name: `AWS-EC2FullAccess-Role`
+    - Click `Create`
+
+3) Jenkins CI
+    - Create a Jenkins VM instance 
+    - Name: `Jenkins-CI`
+    - AMI: `Ubuntu 22.04`
+    - Instance type: `t2.large`
+    - Key pair: `Select` or `create a new keypair`
+    - Security Group (Edit/Open): `All Traffic` to `0.0.0.0/0`
+        - What we actually need: `80`, `8080`, `9100`, `3000`, `9090`, `9000` and `22` to `0.0.0.0/0`
+    - Storage: Increase to `50 GB`
+    - IAM instance profile: Select the `AWS-EC2FullAccess-Role`
+    - User data (Copy the following user data): https://github.com/awanmbandi/realworld-microservice-project/blob/dev-sec-ops-cicd-pipeline-project-one/installations.sh
+    - Launch Instance
 
 
