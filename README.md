@@ -447,7 +447,29 @@ kubectl apply -f eks-monitoring.yaml
 kubectl get pods -n monitoring
 kubectl get svc -n monitoring
 ```
-![Kibana1](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sfgsfg.png)
+![Prom&Graf1](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sfgsfg.png)
+
+- Edit the Prometheus FrontEnd Service: `kubectl edit svc monitoring-kube-prometheus-prometheus -n monitoring`
+![Prom&Graf1]()
+
+- Access the PROMETHEUS Dashboard
+- RUN: `kubectl get svc -n monitoring`
+- COPY the DNS of the LoadBalancer of the Service: `monitoring-kube-prometheus-prometheus`
+    - **NOTE:** *You can as well get this from the EC2 --> LoadBalancer service*
+- Open a new tab: http://YOUR_PROMETHEUS_LOADBALANCER_DNS:9090
+![Prom&Graf1](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sdsdsdsd.png)
+
+- Edit the GRAFANA FrontEnd Service: `kubectl edit svc monitoring-grafana -n monitoring`
+![Prom&Graf1]()
+
+- Access the Grafana Dashboard
+- RUN: `kubectl get svc -n monitoring`
+- COPY the DNS of the LoadBalancer of the Service: `monitoring-grafana`
+    - **NOTE:** *You can as well get this from the EC2 --> LoadBalancer service*
+- Open a new tab: http://YOUR_GRAFANA_LOADBALANCER_DNS:9090
+![Prom&Graf1](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sddsds.png)
+
+
 
 
 
