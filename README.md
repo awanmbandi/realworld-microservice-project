@@ -350,4 +350,47 @@ terraform apply --auto-approve
             - Description: `Kubernetes-Credential`
             - Click on `Create`   
         ![KubeCredential!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/dsgdfgs.png)
+
+### SonarQube Configuration
+2)  ### Setup SonarQube GateKeeper
+    - Click on `Quality Gate` 
+    - Click on `Create`
+    - Name: `NodeJS-Webapp-QualityGate`
+    ![SonarQubeSetup2!](https://github.com/awanmbandi/realworld-cicd-pipeline-project/blob/zdocs/images/dsdsdsdsdsdsds.png)
+    - Click on `Save` to Create
+    ![SonarQubeSetup2!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sdsds.png)
+    - Click `Add Condition` to Add a Quality Gate Condition to Validate the Code Against (Code Smells or Bugs)
+    ![SonarQubeSetup3!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sdsdsd.png)
+    
+    - Add Quality to SonarQube Project
+    -  ``NOTE:`` Make sure to update the `SonarQube` stage in your `Jenkinsfile` and Test the Pipeline so your project will be visible on the SonarQube Project Dashboard.
+    - Click on `Projects` 
+    - Click on your project name `JavaWebApp-Project` 
+      - Click on `Project Settings`
+      - Click on `Quality Gate`
+      - Select your QG `JavaWebApp-QualityGate`
+
+    ![SonarQubeSetup3!](https://github.com/awanmbandi/realworld-cicd-pipeline-project/blob/zdocs/images/SDFVDSFVDFV.png)
+
+3)  ### Setup SonarQube Webhook to Integrate Jenkins (To pass the results to Jenkins)
+    - Click on `Administration` and Select `Webhook`
+    - Click on `Create Webhook` 
+      - Name: `jenkinswebhook`
+      - URL: `http://Jenkins-Server-Private-IP:8080/sonarqube-webhook`
+    ![SonarQubeSetup4!](https://github.com/awanmbandi/realworld-cicd-pipeline-project/raw/zdocs/images/Screen%20Shot%202023-04-24%20at%2011.08.26%20AM.png)
+
+    - Go ahead and Confirm in the Jenkinsfile you have the “Quality Gate Stage”. The stage code should look like the below;
+    ```bash
+    stage('SonarQube GateKeeper') {
+        steps {
+          timeout(time : 1, unit : 'HOURS'){
+          waitForQualityGate abortPipeline: true
+          }
+       }
+    }
+    ```
+     - Run Your Pipeline To Test Your Quality Gate (It should PASS QG)
+     - **(OPTIONAL)** FAIL Your Quality Gate: Go back to SonarQube -->> Open your Project -->> Click on Quality Gates at the top -->> Select your Project Quality Gate -->> Click EDIT -->> Change the Value to “0” -->> Update Condition
+     - **(OPTIONAL)** Run/Test Your Pipeline Again and This Time Your Quality Gate Should Fail 
+     - **(OPTIONAL)** Go back and Update the Quality Gate value to 10. The Exercise was just to see how Quality Gate Works
         
