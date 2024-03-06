@@ -550,14 +550,20 @@ kubectl get svc -n monitoring
     - Go to: http://YOUR_KUBERNETES_WORKER_NODE_IP
     ![TestEnv](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/test.png)
 
+    - Pipeline Progress (Stage Deployment Succeeded)
+    ![TestEnv](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sdsdsdsdsds.png)
+
+    - Pipeline Progress (Production Deployment Succeeded)
+    ![ProdEnv](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/dffdffdd.png)
+
     - SonarQube Code Inspection Result
-    ![SonarQubeResult!]()
+    ![SonarQubeResult!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sdsdsdsdsdsdsdsds.png)
 
     - Slack Continuous Feedback Alert
-    ![SlackResult!]()
+    ![SlackResult!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sdsddsdsdsdsds.png)
 
     - SonarQube GateKeeper Webhook Payload
-    ![SonarQubeGateKeeper!]()
+    ![SonarQubeGateKeeper!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sdsdsdsdsdsdsdsd.png)
 
     ### B. Troubleshooting (Possible Issues You May Encounter and Suggested Solutions)
     1) **1st ISSUE:** If you experience a long wait time at the level of `GateKeeper`, please check if your `Sonar Webhook` is associated with your `SonarQube Project` with `SonarQube Results`
