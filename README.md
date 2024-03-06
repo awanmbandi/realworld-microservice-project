@@ -418,7 +418,7 @@ kubectl get ns
 kubectl get all -n efklog
 ```
 ![EFKStack!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sdsfbsfb.png)
-  - Access the `Kibana Dashboard`: KIBANA_LOADBALANCER_URL:5601 
+  - Access the `Kibana Dashboard`: *KIBANA_LOADBALANCER_URL:5601*
   - Click on `Discovery` and create an `Index Pattern`
   ![Kibana1](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/asfsbsfb.png) 
 
