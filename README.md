@@ -363,7 +363,7 @@ terraform apply --auto-approve
     - Click on `Unlock Editing`
         - **NOTE:** *IMPORTANT*
     - Click `Add Condition` to Add a Quality Gate Condition to Validate the Code Against (Code Smells or Bugs)
-    ![SonarQubeSetup3!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sdvfsv.png)
+    ![SonarQubeSetup3!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sdsdsdsd.png)
     
     - Add Quality to SonarQube Project
     -  ``NOTE:`` Make sure to update the `SonarQube` stage in your `Jenkinsfile` and Test the Pipeline so your project will be visible on the SonarQube Project Dashboard.
@@ -373,7 +373,7 @@ terraform apply --auto-approve
       - Click on `Quality Gate`
       - Select your QG `NodeJS-Webapp-QualityGate`
 
-    ![SonarQubeSetup3!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/WEFWEFW.png)
+    ![SonarQubeSetup3!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sdvfsv.png)
 
 3)  ### Setup SonarQube Webhook to Integrate Jenkins (To pass the results to Jenkins)
     - Click on `Administration` 
