@@ -565,6 +565,12 @@ kubectl get svc -n monitoring
     - SonarQube GateKeeper Webhook Payload
     ![SonarQubeGateKeeper!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sdsdsdsdsdsdsdsd.png)
 
+    - EFK - Kibana Dashbaord
+    ![Kibana!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/kibana.png)
+
+    - EFK - Grafana Dashbaord (Pods)
+    ![Kibana!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sdsdsdsdsdsdsdds.png)
+
     ### B. Troubleshooting (Possible Issues You May Encounter and Suggested Solutions)
     1) **1st ISSUE:** If you experience a long wait time at the level of `GateKeeper`, please check if your `Sonar Webhook` is associated with your `SonarQube Project` with `SonarQube Results`
     - If you check your jenkins Pipeline you'll most likely find the below message at the `SonarQube GateKeper` stage
