@@ -545,11 +545,19 @@ kubectl get svc -n monitoring
     - Go to: http://YOUR_KUBERNETES_WORKER_NODE_IP
     ![TestEnv](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/test.png)
 
-    - Pipeline Progress (Stage Deployment Succeeded)
+    - Stage Deployment Succeeded
     ![TestEnv](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sdsdsdsdsds.png)
 
-    - Pipeline Progress (Production Deployment Succeeded) 
+    - Production Deployment Succeeded
     ![ProdEnv](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/dffdffdd.png) 
+        - To access the application running in the `Prod-Env`
+        - Navigate back to the `Jenkins-CI` shell 
+        - RUN: `kubectl get svc`
+        - Copy the LoadBalancer DNS and Open on a TAB on your choice Browser http://PROD_LOADBALANCER_DNS
+        ![TestEnv](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/test.png)
+    
+    - You can as well get this from the LoadBalancer Service in EC2:
+    ![TestEnv](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/SDSDDS.png)
 
     - SonarQube Code Inspection Result
     ![SonarQubeResult!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sdsdsdsdsdsdsdsds.png)
