@@ -230,8 +230,7 @@ terraform apply --auto-approve
       - Install directory: provide `/usr/bin/`
       ![SonarQubeScanner!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/ASFADAD.png)
 
-4)  #### Credentials setup(SonarQube, Nexus, Ansible and Slack):  
-    *BE AWARE THAT SINCE WE'RE USING CONTAINERS TO DEPLOY THE SONARQUBE CONTAINER, IF YOU STOP THE INSTANCE THE CONTAINER DIES*
+4)  #### Credentials setup(SonarQube, Slack, DockerHub and Kubernetes):
     - Click on `Manage Jenkins` 
       - Click on `Credentials` 
       - Click on `Global` (unrestricted)
@@ -284,11 +283,12 @@ terraform apply --auto-approve
               - Click on `Create`  
 
       3)  ##### DockerHub Credential (Username and Password)
-          - ###### Login to Your DockerHub Account (You can create one if you don't have one)
+          - ###### Login to Your DockerHub Account (You can CREATE one if you Don't have an Account)
               - Access DockerHub at: https://hub.docker.com/
               - Provide Username: `YOUR USERNAME`
               - Provide Username: `YOUR PASSWORD`
-              - Click on `Sign In`
+              - Click on `Sign In` or `Sign Up`    
+                - **NOTE:** *If you have an account `Sign in` If not `Sign up`*
 
           - ###### DockerHub Credential (Username and Password)
 	          - Click on ``Add Credentials``
@@ -300,12 +300,29 @@ terraform apply --auto-approve
 	          - Click on `Create`   
 
       4)  ##### Kubernetes Cluster Credential (kubeconfig)
-          - Click on ``Add Credentials``
-          - Kind: Username with password          
-          - Username: ``ansibleadmin``
-          - Enable Treat username as secret
-          - Password: ``ansibleadmin``
-          - ID: ``Ansible-Credential``
-          - Description: `Ansible-Credential`
-          - Click on `Create`   
-      ![SonarQubeServerSetup!](https://github.com/awanmbandi/realworld-cicd-pipeline-project/raw/zdocs/images/Screen%20Shot%202023-04-27%20at%202.10.40%20PM.png)
+        - ###### Start By Increasing The `EBS Volume Size` of Your Kubernetes Cluster
+            - Navigate to `EC2`
+            - Click on `Volumes`
+            - Select and `Modify` *Both Nodes Volumes*
+            - Size: `130 GB`
+            - Click `Modify`
+
+        - ###### Get Cluster Credential From Kube Config
+            - `SSH` back into your `Jenkins-CI` server
+            - RUN the command: `aws eks update-kubeconfig --name <clustername> --region <region>`
+            - COPY the Cluster KubeConfig: `cat ~/.kube/config`
+            - `COPY` the KubeConfig file content
+                - Create a File Locally
+                - PASTE and `SAVE` the KubeConfig content in the file
+
+         - ###### Create The Kubernetes Credential In Jenkins
+            - Navigate back to Jenkins
+            - Click on ``Add Credentials``
+            - Kind: `Secret File`          
+            - File: ``ansibleadmin``
+            - Enable Treat username as secret
+            - Password: ``ansibleadmin``
+            - ID: ``Ansible-Credential``
+            - Description: `Ansible-Credential`
+            - Click on `Create`   
+        ![SonarQubeServerSetup!](https://github.com/awanmbandi/realworld-cicd-pipeline-project/raw/zdocs/images/Screen%20Shot%202023-04-27%20at%202.10.40%20PM.png)
