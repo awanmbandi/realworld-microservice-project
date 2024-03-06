@@ -126,11 +126,21 @@ docker ps | grep sonarqube:lts-community
     - Click `Available`
     - Search and Install the following Plugings and `"Install"`
         - **SonarQube Scanner**
-        - ** **
-        - **Pipeline Maven Integration**
-        - **Maven Release Plug-In**
+        - **NodeJS**
+        - **Eclipse Temurin installer**
+        - **Docker**
+        - **Docker Commons**
+        - **Docker Pipeline**
+        - **docker-build-step**
+        - **Docker API**
+        - **OWASP Dependency-Check**
+        - **Terraform**
+        - **Kubernetes Credentials**
+        - **Kubernetes Client API**
+        - **Kubernetes**
+        - **Kubernetes Credentials Provider**
+        - **Kubernetes :: Pipeline :: DevOps Steps**
         - **Slack Notification**
-        - **Nexus Artifact Uploader**
         - **Build Timestamp (Needed for Artifact versioning)**
     - Click on `Install`
     - Once all plugins are installed
