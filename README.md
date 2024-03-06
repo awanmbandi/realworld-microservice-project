@@ -553,8 +553,8 @@ kubectl get svc -n monitoring
     - Pipeline Progress (Stage Deployment Succeeded)
     ![TestEnv](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sdsdsdsdsds.png)
 
-    - Pipeline Progress (Production Deployment Succeeded)
-    ![ProdEnv](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/dffdffdd.png)
+    - Pipeline Progress (Production Deployment Succeeded) 
+    ![ProdEnv](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/dffdffdd.png) 
 
     - SonarQube Code Inspection Result
     ![SonarQubeResult!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sdsdsdsdsdsdsdsds.png)
