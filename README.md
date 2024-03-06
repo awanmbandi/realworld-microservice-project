@@ -410,7 +410,7 @@ terraform apply --auto-approve
         - Click on ``System`` and navigate to the `SonarQube Servers` section
         - Click on Add `SonarQube`
         - Name: `Sonar-Server`
-        - Server URL: http://YOUR_SONARQUBE_PRIVATE_IP:9000
+        - Server URL: http://YOUR_JENKINS_PRIVATE_IP:9000
         - Server authentication token: Select `SonarQube-Credential`
         ![SonarQubeServerSetup!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/vfsvfs.png)
 
