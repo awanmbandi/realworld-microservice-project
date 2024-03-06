@@ -79,7 +79,7 @@
     - Run the following commands and confirm that the `services` are all `Running`
 ```bash
 # Confirm Java version
-sudo /usr/bin/java --version
+sudo java --version
 
 # Confirm that Jenkins is running
 sudo systemctl status jenkins
@@ -88,7 +88,7 @@ sudo systemctl status jenkins
 sudo systemctl status docker
 
 # Confirm that Trivy is running
-sudo systemctl status trivy
+trivy --version
 
 # Confirm that Terraform is running
 terraform version
@@ -98,6 +98,9 @@ kubectl version --client
 
 # Confirm that AWS CLI is running
 aws --version
+
+# Lastly confirm that the SonarQube container is running
+docker ps | grep sonarqube:lts-community
 ```
 
 ### Jenkins setup
@@ -123,7 +126,7 @@ aws --version
     - Click `Available`
     - Search and Install the following Plugings and `"Install"`
         - **SonarQube Scanner**
-        - **Maven Integration**
+        - ** **
         - **Pipeline Maven Integration**
         - **Maven Release Plug-In**
         - **Slack Notification**
