@@ -538,6 +538,18 @@ kubectl get svc -n monitoring
     - Jenkins Pipeline Job
     ![JenkinsJobResult!]()
 
+
+    ### B. Test Application Access From the `Test-Environment` Using `NodePort` of one of your Workers
+    - SSH Back into your `Jenkins-CI` Server
+        - RUN: `kubectl get svc -n test-env`
+        - **NOTE:** COPY the Exposed `NodePort Pod Number`
+        ![NodeportTestEnv](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/dssdsdsds.png)
+    
+    - Access The Application Running in the `Test Environment` within the Cluster
+    - Open your Browser
+    - Go to: http://YOUR_KUBERNETES_WORKER_NODE_IP
+    ![TestEnv](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/test.png)
+
     - SonarQube Code Inspection Result
     ![SonarQubeResult!]()
 
