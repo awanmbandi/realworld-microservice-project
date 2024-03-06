@@ -273,7 +273,7 @@ terraform apply --auto-approve
               - Click on the `User Profile` icon at top right of SonarQube
               - Click on `My Account`
               - Generate Token:   *Generate this TOKEN and Use in the Next Step to Create The SonarQube Credential* 
-              ![Sonar!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sfdsgsf.png) 
+              ![Sonar!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sdsdsddsd.png) 
               - Click `Generate` 
 
           - ###### Store SonarQube Secret Token in Jenkins:
