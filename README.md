@@ -74,16 +74,6 @@
     - User data (Copy the following user data): https://github.com/awanmbandi/realworld-microservice-project/blob/dev-sec-ops-cicd-pipeline-project-one/installations.sh
     - Launch Instance
 
-4) SonarQube
-    - Create a SonarQube VM instance 
-    - Name: `SonarQube`
-    - AMI: `Ubuntu 20.04`
-    - Instance type: `t2.medium`
-    - Key pair: `Select a keypair`
-    - Security Group (Eit/Open): `9000, 9100` and `22 to 0.0.0.0/0`
-    - User data (Copy the following user data): https://github.com/awanmbandi/realworld-cicd-pipeline-project/blob/maven-nexus-sonarqube-jenkins-install/sonarqube-install.sh
-    - Launch Instance
-
 12) Slack 
     - Go to the bellow Workspace and create a Private Slack Channel and name it "yourfirstname-jenkins-cicd-pipeline-alerts"
     - Link: https://join.slack.com/t/jjtechtowerba-zuj7343/shared_invite/zt-24mgawshy-EhixQsRyVuCo8UD~AbhQYQ  
