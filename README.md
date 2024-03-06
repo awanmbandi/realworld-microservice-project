@@ -467,6 +467,8 @@ kubectl get svc -n monitoring
 - COPY the DNS of the LoadBalancer of the Service: `monitoring-grafana`
     - **NOTE:** *You can as well get this from the EC2 --> LoadBalancer service*
 - Open a new tab: http://YOUR_GRAFANA_LOADBALANCER_DNS:9090
+    - Username: `admin`
+    - Password: `prom-operator`
 ![Prom&Graf1](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sddsds.png)
 
 
