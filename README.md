@@ -84,6 +84,22 @@
     - User data (Copy the following user data): https://github.com/awanmbandi/realworld-cicd-pipeline-project/blob/maven-nexus-sonarqube-jenkins-install/sonarqube-install.sh
     - Launch Instance
 
+12) Slack 
+    - Go to the bellow Workspace and create a Private Slack Channel and name it "yourfirstname-jenkins-cicd-pipeline-alerts"
+    - Link: https://join.slack.com/t/jjtechtowerba-zuj7343/shared_invite/zt-24mgawshy-EhixQsRyVuCo8UD~AbhQYQ  
+      - You can either join through the browser or your local Slack App
+      - Create a `Private Channel` using the naming convention `YOUR_INITIAL-devsecops-cicd-alerts`
+        - **NOTE:** *`(The Channel Name Must Be Unique, meaning it must be available for use)`*
+      - Visibility: Select `Private`
+      - Click on the `Channel Drop Down` and select `Integrations` and Click on `Add an App`
+      - Search for `Jenkins` and Click on `View`
+      - Click on `Configuration/Install` and Click `Add to Slack` 
+      - On Post to Channel: Click the Drop Down and select your channel above `YOUR_INITIAL-devsecops-cicd-alerts`
+      - Click `Add Jenkins CI Integration`
+      - Scrol Down and Click `SAVE SETTINGS/CONFIGURATIONS`
+      - Leave this page open
+      ![SlackConfig!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/efafdf.png)
+
 ### 4A) Verify the Following Services are running in the Jenkins Instance
 - SSH into the `Jenkins-CI` server
     - Run the following commands and confirm that the `services` are all `Running`
@@ -242,10 +258,9 @@ terraform apply --auto-approve
                 - Default password: **`admin`**
              - Click on `Projects`
              - Click on `Create New Project`
-                - Project display name: `NodeJS-WebApp-Project`
-                - Display key: `NodeJS-WebApp-Project`
+                - Project key: `NodeJS-WebApp-Project`
+                - Display name: `NodeJS-WebApp-Project`
               - Click on `Set Up`
-                - Click on `Locally` 
                 - Token Name ``NodeJS-WebApp-SonarQube-Token``
                 - **NOTE:** *Copy the TOKEN and SAVE somwhere on your NodePad*
               - Click on `Generate`
@@ -255,7 +270,9 @@ terraform apply --auto-approve
               - `COPY` the Execute the Scanner and `SAVE` on your NodePad as well
           - ###### Store SonarQube Secret Token in Jenkins:
               - Navigate back to Jenkins http://JENKINS_PUBLIC_IP:8080
-              - Click on `Manage Jenkins`
+              - Click on `Manage Jenkins` 
+                - Click on `Jenkins System`
+                - Click `Global credentials (unrestricted)`
               - Click on ``Add Credentials``
               - Kind: `Secret text`
               - Secret: `Paste the SonarQube TOKEN` value that we have created on the SonarQube server
@@ -276,10 +293,12 @@ terraform apply --auto-approve
 
           - ###### Create The Slack Credential For Jenkins:
               - Click on ``Add Credentials``
+                - Click on `Jenkins System`
+                - Click `Global credentials (unrestricted)`
               - Kind: Secret text            
               - Secret: Place the Integration Token Credential ID (Note: Generate for slack setup)
               - ID: ``Slack-Credential``
-              - Description: `slack-Credential`
+              - Description: `Slack-Credential`
               - Click on `Create`  
 
       3)  ##### DockerHub Credential (Username and Password)
@@ -292,6 +311,8 @@ terraform apply --auto-approve
 
           - ###### DockerHub Credential (Username and Password)
 	          - Click on ``Add Credentials``
+                - Click on `Jenkins System`
+                - Click `Global credentials (unrestricted)`
 	          - Kind: Username with password                  
 	          - Username: ``YOUR USERNAME``
 	          - Password: ``YOUR PASSWORD``
@@ -313,16 +334,19 @@ terraform apply --auto-approve
             - COPY the Cluster KubeConfig: `cat ~/.kube/config`
             - `COPY` the KubeConfig file content
                 - Create a File Locally
-                - PASTE and `SAVE` the KubeConfig content in the file
+                - RUN: `touch ~/Downloads/kubeconfig-secret.txt`
+                - RUN: `vi ~/Downloads/kubeconfig-secret.txt`
+                - `PASTE` and `SAVE` the KubeConfig content in the file
 
          - ###### Create The Kubernetes Credential In Jenkins
             - Navigate back to Jenkins
             - Click on ``Add Credentials``
+                - Click on `Jenkins System`
+                - Click `Global credentials (unrestricted)`
             - Kind: `Secret File`          
-            - File: ``ansibleadmin``
-            - Enable Treat username as secret
-            - Password: ``ansibleadmin``
-            - ID: ``Ansible-Credential``
-            - Description: `Ansible-Credential`
+            - File: Click ``Choose File``
+                - **NOTE:** *Seletct the KubeConfig file you saved locally*
+            - ID: ``Kubernetes-Credential``
+            - Description: `Kubernetes-Credential`
             - Click on `Create`   
-        ![SonarQubeServerSetup!](https://github.com/awanmbandi/realworld-cicd-pipeline-project/raw/zdocs/images/Screen%20Shot%202023-04-27%20at%202.10.40%20PM.png)
+        ![KubeCredential!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sdsdsds.png)
