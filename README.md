@@ -178,7 +178,23 @@ docker ps | grep sonarqube:lts-community
     - **Dependency-Check installations** 
       - Click on `Add Dependency-Check`
       - Click on `Add installer`
-      - Select `Install from adoptium.net` 
+        - Select `Install from adoptium.net` 
       - Enable: `Install automatically`
       - Version: Select `6.5.1`
       ![SonarQubeScanner!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/SDSVFSD.png)
+    
+    - **Docker installations** 
+      - Click on `Add Docker` 
+      - Name: `Docker`
+      - Click on `Add installer`
+        - Select `Download from docker.com`
+        - Docker version: `latest`
+      - Enable: `Install automatically` 
+      ![SonarQubeScanner!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sdvsvsd.png)
+    
+    - **Terraform Installation** 
+      - Click on `Add Terraform` 
+      - Disable/Uncheck: `Install automatically` 
+        - NOTE: *Please Do Not Check The ``Install automatically`*
+      - Install directory: provide `/usr/bin/`
+      ![SonarQubeScanner!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/ASFADAD.png)
