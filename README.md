@@ -115,8 +115,11 @@ kubectl version --client
 # Confirm that AWS CLI is running
 aws --version
 
-# Lastly confirm that the SonarQube container is running
+# Confirm that the SonarQube container is running
 docker ps | grep sonarqube:lts-community
+
+# Lastly confirm that the `sonarqube-volume docker volume` was created
+docker volume inspect volume sonarqube-volume
 ```
 
 ### 4B) Deploy Your EKS Cluster Environment
@@ -230,7 +233,7 @@ terraform apply --auto-approve
         - Select `Download from docker.com`
         - Docker version: `latest`
       - Enable: `Install automatically` 
-      ![SonarQubeScanner!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sdvsvsd.png)
+      ![SonarQubeScanner!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/svfdsv.png)
     
     - **Terraform Installation** 
       - Click on `Add Terraform` 
