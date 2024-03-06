@@ -100,3 +100,35 @@ kubectl version --client
 aws --version
 ```
 
+### Jenkins setup
+1) #### Access Jenkins
+    Copy your Jenkins Public IP Address and paste on the browser = ExternalIP:8080
+    - Login to your Jenkins instance using your Shell (GitBash or your Mac Terminal)
+    - Copy the Path from the Jenkins UI to get the Administrator Password
+        - Run: `sudo cat /var/lib/jenkins/secrets/initialAdminPassword`
+        - Copy the password and login to Jenkins
+    ![JenkinsSetup1!](https://github.com/awanmbandi/realworld-cicd-pipeline-project/raw/zdocs/images/jenkins-signup.png) 
+    - Plugins: Choose `Install Suggested Plugings` 
+    - Provide 
+        - Username: **`admin`**
+        - Password: **`admin`**
+        - `Name` and `Email` can also be admin. You can use `admin` all, as its a poc.
+    - Click `Continue`
+    - Click on `Start using Jenkins`
+    ![JenkinsSetup2!](https://github.com/awanmbandi/realworld-cicd-pipeline-project/raw/zdocs/images/Screen%20Shot%202023-04-24%20at%208.49.43%20AM.png) 
+
+2)  #### Plugin installations:
+    - Click on `Manage Jenkins`
+    - Click on `Plugins`
+    - Click `Available`
+    - Search and Install the following Plugings and `"Install"`
+        - **SonarQube Scanner**
+        - **Maven Integration**
+        - **Pipeline Maven Integration**
+        - **Maven Release Plug-In**
+        - **Slack Notification**
+        - **Nexus Artifact Uploader**
+        - **Build Timestamp (Needed for Artifact versioning)**
+    - Click on `Install`
+    - Once all plugins are installed
+    - Select/Check the Box **Restart Jenkins when installation is complete and no jobs are running**
