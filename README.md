@@ -148,3 +148,37 @@ docker ps | grep sonarqube:lts-community
     ![PluginInstallation!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/afda.png)
     - Refresh your Browser and Log back into Jenkins
     - Once you log back into Jenkins
+
+3)  #### Global tools configuration:
+    - Click on Manage Jenkins -->> Global Tool Configuration
+    ![JDKSetup!](https://github.com/awanmbandi/realworld-cicd-pipeline-project/blob/zdocs/images/sdsdsdsdsd.png)
+
+    - **JDK** 
+        - Click on `Add JDK` -->> Make sure **Install automatically** is enabled 
+        
+        **Note:** By default the **Install Oracle Java SE Development Kit from the website** make sure to close that option by clicking on the image as shown below.
+
+        ![JDKSetup!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sdfbdasb.png)
+
+        * Click on `Add installer`
+        * Select `Install from adoptium.net` 
+        * Version: **`jdk-17.0.8.1+1`**
+    
+    - **SonarQube Scanner** 
+      - Click on `Add SonarQube Scanner` 
+      - Enable: `Install automatically` 
+      ![SonarQubeScanner!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/dcsdsvsvd.png)
+    
+    - **NodeJS installations** 
+      - Click on `Add NodeJS` 
+      - Enable: `Install automatically` 
+      - Version: Select `16.2.0`
+      ![SonarQubeScanner!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sdvsvsd.png)
+
+    - **Dependency-Check installations** 
+      - Click on `Add Dependency-Check`
+      - Click on `Add installer`
+      - Select `Install from adoptium.net` 
+      - Enable: `Install automatically`
+      - Version: Select `6.5.1`
+      ![SonarQubeScanner!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/SDSVFSD.png)
