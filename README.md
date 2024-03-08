@@ -142,7 +142,7 @@ docker volume inspect volume sonarqube-volume
 - `UPDATE` Your Terraform Provider Region to `Your Choice REGION`*
     - **⚠️`NOTE:ALERT!`⚠️** *Do Not Use North Virginia, that's US-EAST-1*
     - **⚠️`NOTE:ALERT!`⚠️** *Also Confirm that The Selected Region Has A `Default VPC` You're Confident Has Internet Connection*
-    - **⚠️`NOTE:ALERT!`⚠️** *The Default Terraform Provider Region Defined In The Config Is **`Ohio(US-EAST-2)`***
+    - **⚠️NOTE:ALERT!⚠️:** *The Default Terraform Provider Region Defined In The Config Is **`Ohio(US-EAST-2)`***
 - Confirm you're still logged into the `Jenkins-CI` Server via `SSH`
 - Run the following commands to deploy the `EKS Cluster` in the `Jenkins-CI`
 ```bash
