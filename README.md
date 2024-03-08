@@ -563,7 +563,7 @@ kubectl get svc -n monitoring
     
     - Access The Application Running in the `Test Environment` within the Cluster
     - `Update` the EKS Cluster Security Group
-      - To do this, navigate ti `EC2`
+      - To do this, navigate to `EC2`
       - Select one of the Nodes --> Click on `Security` --> Click on `The Security Group ID`
       - Click on `Edit Inbound Rules`: Port = `30000` and Source `0.0.0.0/0`
     - Open your Browser
