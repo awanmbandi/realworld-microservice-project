@@ -48,8 +48,8 @@
     - Once you sign up, you should have a page that looks like this...
     ![GitGuardian!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/ererere.png)
 
-3) Create An IAM Profile/Role For The Ansible Automation Engine (Dynamic Inventory)
-- Create an EC2 Service Role in IAM with AmazonEC2FullAccess Privilege 
+3) Create An IAM Profile/Role For The `Jenkins-CI` Server
+- Create an EC2 Service Role in IAM with AdministratorAccess Privilege 
 - Navigate to IAM
 ![IAM!](https://github.com/awanmbandi/realworld-cicd-pipeline-project/blob/zdocs/images/Screen%20Shot%202023-10-03%20at%206.20.44%20PM.png)
     - Click on `Roles`
@@ -57,9 +57,9 @@
     - Select `Service Role`
     - Use Case: Select `EC2`
     - Click on `Next` 
-    - Attach Policy: `AmazonEC2FullAccess`
+    - Attach Policy: `AdministratorAccess`
     - Click `Next` 
-    - Role Name: `AWS-EC2FullAccess-Role`
+    - Role Name: `AWS-EC2-Administrator-Role`
     - Click `Create`
 
 4) Jenkins CI
@@ -69,7 +69,8 @@
     - Instance type: `t2.large`
     - Key pair: `Select` or `create a new keypair`
     - Security Group (Edit/Open): `All Traffic` to `0.0.0.0/0`
-        - What we actually need: `80`, `8080`, `9100`, `3000`, `9090`, `9000` and `22` to `0.0.0.0/0`
+        - Name & Description: `DevSecOps-Jenkins-CI-SG`
+        - What we actually need: `8080`, `9000` and `22` to `0.0.0.0/0`
     - Storage: Increase to `50 GB`
     - IAM instance profile: Select the `AWS-EC2FullAccess-Role`
     - User data (Copy the following user data): https://github.com/awanmbandi/realworld-microservice-project/blob/dev-sec-ops-cicd-pipeline-project-one/installations.sh
