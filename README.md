@@ -79,9 +79,9 @@
 - The above `Jenkins Userdata` includes a `SonarQube` container deployment task
   - As a result, we know containers are `Ephemeral` by natuure, so if you `Stop` your `Jenkins CI Server` at any point in time... You'll have to `Deploy the Container` again when you `Start` it back or bring the instance up again.
   - If you don't do this, you will not be able able to proceed with the project.
-  - I have also Included a `Docker Volume` setup task as well for SonarQube, where the Container Data will be persisted to avoid Data lost.
+  - I have also Included a `Docker Volume` setup task as well for `SonarQube`, where the Container Data will be persisted to avoid Data lost.
 
-12) Slack 
+5) Slack 
     - Go to the bellow Workspace and create a Private Slack Channel and name it "yourfirstname-jenkins-cicd-pipeline-alerts"
     - Link: https://join.slack.com/t/jjtechtowerba-zuj7343/shared_invite/zt-24mgawshy-EhixQsRyVuCo8UD~AbhQYQ  
       - You can either join through the browser or your local Slack App
@@ -97,7 +97,7 @@
       - Leave this page open
       ![SlackConfig!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/efafdf.png)
 
-### 4A) Verify the Following Services are running in the Jenkins Instance
+### 5A) Verify the Following Services are running in the Jenkins Instance
 - SSH into the `Jenkins-CI` server
     - Run the following commands and confirm that the `services` are all `Running`
 ```bash
@@ -129,7 +129,7 @@ docker ps | grep sonarqube:lts-community
 docker volume inspect volume sonarqube-volume
 ```
 
-### 4B) Deploy Your EKS Cluster Environment
+### 5B) Deploy Your EKS Cluster Environment
 - `UPDATE` Your Terraform Provider Region to `Your Choice REGION`*
     - **NOTE:ALERT!** *Do Not Use North Virginia, that's US-EAST-1*
     - **NOTE:ALERT!** *Also Confirm that The Selected Region Has A Default VPC You're Confident Has Internet Connection*
@@ -367,7 +367,7 @@ terraform apply --auto-approve
         ![KubeCredential!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/dsgdfgs.png)
 
 ### SonarQube Configuration
-2)  ### Setup SonarQube GateKeeper
+1)  ### Setup SonarQube GateKeeper
     - Click on `Quality Gate` 
     - Click on `Create`
     - Name: `NodeJS-Webapp-QualityGate`
@@ -389,7 +389,7 @@ terraform apply --auto-approve
 
     ![SonarQubeSetup3!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sdvfsv.png)
 
-3)  ### Setup SonarQube Webhook to Integrate Jenkins (To pass the results to Jenkins)
+2)  ### Setup SonarQube Webhook to Integrate Jenkins (To pass the results to Jenkins)
     - Click on `Administration` 
     - Click on `Configuration` and Select `Webhook`
     - Click on `Create Webhook` 
@@ -412,7 +412,7 @@ terraform apply --auto-approve
      - **(OPTIONAL)** Run/Test Your Pipeline Again and This Time Your Quality Gate Should Fail 
      - **(OPTIONAL)** Go back and Update the Quality Gate value to 10. The Exercise was just to see how Quality Gate Works
 
-5)  #### Configure system:    
+3)  #### Configure system:    
     1)  - Click on ``Manage Jenkins`` 
         - Click on ``System`` and navigate to the `SonarQube Servers` section
         - Click on Add `SonarQube`
@@ -467,7 +467,7 @@ kubectl get all -n efklog
   - Confirm that you atleast have some `Logs` displayed on the `Kibana Discovery Page`
   ![Kibana1](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sgfsgs.png) 
 
-1) ### Deploy and Configure Prometheus and Grafana
+2) ### Deploy and Configure Prometheus and Grafana
 - Navigate back to your `Jenkins-CI SSH Shell` where you're logged in
 - Run the following commands
 ```bash
