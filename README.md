@@ -41,7 +41,7 @@
         - Push to GitHub: `git push`
     - Confirm that the code is now available on GitHub
 
-## NOTE:ALERT!
+## NOTE:ALERT ⚠️
 - The above `Jenkins Userdata` includes a `SonarQube` container deployment task
   - As a result, we know containers are `Ephemeral` by natuure, so if you `Stop` your `Jenkins CI Server` at anytime... You'll have to `Deploy the Container` again when you `Start` it back or bring the instance back up.
   - If you do not do this, you will not be able able to proceed with the project.
