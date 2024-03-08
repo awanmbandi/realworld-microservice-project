@@ -195,9 +195,10 @@ terraform apply --auto-approve
         - **Docker API**
         - **OWASP Dependency-Check**
         - **Terraform**
+        - **Kubernetes**
+        - **Kubernetes CLI**
         - **Kubernetes Credentials**
         - **Kubernetes Client API**
-        - **Kubernetes**
         - **Kubernetes Credentials Provider**
         - **Kubernetes :: Pipeline :: DevOps Steps**
         - **Slack Notification**
