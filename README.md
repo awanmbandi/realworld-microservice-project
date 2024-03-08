@@ -257,6 +257,7 @@ terraform apply --auto-approve
     
     - **Terraform Installation** 
       - Click on `Add Terraform` 
+      - Name: `Terraform`
       - Disable/Uncheck: `Install automatically` 
         - NOTE: *Please Do Not Check The ``Install automatically`*
       - Install directory: provide `/usr/bin/`
@@ -265,7 +266,8 @@ terraform apply --auto-approve
 4)  #### Credentials setup(SonarQube, Slack, DockerHub and Kubernetes):
     - Click on `Manage Jenkins` 
       - Click on `Credentials` 
-      - Click on `Global` (unrestricted)
+      - Click on `Jenkins - System`
+      - Click on `Global Credentials (Unrestricted)`
       - Click on `Add Credentials`
       1)  ##### SonarQube secret token (SonarQube-Token)
           - ###### Generating SonarQube secret token:
