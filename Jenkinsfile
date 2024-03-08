@@ -31,8 +31,8 @@ pipeline{
         stage("Sonarqube Analysis "){
             steps{
                 withSonarQubeEnv('Sonar-Server') {
-                    sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=Redit-NodeJs-App \
-                    -Dsonar.projectKey=Redit-NodeJs-App '''
+                    sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=NodeJS-WebApp-Project \
+                    -Dsonar.projectKey=NodeJS-WebApp-Project '''
                 }
             }
         }
@@ -101,7 +101,7 @@ pipeline{
     post {
     always {
         echo 'Slack Notifications.'
-        slackSend channel: '#ma-devsecops-cicd-alerts', //update and provide your channel name
+        slackSend channel: '#ma2-devsecops-cicd-alerts', //update and provide your channel name
         color: COLOR_MAP[currentBuild.currentResult],
         message: "*${currentBuild.currentResult}:* Job Name '${env.JOB_NAME}' build ${env.BUILD_NUMBER} \n Build Timestamp: ${env.BUILD_TIMESTAMP} \n Project Workspace: ${env.WORKSPACE} \n More info at: ${env.BUILD_URL}"
     }

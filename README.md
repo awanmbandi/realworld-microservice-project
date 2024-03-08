@@ -533,9 +533,9 @@ kubectl get svc -n monitoring
 
 ### Pipeline creation
 - Update The ``Jenkinsfile`` If Neccessary
-- Update `SonarQube projectName` in your `Jenkinsfile` On `Line 29`
-- Update the `SonarQube projectKey` in your `Jenkinsfile` On `Line 30`
-- Update your `Slack Channel Name` in the `Jenkinsfile` on `Line 99`
+- Update `SonarQube projectName` in your `Jenkinsfile` On `Line 34`
+- Update the `SonarQube projectKey` in your `Jenkinsfile` On `Line 35`
+- Update your `Slack Channel Name` in the `Jenkinsfile` on `Line 104`
     
     - Log into Jenkins: http://Jenkins-Public-IP:8080/
     - Click on `New Item`
