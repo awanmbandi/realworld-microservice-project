@@ -26,13 +26,12 @@
 - [Slack](https://slack.com/) Slack is a communication platform designed for collaboration which can be leveraged to build and develop a very robust DevOps culture. Will be used for Continuous feedback loop.
 
 # Jenkins Complete CI/CD Pipeline Project Runbook
-1) Create a GitHub Repository with the name `DevSecOps-Realworld-CICD-Project` and push the code in this branch(main) to 
-    your remote repository (your newly created repository). 
+1) Create a GitHub Repository with the name `DevSecOps-Realworld-CICD-Project` and push the code in this branch(`dev-sec-ops-cicd-pipeline-project-one`) to your remote repository (your newly created repository). 
     - Go to GitHub: https://github.com
     - Login to `Your GitHub Account`
     - Create a Repository called `DevSecOps-Realworld-CICD-Project`
     - Clone the Repository in the `Repository` directory/folder on your `local machine`
-    - Download the code in in this repository `"Main branch"`: https://github.com/awanmbandi/realworld-microservice-project.git
+    - Download the code in in this repository `"dev-sec-ops-cicd-pipeline-project-one branch"`: https://github.com/awanmbandi/realworld-microservice-project.git
     - `Unzip` the `code/zipped file`
     - `Copy` and `Paste` everything `from the zipped file` into the `repository you cloned` in your local
     - Open your `Terminal`
