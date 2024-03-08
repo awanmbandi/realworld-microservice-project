@@ -39,13 +39,7 @@
         - Add the changes: `git add -A`
         - Commit changes: `git commit -m "adding project source code"`
         - Push to GitHub: `git push`
-    - Confirm that the code is now available on GitHub
-
-## ⚠️ NOTE:ALERT ⚠️
-- The above `Jenkins Userdata` includes a `SonarQube` container deployment task
-  - As a result, we know containers are `Ephemeral` by natuure, so if you `Stop` your `Jenkins CI Server` at anytime... You'll have to `Deploy the Container` again when you `Start` it back or bring the instance back up.
-  - If you do not do this, you will not be able able to proceed with the project.
-  - I have also Included a `Docker Volume` setup task as well for SonarQube, where the Container Data will be persisted to avoid Data lost. 
+    - Confirm that the code is now available on GitHub 
 
 2) Sign Up For GitGuardian for continuous Secrete scanning
 - Click on the following link to access GitGuardian: https://www.gitguardian.com/
@@ -80,6 +74,12 @@
     - IAM instance profile: Select the `AWS-EC2FullAccess-Role`
     - User data (Copy the following user data): https://github.com/awanmbandi/realworld-microservice-project/blob/dev-sec-ops-cicd-pipeline-project-one/installations.sh
     - Launch Instance
+
+### ⚠️ NOTE:ALERT ⚠️
+- The above `Jenkins Userdata` includes a `SonarQube` container deployment task
+  - As a result, we know containers are `Ephemeral` by natuure, so if you `Stop` your `Jenkins CI Server` at anytime... You'll have to `Deploy the Container` again when you `Start` it back or bring the instance back up.
+  - If you do not do this, you will not be able able to proceed with the project.
+  - I have also Included a `Docker Volume` setup task as well for SonarQube, where the Container Data will be persisted to avoid Data lost.
 
 12) Slack 
     - Go to the bellow Workspace and create a Private Slack Channel and name it "yourfirstname-jenkins-cicd-pipeline-alerts"
