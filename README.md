@@ -351,7 +351,7 @@ terraform apply --auto-approve
 	          - Click on `Create`   
 
       4)  ##### Kubernetes Cluster Credential (kubeconfig)
-        - ###### Start By Increasing The `EBS Volume Size` of Your Kubernetes Cluster
+        - ###### Start By Increasing The `EBS Volume Size` of Your Kubernetes Cluster Worker Nodes
             - Navigate to `EC2`
             - Click on `Volumes`
             - Select and `Modify` *Both Nodes Volumes*
@@ -472,7 +472,9 @@ kubectl get all -n efklog
 ```
 ![EFKStack!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sdsfbsfb.png)
   - Access the `Kibana Dashboard`: *KIBANA_LOADBALANCER_URL:5601*
+  - Click on `Explore on my own`
   - Click on `Discovery` and create an `Index Pattern`
+  - Index Pattern: `logstash*`
   ![Kibana1](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/asfsbsfb.png) 
 
   - Time Filter field name: Select `@timestamp` 
@@ -496,10 +498,12 @@ kubectl apply -f crds.yaml
 kubectl apply -f eks-monitoring.yaml
 
 # Resources created Pods, Deployments, ReplicaSets and Services deployed in the `Monitoring` Namespace
+kubectl get ns
 kubectl get pods -n monitoring
 kubectl get svc -n monitoring
 ```
-![Prom&Graf1](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sfgsfg.png)
+![Prom&Graf1](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sdsdsdsdsdsdsdsdsd.png)
+![Prom&Graf1](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/Prom-Grafana.png)
 
 - Edit the Prometheus FrontEnd Service: `kubectl edit svc monitoring-kube-prometheus-prometheus -n monitoring`
 ![Prom&Graf1]()
