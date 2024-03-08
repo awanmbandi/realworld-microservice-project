@@ -605,6 +605,9 @@ kubectl get svc -n monitoring
     - EFK - Grafana Dashbaord (Pods)
     ![Kibana!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sdsdsdsdsdsdsdds.png)
 
+    - GET the Following Compliance Reports (`CIS`, `NSA` and `PSS`)
+    ![ComplianceReports!]()
+
     ### B. Troubleshooting (Possible Issues You May Encounter and Suggested Solutions)
     1) **1st ISSUE:** If you experience a long wait time at the level of `GateKeeper`, please check if your `Sonar Webhook` is associated with your `SonarQube Project` with `SonarQube Results`
     - If you check your jenkins Pipeline you'll most likely find the below message at the `SonarQube GateKeper` stage
@@ -615,6 +618,18 @@ kubectl get svc -n monitoring
     SonarQube task 'AYfEB4IQ3rP3Y6VQ_yIa' status is 'PENDING'
     ```
 
+    2) #### Only Meant For Those That Are Facing Issues With SonarQube Analysis Because They Stopped and Restarted Jenkins
+    - The above `Jenkins Userdata` includes a `SonarQube` container deployment task
+      - As a result, we know containers are `Ephemeral` by natuure, so if you `Stop` your `Jenkins CI Server` at any point in time... You'll have to `Deploy the Container` again when you `Start` it back or bring the instance up again.
+      - If you don't do this, you will not be able able to proceed with the project.
+      - I have also Included a `Docker Volume` setup task as well for `SonarQube`, where the Container Data will be persisted to avoid Data lost.
+```bash
+# Volume inspection, confirm the docker volume exist
+docker volume inspect volume sonarqube-volume
+
+# Create a new conainter, provide your container name and deploy in the `Jenkins-CI` server
+docker run -d --name PROVIDE_NEW_NAME_HERE -v sonarqube-volume:/opt/sonarqube/data -p 9000:9000 sonarqube:lts-community
+```
 
 
 
