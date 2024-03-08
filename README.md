@@ -14,6 +14,7 @@
 - [Trivy|SAST|IAST](https://trivy.dev/) Trivy is the most popular open source security scanner, reliable, fast, and easy to use. Use Trivy to find vulnerabilities & IaC misconfigurations, SBOM discovery, Cloud scanning, Kubernetes security risks,and more.
 - [GitGuardian|HoneyTokens](https://www.gitguardian.com/) GitGuardian helps developers and organizations secure their software development process by automatically detecting secrets like API keys, passwords, certificates, encryption keys and other sensitive data. It can as well remediate the risk for private or public source code repositories. 
 - [Docker](https://www.docker.com/) Docker helps developers build, share, run, and verify applications anywhere — without tedious environment configuration or management.
+- [Docker Hub](https://hub.docker.com/) Docker Hub is a container registry built for developers and open source contributors to find, use, and share their container images.
 - [Kubernetes](https://kubernetes.io/) Kubernetes, also known as K8s, is an open-source system for automating and orchestrating deployment, scaling, and management of containerized applications.
 - [AWS EKS](https://aws.amazon.com/eks/) In the cloud, Amazon EKS automatically manages the availability and scalability of the Kubernetes control plane nodes responsible for scheduling containers, managing application availability, storing cluster data, and other key tasks.
 - [EC2](https://aws.amazon.com/ec2/) EC2 allows users to rent virtual computers (EC2) to run their own workloads and applications.
