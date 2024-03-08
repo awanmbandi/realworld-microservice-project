@@ -505,17 +505,14 @@ kubectl get svc -n monitoring
 ![Prom&Graf1](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sdsdsdsdsdsdsdsdsd.png)
 ![Prom&Graf1](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/Prom-Grafana.png)
 
-- Edit the Prometheus FrontEnd Service: `kubectl edit svc monitoring-kube-prometheus-prometheus -n monitoring`
-![Prom&Graf1]()
-
-- Access the PROMETHEUS Dashboard
+#### Access the PROMETHEUS Dashboard
 - RUN: `kubectl get svc -n monitoring`
 - COPY the DNS of the LoadBalancer of the Service: `monitoring-kube-prometheus-prometheus`
     - **NOTE:** *You can as well get this from the EC2 --> LoadBalancer service*
 - Open a new tab: http://YOUR_PROMETHEUS_LOADBALANCER_DNS:9090
 ![Prom&Graf1](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sdsdsdsd.png)
 
-#### Access the Grafana Dashboard
+#### Access the GRAFANA Dashboard
 - RUN: `kubectl get svc -n monitoring`
 - COPY the DNS of the LoadBalancer of the Service: `monitoring-grafana`
     - **NOTE:** *You can as well get this from the EC2 --> LoadBalancer service*
