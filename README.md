@@ -85,6 +85,7 @@
 ```bash
 # Volume inspection, confirm the docker volume exist
 docker volume inspect volume sonarqube-volume
+
 # Create a new conainter, provide your container name and deploy in the `Jenkins-CI` server
 docker run -d --name PROVIDE_NAME_HERE -v sonarqube-volume:/opt/sonarqube/data -p 9000:9000 sonarqube:lts-community
 ```
