@@ -78,7 +78,7 @@
 ### ⚠️ NOTE:ALERT ⚠️
 - The above `Jenkins Userdata` includes a `SonarQube` container deployment task
   - As a result, we know containers are `Ephemeral` by natuure, so if you `Stop` your `Jenkins CI Server` at any point in time... You'll have to `Deploy the Container` again when you `Start` it back or bring the instance up again.
-  - If you do not do this, you will not be able able to proceed with the project.
+  - If you don't do this, you will not be able able to proceed with the project.
   - I have also Included a `Docker Volume` setup task as well for SonarQube, where the Container Data will be persisted to avoid Data lost.
 
 12) Slack 
