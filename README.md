@@ -77,10 +77,17 @@
     - Launch Instance
 
 #### ⚠️ NOTE:ALERT ⚠️
+- ONLY IF YOU STOPPED YOUR JENKINS SERVER
 - The above `Jenkins Userdata` includes a `SonarQube` container deployment task
   - As a result, we know containers are `Ephemeral` by natuure, so if you `Stop` your `Jenkins CI Server` at any point in time... You'll have to `Deploy the Container` again when you `Start` it back or bring the instance up again.
   - If you don't do this, you will not be able able to proceed with the project.
   - I have also Included a `Docker Volume` setup task as well for `SonarQube`, where the Container Data will be persisted to avoid Data lost.
+```bash
+# Volume inspection, confirm the docker volume exist
+docker volume inspect volume sonarqube-volume
+# Create a new conainter, provide your container name and deploy in the `Jenkins-CI` server
+docker run -d --name PROVIDE_NAME_HERE -v sonarqube-volume:/opt/sonarqube/data -p 9000:9000 sonarqube:lts-community
+```
 
 5) Slack 
     - Go to the bellow Workspace and create a Private Slack Channel and name it "yourfirstname-jenkins-cicd-pipeline-alerts"
