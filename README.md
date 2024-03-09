@@ -552,11 +552,13 @@ kubectl get svc -n monitoring
 - Click on the `Node Exporter / USE Method / Node` 
 ![Prom&Graf1](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sdvsdv.png)
 
-### Pipeline creation
-- Update The ``Jenkinsfile`` If Neccessary
+### Pipeline creation (Make Sure To Make The Following Updates First)
+- UPDATE YOUR ``Jenkinsfile``
+- Update your `OWASP Zap Server IP (Which is Jenkins IP)` in the `Jenkinsfile` on `Line 87`
+- Update the `EKS Worker Node IP` with yours in the `Jenkinsfile` on `Line 87`
+- Update your `Slack Channel Name` in the `Jenkinsfile` on `Line 104`
 - Update `SonarQube projectName` in your `Jenkinsfile` On `Line 34`
 - Update the `SonarQube projectKey` in your `Jenkinsfile` On `Line 35`
-- Update your `Slack Channel Name` in the `Jenkinsfile` on `Line 104`
     
     - Log into Jenkins: http://Jenkins-Public-IP:8080/
     - Click on `New Item`
