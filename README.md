@@ -469,6 +469,16 @@ terraform apply --auto-approve
             - Click on `Apply` and `Save`
         ![SlackSetup!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sdgsdfg.png)
 
+### Update the EKS Cluster Security Group (Add A NodePort)
+- Navigate to `EC2`
+  - Select any of the `Cluster Worker Nodes`
+  - Click on `Security`
+  - Click on the `EKS Cluster Security Group ID`
+  - Click on `Edit Inbound Rules`
+  - Click on `Add Rule`
+  - Port Number: `30000`, Source: `0.0.0.0/0`
+  - Click on `SAVE`
+
 ### Deploy Monitoring and Logging Solution Using EFK Stack, Prometheus & Grafana 
 1) ### Deploy and Configure EFK Stack
 - SSH Back into your `Jenkins-CI` instance
