@@ -12,6 +12,7 @@
 - [SonarQube|SAST](https://docs.sonarqube.org/) SonarQube Catches bugs and vulnerabilities in your app, with thousands of automated Static Code Analysis rules.
 - [OWASP|SCA](https://owasp.org/www-project-dependency-check/) Dependency-Check is a Software Composition Analysis (SCA) tool that attempts to detect publicly disclosed vulnerabilities contained within a project’s dependencies.
 - [Trivy|SAST|IAST](https://trivy.dev/) Trivy is the most popular open source security scanner, reliable, fast, and easy to use. Use Trivy to find vulnerabilities & IaC misconfigurations, SBOM discovery, Cloud scanning, Kubernetes security risks,and more.
+- [ZAP](https://www.zaproxy.org/) OWASP ZAP is a penetration testing and DAST tool that helps developers and security professionals detect and find vulnerabilities in web applications at runtime.
 - [GitGuardian|HoneyTokens](https://www.gitguardian.com/) GitGuardian helps developers and organizations secure their software development process by automatically detecting secrets like API keys, passwords, certificates, encryption keys and other sensitive data. It can as well remediate the risk for private or public source code repositories. 
 - [Docker](https://www.docker.com/) Docker helps developers build, share, run, and verify applications anywhere — without tedious environment configuration or management.
 - [Docker Hub](https://hub.docker.com/) Docker Hub is a container registry built for developers and open source contributors to find, use, and share their container images.
