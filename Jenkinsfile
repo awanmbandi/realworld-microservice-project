@@ -85,6 +85,7 @@ pipeline{
             steps {
                 sshagent(['OWASP-Zap-Credential']) {
                     sh 'ssh -o StrictHostKeyChecking=no ubuntu@3.17.14.247 "docker run -t owasp/zap2docker-stable zap-baseline.py -t http://3.138.106.68:3000/" || true'
+                                                       //JENKINS_PUBLIC_IP                                                      //EKS_WORKER_NODE_IP_ADDRESS:3000
                 }
             }
         }
