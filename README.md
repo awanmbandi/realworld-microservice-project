@@ -383,7 +383,6 @@ terraform apply --auto-approve
             - ID: ``Kubernetes-Credential``
             - Description: `Kubernetes-Credential`
             - Click on `Create`   
-        ![KubeCredential!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/dsgdfgs.png)
       
       5) ##### Create the ZAP Dynamic Application Security Testing Server Credential
          - ###### Start by Copy the `EC2 SSH Private Key File Content` of your `Jenkins-CI` Server
@@ -402,6 +401,7 @@ terraform apply --auto-approve
               - Key: Click on `Add`
               - Key: `Paste The Private Key Content You Copied`
             - Click on `Create`
+        ![KubeCredential!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/afdafdsfgfg.png)
 
 ### SonarQube Configuration
 1)  ### Setup SonarQube GateKeeper
