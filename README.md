@@ -267,7 +267,7 @@ terraform apply --auto-approve
       - Install directory: provide `/usr/bin/`
       ![SonarQubeScanner!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/ASFADAD.png)
 
-4)  #### Credentials setup(SonarQube, Slack, DockerHub and Kubernetes):
+4)  #### Credentials setup(SonarQube, Slack, DockerHub, Kubernetes and ZAP):
     - Click on `Manage Jenkins` 
       - Click on `Credentials` 
       - Click on `Jenkins - System`
