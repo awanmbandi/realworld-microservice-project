@@ -202,6 +202,8 @@ terraform apply --auto-approve
         - **Kubernetes Credentials Provider**
         - **Kubernetes :: Pipeline :: DevOps Steps**
         - **Slack Notification**
+        - **ssh-agent**
+        - **BlueOcean**
         - **Build Timestamp (Needed for Artifact versioning)**
     - Click on `Install`
     - Once all plugins are installed
@@ -381,6 +383,24 @@ terraform apply --auto-approve
             - Description: `Kubernetes-Credential`
             - Click on `Create`   
         ![KubeCredential!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/dsgdfgs.png)
+      
+      5) ##### Create the ZAP Dynamic Application Security Testing Server Credential
+         - ###### Start by Copy the `EC2 SSH Private Key File Content` of your `Jenkins-CI` Server
+            - Open your `GitBash Terminal` or `MacOS Terminal` 
+            - Navigate to the Location where your `Jenkins-CI` Server SSH Key is Stored *(Usually in **Downloads**)*
+            - Run the Command `cat YOUR_SSH_KEY_FILE_NAME.pem`
+            - COPY the KEY content and Navigate back to Jenkins to store it...
+        
+         - ###### Create The ZAP Server SSH Key Credential in Jenkins
+            - Navigate to the `Jenkins Global Credential Dash`
+            - Click on `Create Credentials`
+            - Scope: Select `Global......`
+            - ID and Description: `OWASP-Zap-Credential`
+            - Username: `ubuntu`
+            - Private key: Select
+              - Key: Click on `Add`
+              - Key: `Paste The Private Key Content You Copied`
+            - Click on `Create`
 
 ### SonarQube Configuration
 1)  ### Setup SonarQube GateKeeper
