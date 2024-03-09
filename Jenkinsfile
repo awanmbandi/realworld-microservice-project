@@ -81,7 +81,7 @@ pipeline{
                 }
             }
         }
-        stage('OWASP Zap | DAST') {
+        stage('ZAP Dynamic Testing | DAST') {
             steps {
                 sshagent(['OWASP-Zap-Credential']) {
                     sh 'ssh -o StrictHostKeyChecking=no ubuntu@3.138.106.68 "docker run -t owasp/zap2docker-stable zap-baseline.py -t http://18.222.205.88:30000/" || true'
