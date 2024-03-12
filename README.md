@@ -66,9 +66,16 @@
 
 4) Jenkins CI
   - Create a Jenkins VM instance 
-    - Name: `Jenkins-CI`
-    - AMI: `Ubuntu 22.04`
-    - Instance type: `t2.large`
+    - Name: `jenkins-ci`
+    - Region: Select `Any Region of your chosen`, like `us-central1`, Availability Zone: `us-central1-c`
+    - Machine type: `e2-standard-4`
+    - Boot Disk: Click `Change`
+        - Image: `Ubuntu`
+        - Version: `Ubuntu 22.04, x86/64, amd64 jammy image built on 2024-03-07`
+        - Boot disk type: `Balanced persistent disk`
+        - Size: `50` GB
+        - Click `Select`
+    - Service accounts: Select `devsecops-service-account`
     - Key pair: `Select` or `create a new keypair`
     - Security Group (Edit/Open): `All Traffic` to `0.0.0.0/0`
         - Name & Description: `DevSecOps-Jenkins-CI-SG`
@@ -77,6 +84,19 @@
     - IAM instance profile: Select the `AWS-EC2FullAccess-Role`
     - User data (Copy the following user data): https://github.com/awanmbandi/realworld-microservice-project/blob/dev-sec-ops-cicd-pipeline-project-one/installations.sh
     - Launch Instance
+
+#### 4B) Create a Firewall Rule
+- Navigate to the `VPC` Service
+- Click on `Firewall`
+    - Click on `CREATE FIREWALL RULE`
+    - Name: `devsecops-firewall-rule`
+    - Network: `default`
+    - Direction of traffic: `Ingress`
+    - Action on match: `Allow`
+    - Targets: `All instances in the network`
+    - Source IPv4 ranges: `0.0.0.0/0`
+    - Protocols and ports: `Allow all`
+    - Click `CREATE`
 
 #### ⚠️ NOTE:ALERT ⚠️
 - **ONLY VISIT THIS SECTION IF YOU STOPPED AND RESTARTED YOUR JENKINS SERVER**
