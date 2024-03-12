@@ -59,15 +59,15 @@ pipeline{
                 script{
                    withDockerRegistry(credentialsId: 'DockerHub-Credential', toolName: 'Docker'){
                        sh "docker build -t reddit ."
-                       sh "docker tag reddit awanmbandi/reddit:latest "
-                       sh "docker push awanmbandi/reddit:latest "
+                       sh "docker tag reddit kenneedwin/reddit:latest "
+                       sh "docker push kenneedwin/reddit:latest "
                     }
                 }
             }
         }
         stage("Trivy App Image Scan"){
             steps{
-                sh "trivy image awanmbandi/reddit:latest > trivy_image_analysis_report.txt"
+                sh "trivy image kenneedwin/reddit:latest > trivy_image_analysis_report.txt"
             }
         }
         stage('Deploy to K8S Stage Environment'){
