@@ -27,12 +27,12 @@
 - [Slack](https://slack.com/) Slack is a communication platform designed for collaboration which can be leveraged to build and develop a very robust DevOps culture. Will be used for Continuous feedback loop.
 
 # Jenkins Complete CI/CD Pipeline Project Runbook
-1) Create a GitHub Repository with the name `DevSecOps-Realworld-CICD-Project` and push the code in this branch *(dev-sec-ops-cicd-pipeline-project-one)* to your remote repository (your newly created repository). 
+1) Create a GitHub Repository with the name `DevSecOps-Realworld-CICD-Project` and push the code in this branch *(dev-sec-ops-cicd-pipeline-project-gcp)* to your remote repository (your newly created repository). 
     - Go to GitHub: https://github.com
     - Login to `Your GitHub Account`
     - Create a Repository called `DevSecOps-Realworld-CICD-Project`
     - Clone the Repository in the `Repository` directory/folder on your `local machine`
-    - Download the code in in this repository `"dev-sec-ops-cicd-pipeline-project-one branch"`: https://github.com/awanmbandi/realworld-microservice-project.git
+    - Download the code in in this repository `"dev-sec-ops-cicd-pipeline-project-gcp branch"`: https://github.com/awanmbandi/realworld-microservice-project.git
     - `Unzip` the `code/zipped file`
     - `Copy` and `Paste` everything `from the zipped file` into the `repository you cloned` in your local
     - Open your `Terminal`
@@ -152,7 +152,7 @@ docker volume inspect volume sonarqube-volume
 git clone https://github.com/awanmbandi/realworld-microservice-project.git
 
 # cd and checkout into the DevSecOps project branch
-cd realworld-microservice-project && git checkout dev-sec-ops-cicd-pipeline-project-one
+cd realworld-microservice-project && git checkout dev-sec-ops-cicd-pipeline-project-gcp
 cd eks-terraform
 
 # Deploy EKS Environment
@@ -286,7 +286,7 @@ terraform apply --auto-approve
               - Click on `Manually`
                 - Project display name: `NodeJS-WebApp-Project`
                 - Display key: `NodeJS-WebApp-Project`
-                - Main branch name: `dev-sec-ops-cicd-pipeline-project-one` 
+                - Main branch name: `dev-sec-ops-cicd-pipeline-project-gcp` 
               - Click on `Set Up`
                 - Click on `Locally` 
                 - Token Name ``NodeJS-WebApp-SonarQube-Token``
@@ -584,7 +584,7 @@ kubectl get svc -n monitoring
       - Repositories
         - Repository URL: `Provide Your Project Repo Git URL` (the one you created in the initial phase)
         - Credentials: `none` *since the repository is public*
-        - Branch Specifier (blank for 'any'): ``*/dev-sec-ops-cicd-pipeline-project-one``
+        - Branch Specifier (blank for 'any'): ``*/dev-sec-ops-cicd-pipeline-project-gcp``
         - Script Path: ``Jenkinsfile``
     - Click on `SAVE`
     - Click on `Build Now` to *TEST Pipeline* 
