@@ -49,22 +49,23 @@
     - Once you sign up, you should have a page that looks like this...
     ![GitGuardian!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/ererere.png)
 
-3) Create An IAM Profile/Role For The `Jenkins-CI` Server
-- Create an EC2 Service Role in IAM with AdministratorAccess Privilege 
-- Navigate to IAM
-![IAM!](https://github.com/awanmbandi/realworld-cicd-pipeline-project/blob/zdocs/images/Screen%20Shot%202023-10-03%20at%206.20.44%20PM.png)
-    - Click on `Roles`
-    - Click on `Create Role`
-    - Select `Service Role`
-    - Use Case: Select `EC2`
-    - Click on `Next` 
-    - Attach Policy: `AdministratorAccess`
-    - Click `Next` 
-    - Role Name: `AWS-EC2-Administrator-Role`
-    - Click `Create`
+3) Deploy the `Project GKE Cluster`
+- Make sure you have your `Project Repository Cloned and Open on VSCode`
+    - Confirm that you're currently in the repository
+    - Confirm you have your `MacOS` or `GitBash` Terminal depending on your machine type
+    - RUN (To Login To Your GCP Account): `gcloud auth application-default login`
+       - It will open a page on the web browser
+       - Login using your GCP Account `Email` and `Password`
+    - Navigate to the `gke-terraform` folder on your Terminal
+    - RUN: `terraform init`
+    - RUN: `terraform plan`
+    - RUN: `terraform apply --auto-approve`
+    - Confirm that your `gke-cluster` was deployed successfully
+    ![GitGuardian!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/asasasasasas.png)
+    ![GitGuardian!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/gke_cluster.png)
 
 4) Jenkins CI
-    - Create a Jenkins VM instance 
+  - Create a Jenkins VM instance 
     - Name: `Jenkins-CI`
     - AMI: `Ubuntu 22.04`
     - Instance type: `t2.large`

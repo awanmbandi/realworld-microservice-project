@@ -19,7 +19,7 @@ resource "google_container_cluster" "gke_cluster" {
     labels = {
       foo = "bar"
     }
-    tags = ["Name", "gke-cluster"]
+    tags = ["name", "gke-cluster"]
   }
   timeouts {
     create = "30m"
