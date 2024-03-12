@@ -14,7 +14,6 @@ echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
 sudo apt-get update -y
 sudo apt-get install jenkins -y
 sudo systemctl start jenkins
-#sudo systemctl status jenkins
 sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 
 #Install docker
@@ -50,3 +49,9 @@ curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip
 sudo apt-get install unzip -y
 unzip awscliv2.zip
 sudo ./aws/install
+
+# Deploy a SonarQube Container
+docker volume create sonarqube-volume
+docker volume inspect volume sonarqube-volume
+docker run -d --name sonarqube -v sonarqube-volume:/opt/sonarqube/data -p 9000:9000 sonarqube:lts-community
+
