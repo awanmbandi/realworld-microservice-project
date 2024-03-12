@@ -76,14 +76,15 @@
         - Size: `50` GB
         - Click `Select`
     - Service accounts: Select `devsecops-service-account`
-    - Key pair: `Select` or `create a new keypair`
-    - Security Group (Edit/Open): `All Traffic` to `0.0.0.0/0`
-        - Name & Description: `DevSecOps-Jenkins-CI-SG`
-        - What we actually need: `8080`, `9000` and `22` to `0.0.0.0/0`
-    - Storage: Increase to `50 GB`
-    - IAM instance profile: Select the `AWS-EC2FullAccess-Role`
-    - User data (Copy the following user data): https://github.com/awanmbandi/realworld-microservice-project/blob/dev-sec-ops-cicd-pipeline-project-one/installations.sh
-    - Launch Instance
+    - Click on `Advance Options`
+    - Click on `Security`
+        - Click on `Manage Access`
+        - Click on `Add manually generated SSH keys`
+        - RUN Locally: `cat ~/.ssh/id_rsa.pub`
+          - COPY the PUBLIC KEY and PASTE In (SSH Key 1): PASTE KEY
+    - Click on `Management`
+        - Automation: Click on the Link and Copy and Paste the User Script https://github.com/awanmbandi/realworld-microservice-project/blob/dev-sec-ops-cicd-pipeline-project-one/installations.sh
+    - Click `CREATE`
 
 #### 4B) Create a Firewall Rule
 - Navigate to the `VPC` Service
