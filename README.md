@@ -539,14 +539,14 @@ kubectl get svc -n monitoring
 #### Access the PROMETHEUS Dashboard
 - RUN: `kubectl get svc -n monitoring`
 - COPY the DNS of the LoadBalancer of the Service: `monitoring-kube-prometheus-prometheus`
-    - **NOTE:** *You can as well get this from the EC2 --> LoadBalancer service*
+    - **NOTE:** *You can as well get this from the LoadBalancer --> LoadBalancer service*
 - Open a new tab: http://YOUR_PROMETHEUS_LOADBALANCER_DNS:9090
 ![Prom&Graf1](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/PROMETHEUS.png)
 
 #### Access the GRAFANA Dashboard
 - RUN: `kubectl get svc -n monitoring`
 - COPY the DNS of the LoadBalancer of the Service: `monitoring-grafana`
-    - **NOTE:** *You can as well get this from the EC2 --> LoadBalancer service*
+    - **NOTE:** *You can as well get this from the LoadBalancer --> LoadBalancer service*
 - Open a new tab: http://YOUR_GRAFANA_LOADBALANCER_DNS:9090
     - Username: `admin`
     - Password: `prom-operator`
@@ -595,11 +595,10 @@ kubectl get svc -n monitoring
     
     - Access The Application Running in the `Test Environment` within the Cluster
     - `Update` the GKE Cluster Firewall ***(If you've not already)***
-      - To do this, navigate to `EC2`
-      - Select one of the `Worker Nodes` --> Click on `Security` --> Click on `The Security Group ID`
-      - Click on `Edit Inbound Rules`: Port = `30000` and Source `0.0.0.0/0`
+      - To do this, navigate to `GCE`
+      - COPY the `External IP` of one of the Cluster Worker Nodes
     - Open your Browser
-    - Go to: http://YOUR_KUBERNETES_WORKER_NODE_IP
+    - Go to: http://YOUR_KUBERNETES_WORKER_NODE_IP:30000
     ![TestEnv](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/test.png)
 
     - Stage Deployment Succeeded
