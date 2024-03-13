@@ -470,15 +470,13 @@ docker volume inspect volume sonarqube-volume
             - Click on `Apply` and `Save`
         ![SlackSetup!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sdgsdfg.png)
 
-### Update the EKS Cluster Security Group (Add A NodePort)
-- Navigate to `EC2`
-  - Select any of the `Cluster Worker Nodes`
-  - Click on `Security`
-  - Click on the `EKS Cluster Security Group ID`
-  - Click on `Edit Inbound Rules`
-  - Click on `Add Rule`
+### Update the GKE Cluster Firewall (Add A NodePort)
+- Navigate to `VPC`
+  - Click on `Firewalls`
+  - Click on `Create Firewall Rule`
+  - Name: `devsecops-project-fr`
   - Port Number: `30000`, Source: `0.0.0.0/0`
-  - Click on `SAVE`
+  - Click on `CREATE`
 
 ### Deploy Monitoring and Logging Solution Using EFK Stack, Prometheus & Grafana 
 1) ### Deploy and Configure EFK Stack
@@ -567,7 +565,7 @@ kubectl get svc -n monitoring
 ### Pipeline creation (Make Sure To Make The Following Updates First)
 - UPDATE YOUR ``Jenkinsfile``
 - Update your `OWASP Zap Server IP (Which is Jenkins IP)` in the `Jenkinsfile` on `Line 87`
-- Update the `EKS Worker Node IP` with yours in the `Jenkinsfile` on `Line 87`
+- Update the `GKE Worker Node IP` with yours in the `Jenkinsfile` on `Line 87`
 - Update your `Slack Channel Name` in the `Jenkinsfile` on `Line 104`
 - Update `SonarQube projectName` in your `Jenkinsfile` On `Line 34`
 - Update the `SonarQube projectKey` in your `Jenkinsfile` On `Line 35`
@@ -596,7 +594,7 @@ kubectl get svc -n monitoring
         ![NodeportTestEnv](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/dssdsdsds.png)
     
     - Access The Application Running in the `Test Environment` within the Cluster
-    - `Update` the EKS Cluster Security Group ***(If you've not already)***
+    - `Update` the GKE Cluster Firewall ***(If you've not already)***
       - To do this, navigate to `EC2`
       - Select one of the `Worker Nodes` --> Click on `Security` --> Click on `The Security Group ID`
       - Click on `Edit Inbound Rules`: Port = `30000` and Source `0.0.0.0/0`
