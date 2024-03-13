@@ -56,6 +56,7 @@
     - RUN (To Login To Your GCP Account): `gcloud auth application-default login`
        - It will open a page on the web browser
        - Login using your GCP Account `Email` and `Password`
+    - 
     - Navigate to the `gke-terraform` folder on your Terminal
     - RUN: `terraform init`
     - RUN: `terraform plan`
@@ -131,6 +132,7 @@ docker run -d --name PROVIDE_NAME_HERE -v sonarqube-volume:/opt/sonarqube/data -
 
 ### 5A) Verify the Following Services are running in the Jenkins Instance
 - SSH into the `Jenkins-CI` server
+- Confirm that you're logged in
     - Run the following commands and confirm that the `services` are all `Running`
 ```bash
 # Confirm Java version
@@ -151,40 +153,12 @@ terraform version
 # Confirm that the Kubectl utility is running 
 kubectl version --client
 
-# Confirm that AWS CLI is running
-aws --version
-
 # Confirm that the SonarQube container is running
 docker ps | grep sonarqube:lts-community
 
 # Lastly confirm that the `sonarqube-volume docker volume` was created
 docker volume inspect volume sonarqube-volume
 ```
-
-### 5B) Deploy Your EKS Cluster Environment
-- `UPDATE` Your Terraform Provider Region to `Your Choice REGION`*
-    - **⚠️`NOTE:ALERT!`⚠️:** *Do Not Use North Virginia, that's US-EAST-1*
-    - **⚠️`NOTE:ALERT!`⚠️:** *Also Confirm that The Selected Region Has A `Default VPC` You're Confident Has Internet Connection*
-    - **⚠️`NOTE:ALERT!`⚠️:** *The Default Terraform Provider Region Defined In The Config Is **`Ohio(US-EAST-2)`***
-- Confirm you're still logged into the `Jenkins-CI` Server via `SSH`
-- Run the following commands to deploy the `EKS Cluster` in the `Jenkins-CI`
-```bash
-# Clone your project reporisoty
-git clone https://github.com/awanmbandi/realworld-microservice-project.git
-
-# cd and checkout into the DevSecOps project branch
-cd realworld-microservice-project && git checkout dev-sec-ops-cicd-pipeline-project-gcp
-cd eks-terraform
-
-# Deploy EKS Environment
-terraform init
-terraform plan
-terraform apply --auto-approve
-```
-- Navigate to `EKS` and confirm your Cluster was created successfully
-- Also confirmthere's no issue regarding your Terraform execution
-![JenkinsSetup1!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sdsdsdas.png)
-![JenkinsSetup2!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sfgsfs.png)
 
 ### Jenkins setup
 1) #### Access Jenkins
@@ -377,22 +351,27 @@ terraform apply --auto-approve
 	          - Click on `Create`   
 
       4)  ##### Kubernetes Cluster Credential (kubeconfig)
-        - ###### Start By Increasing The `EBS Volume Size` of Your Kubernetes Cluster Worker Nodes
-            - Navigate to `EC2`
-            - Click on `Volumes`
-            - Select and `Modify` *Both Nodes Volumes*
-            - Size: `130 GB`
-            - Click `Modify`
-
         - ###### Get Cluster Credential From Kube Config
-            - `SSH` back into your `Jenkins-CI` server
-            - RUN the command: `aws eks update-kubeconfig --name <clustername> --region <region>`
-            - COPY the Cluster KubeConfig: `cat ~/.kube/config`
+            - Active/Open your project `CloudShell`
+                - Click on `Continue` to Open/Active `CloudShell`
+                - Authorize Cloud Shell: Click `AUTHORIZE`
+                - RUN: `gcloud auth login`
+                    - **NOTE:** *Follow the instructions to Login to your Account*
+                - RUN: `gcloud config set account YOUR_ACCOUNT_EMAIL_ADDRESS`
+                - RUN: `gcloud config set project YOUR_PROJECT_ID`
+            - Open a New Tab and Navigate to the `GKE Console`
+                - Click on your cluster name `gke-cluster`
+                - Click on `Connect`
+                - COPY the `gcloud container clusters get-credentials gke-cluster.......` command
+            - Navigate back to `CloudShell`
+                - PASTE the command and RUN to Login to the GKE Cluster
+            - `COPY` the Cluster KubeConfig: `cat ~/.kube/config`
             - `COPY` the KubeConfig file content
-                - Create a File Locally
-                - RUN: `touch ~/Downloads/kubeconfig-secret.txt`
-                - RUN: `vi ~/Downloads/kubeconfig-secret.txt`
+                - Create a File Locally and Save it in it.
+                - RUN: `touch ~/Downloads/gke-kubeconfig-secret.txt`
+                - RUN: `vi ~/Downloads/gke-kubeconfig-secret.txt`
                 - `PASTE` and `SAVE` the KubeConfig content in the file
+            - Confirm that the file was SAVED successfully.
 
          - ###### Create The Kubernetes Credential In Jenkins
             - Navigate back to Jenkins
