@@ -386,7 +386,7 @@ docker volume inspect volume sonarqube-volume
             - Click on `Create`   
       
       5) ##### Create the ZAP Dynamic Application Security Testing Server Credential
-         - ###### Start by Copy the `EC2 SSH Private Key File Content` of your `Jenkins-CI` Server
+         - ###### Start by Copy the `GCE SSH Private Key File Content` of your `Jenkins-CI` Server
             - Open your `GitBash Terminal` or `MacOS Terminal` 
             - Navigate to the Location where your `Jenkins-CI` Server SSH Key is Stored *(Usually in **Downloads**)*
             - Run the Command `cat YOUR_SSH_KEY_FILE_NAME.pem`
@@ -612,7 +612,7 @@ kubectl get svc -n monitoring
         - Copy the LoadBalancer DNS and Open on a TAB on your choice Browser http://PROD_LOADBALANCER_DNS
         ![TestEnv](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/test.png)
     
-    - You can as well get this from the LoadBalancer Service in EC2:
+    - You can as well get this from the LoadBalancer Service in LoadBalancer:
     ![TestEnv](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/SDSDDS.png)
 
     - SonarQube Code Inspection Result
