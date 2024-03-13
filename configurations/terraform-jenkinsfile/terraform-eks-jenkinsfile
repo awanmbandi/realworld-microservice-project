@@ -1,0 +1,39 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('eks deployment repo'){
+            steps{
+                git branch: 'dev-sec-ops-cicd-pipeline-project-one', url: 'https://github.com/awanmbandi/realworld-microservice-project.git'
+            }
+        }
+        stage('Terraform Init') {
+            steps {
+                dir('Eks-terraform') {
+                    sh 'terraform init --reconfigure'
+                }
+            }
+        }
+        stage('Terraform Validate') {
+            steps {
+                dir('Eks-terraform') {
+                    sh 'terraform validate'
+                }
+            }
+        }
+        stage('Terraform Plan') {
+            steps {
+                dir('Eks-terraform') {
+                    sh 'terraform plan'
+                }
+            }
+        }
+        stage('Terraform Apply') {
+            steps {
+                dir('Eks-terraform') {
+                    sh 'terraform ${action} --auto-approve'
+                }
+            }
+        }
+    }
+}

@@ -1,138 +1,117 @@
-pipeline {
-  agent any
-  tools {
-  
-  maven 'maven'
-   
-  }
+def COLOR_MAP = [
+    'SUCCESS': 'good', 
+    'FAILURE': 'danger',
+    'UNSTABLE': 'danger'
+]
+pipeline{
+    agent any
+    tools{
+        jdk 'JDK17'
+        nodejs 'NodeJS16'
+    }
+    environment {
+        SCANNER_HOME=tool 'SonarScanner'
+    }
     stages {
-
-      stage ('Checkout SCM'){
-        steps {
-          checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'git', url: 'https://iwayqtech@bitbucket.org/iwayqtech/devops-pipeline-project.git']]])
-        }
-      }
-	  
-	  stage ('Build')  {
-	      steps {
-          
-            dir('java-source'){
-            sh "mvn package"
-          }
-        }
-         
-      }
-   
-     stage ('SonarQube Analysis') {
-        steps {
-              withSonarQubeEnv('sonar') {
-                
-				dir('java-source'){
-                 sh 'mvn -U clean install sonar:sonar'
-                }
-				
-              }
+        stage('clean workspace'){
+            steps{
+                cleanWs()
             }
-      }
-
-    stage ('Artifactory configuration') {
-            steps {
-                rtServer (
-                    id: "jfrog",
-                    url: "http://18.207.136.250:8082/artifactory",
-                    credentialsId: "jfrog"
-                )
-
-                rtMavenDeployer (
-                    id: "MAVEN_DEPLOYER",
-                    serverId: "jfrog",
-                    releaseRepo: "iwayq-libs-release-local",
-                    snapshotRepo: "iwayq-libs-snapshot-local"
-                )
-
-                rtMavenResolver (
-                    id: "MAVEN_RESOLVER",
-                    serverId: "jfrog",
-                    releaseRepo: "iwayq-libs-release",
-                    snapshotRepo: "iwayq-libs-snapshot"
-                )
+        }
+        stage('Checkout from Git'){
+            steps{
+                git branch: 'dev-sec-ops-cicd-pipeline-project-one', url: 'https://github.com/awanmbandi/realworld-microservice-project.git'
             }
-    }
-
-    stage ('Deploy Artifacts') {
+        }
+        stage('Install Dependencies') {
             steps {
-                rtMavenRun (
-                    tool: "maven", // Tool name from Jenkins configuration
-                    pom: 'java-source/pom.xml',
-                    goals: 'clean install',
-                    deployerId: "MAVEN_DEPLOYER",
-                    resolverId: "MAVEN_RESOLVER"
-                )
-         }
-    }
-
-    stage ('Publish build info') {
+                sh "npm install"
+            }
+        }
+        stage("Sonarqube Analysis "){
+            steps{
+                withSonarQubeEnv('Sonar-Server') {
+                    sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=NodeJS-WebApp-Project \
+                    -Dsonar.projectKey=NodeJS-WebApp-Project '''
+                }
+            }
+        }
+        stage('SonarQube GateKeeper') {
             steps {
-                rtPublishBuildInfo (
-                    serverId: "jfrog"
-             )
+                timeout(time : 1, unit : 'HOURS'){
+                waitForQualityGate abortPipeline: true, credentialsId: 'SonarQube-Credential'
+                }
+            }
+        }
+        stage('OWASP Dependency Check') {
+            steps {
+                dependencyCheck additionalArguments: '--scan ./ --disableYarnAudit --disableNodeAudit', odcInstallation: 'OWASP-Dependency-Check'
+                dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
+            }
+        }
+        stage('Trivy FS Scan') {
+            steps {
+                sh "trivy fs . > trivy_fs_test_report.txt"
+            }
+        }
+        stage("Docker Build & Push"){
+            steps{
+                script{
+                   withDockerRegistry(credentialsId: 'DockerHub-Credential', toolName: 'Docker'){
+                       sh "docker build -t reddit ."
+                       sh "docker tag reddit awanmbandi/reddit:latest "
+                       sh "docker push awanmbandi/reddit:latest "
+                    }
+                }
+            }
+        }
+        stage("Trivy App Image Scan"){
+            steps{
+                sh "trivy image awanmbandi/reddit:latest > trivy_image_analysis_report.txt"
+            }
+        }
+        stage('Deploy to K8S Stage Environment'){
+            steps{
+                script{
+                    withKubeConfig(caCertificate: '', clusterName: '', contextName: '', credentialsId: 'Kubernetes-Credential', namespace: '', restrictKubeConfigAccess: false, serverUrl: '') {
+                       sh 'kubectl apply -f deploy-configs/test-env/test-namespace.yml'
+                       sh 'kubectl apply -f deploy-configs/test-env/deployment.yml'
+                       sh 'kubectl apply -f deploy-configs/test-env/service.yml'  //NodePort Service
+                  }
+                }
+            }
+        }
+        stage('ZAP Dynamic Testing | DAST') {
+            steps {
+                sshagent(['OWASP-Zap-Credential']) {
+                    sh 'ssh -o StrictHostKeyChecking=no ubuntu@3.15.151.251 "docker run -t owasp/zap2docker-stable zap-baseline.py -t http://18.188.161.121:30000/" || true'
+                                                        //JENKINS_PUBLIC_IP                                                      //EKS_WORKER_NODE_IP_ADDRESS:3000
+                }
+            }
+        }
+        stage('Approve Prod Deployment') {
+        steps {
+                input('Do you want to proceed?')
+            }
+        }
+        stage('Deploy to K8S Prod Environment'){
+            steps{
+                script{
+                    withKubeConfig(caCertificate: '', clusterName: '', contextName: '', credentialsId: 'Kubernetes-Credential', namespace: '', restrictKubeConfigAccess: false, serverUrl: '') {
+                       sh 'kubectl apply -f deploy-configs/prod-env/deployment.yml'
+                       sh 'kubectl apply -f deploy-configs/prod-env/service.yml'  //LoadBalancer Service
+                       sh 'kubectl apply -f deploy-configs/prod-env/ingress.yml'
+                    }
+                }
+            }
         }
     }
-
-    stage('Copy Dockerfile & Playbook to Ansible Server') {
-            
-            steps {
-                  sshagent(['sshkey']) {
-                       
-                        sh "scp -o StrictHostKeyChecking=no Dockerfile ec2-user@3.91.67.214:/home/ec2-user"
-                        sh "scp -o StrictHostKeyChecking=no create-container-image.yaml ec2-user@3.91.67.214:/home/ec2-user"
-                    }
-                }
-            
-        } 
-    stage('Build Container Image') {
-            
-            steps {
-                  sshagent(['sshkey']) {
-                       
-                        sh "ssh -o StrictHostKeyChecking=no ec2-user@3.91.67.214 -C \"sudo ansible-playbook create-container-image.yaml\""
-                        
-                    }
-                }
-            
-        } 
-    stage('Copy Deployent & Service Defination to K8s Master') {
-            
-            steps {
-                  sshagent(['sshkey']) {
-                       
-                        sh "scp -o StrictHostKeyChecking=no create-k8s-deployment.yaml ec2-user@3.237.42.29:/home/ec2-user"
-                        sh "scp -o StrictHostKeyChecking=no nodePort.yaml ec2-user@3.237.42.29:/home/ec2-user"
-                    }
-                }
-            
-        } 
-
-    stage('Waiting for Approvals') {
-            
-        steps{
-
-				input('Test Completed ? Please provide  Approvals for Prod Release ?')
-			  }
-            
-    }     
-    stage('Deploy Artifacts to Production') {
-            
-            steps {
-                  sshagent(['sshkey']) {
-                       
-                        sh "ssh -o StrictHostKeyChecking=no ec2-user@3.237.42.29 -C \"sudo kubectl apply -f create-k8s-deployment.yaml\""
-                        sh "ssh -o StrictHostKeyChecking=no ec2-user@3.237.42.29 -C \"sudo kubectl apply -f nodePort.yaml\""
-                        
-                    }
-                }
-            
-        } 
-         
-   } 
+    post {
+    always {
+        echo 'Slack Notifications.'
+        slackSend channel: '#general', //update and provide your channel name
+        color: COLOR_MAP[currentBuild.currentResult],
+        message: "*${currentBuild.currentResult}:* Job Name '${env.JOB_NAME}' build ${env.BUILD_NUMBER} \n Build Timestamp: ${env.BUILD_TIMESTAMP} \n Project Workspace: ${env.WORKSPACE} \n More info at: ${env.BUILD_URL}"
+    }
+  }
 }
