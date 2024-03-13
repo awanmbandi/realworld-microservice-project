@@ -2,7 +2,7 @@
 ![ProjectArch](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/DevSecOps-Project-Archas.png)
 
 ## Continuous Observability (Monitoring & Logging) Arch
-![PromGrafEFKArch](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/prom-graf-efk.avif)
+![PromGrafEFKArch](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/fdffdfgfh.png)
 
 ###### Project ToolBox 🧰
 - [Git](https://git-scm.com/) Git is a distributed version control system that helps you track changes in any set of computer files, usually used for coordinating work among developers who collaboratively develops software.
@@ -17,8 +17,8 @@
 - [Docker](https://www.docker.com/) Docker helps developers build, share, run, and verify applications anywhere — without tedious environment configuration or management.
 - [Docker Hub](https://hub.docker.com/) Docker Hub is a container registry built for developers and open source contributors to find, use, and share their container images.
 - [Kubernetes](https://kubernetes.io/) Kubernetes, also known as K8s, is an open-source system for automating and orchestrating deployment, scaling, and management of containerized applications.
-- [AWS EKS](https://aws.amazon.com/eks/) In the cloud, Amazon EKS automatically manages the availability and scalability of the Kubernetes control plane nodes responsible for scheduling containers, managing application availability, storing cluster data, and other key tasks.
-- [EC2](https://aws.amazon.com/ec2/) EC2 allows users to rent virtual computers (EC2) to run their own workloads and applications.
+- [GKE](https://cloud.google.com/kubernetes-engine?hl=en) In the cloud, GKE automatically manages the availability and scalability of the Kubernetes control plane nodes responsible for scheduling containers, managing application availability, storing cluster data, and other key tasks.
+- [GCE](https://cloud.google.com/products/compute?hl=en) GCE allows users to rent virtual computers (Instances) to run their own workloads and applications.
 - [Fluentd|Logstash](https://www.elastic.co/logstash/) Fluentd and Logstash are a free and open server-side data processing pipeline that ingests data from a multitude of sources, transforms it, and then sends it to your favorite "stash."
 - [Elasticsearch](https://www.elastic.co/elasticsearch/) Elasticsearch is a search engine based on the Lucene library. It provides a distributed, multitenant-capable full-text search engine with an HTTP web interface and schema-free JSON documents.
 - [Kibana](https://www.elastic.co/kibana/) Kibana is a source-available data visualization dashboard software for Elasticsearch.
