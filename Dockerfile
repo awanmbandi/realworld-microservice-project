@@ -1,9 +1,9 @@
-# Create Custom Docker Image
-# Pull tomcat latest image from dockerhub 
-FROM tomcat:latest
+FROM node:19-alpine3.15
 
-# Maintainer
-MAINTAINER "PR Reddy - iwayQ" 
+WORKDIR /reddit-clone
 
-# copy war file on to container 
-COPY ./iwayq.war /usr/local/tomcat/webapps
+COPY . /reddit-clone
+RUN npm install 
+
+EXPOSE 3000
+CMD ["npm","run","dev"]
