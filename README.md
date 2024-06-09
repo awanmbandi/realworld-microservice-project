@@ -124,8 +124,8 @@ docker volume inspect volume sonarqube-volume
 git clone https://github.com/awanmbandi/realworld-microservice-project.git
 
 # cd and checkout into the DevSecOps project branch
-cd realworld-microservice-project && git checkout dev-sec-ops-cicd-pipeline-project-one
-cd eks-terraform
+cd realworld-microservice-project 
+cd terraform/AWS/eks-cluster
 
 # Deploy EKS Environment
 terraform init
