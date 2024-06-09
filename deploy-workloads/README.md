@@ -8,40 +8,40 @@ To summarize:
 
 Here is a brief outline of the objects in your YAML file:
 
-1. **emailservice**
+1. **redis-cart**emailservice
    - Deployment
    - Service
-2. **checkoutservice**
+2. **productcatalogservice**
    - Deployment
    - Service
-3. **recommendationservice**
+3. **emailservice**
    - Deployment
    - Service
-4. **frontend**
+4. **currencyservice**
    - Deployment
    - Service
    - LoadBalancer Service
 5. **paymentservice**
    - Deployment
    - Service
-6. **productcatalogservice**
+6. **shippingservice**
    - Deployment
    - Service
 7. **cartservice**
    - Deployment
    - Service
-8. **loadgenerator**
-   - Deployment
-9. **currencyservice**
+8. **adservice**
    - Deployment
    - Service
-10. **shippingservice**
+9. **recommendationservice**
+   - Deployment
+   - Service
+10. **checkoutservice**
     - Deployment
     - Service
-11. **redis-cart**
+11. **frontend-service**
     - Deployment
     - Service
-12. **adservice**
+12. **loadgenerator**
     - Deployment
-    - Service
 
