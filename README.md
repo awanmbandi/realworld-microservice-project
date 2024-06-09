@@ -96,9 +96,6 @@ sudo systemctl status jenkins
 # Confirm that docker is running
 sudo systemctl status docker
 
-# Confirm that Trivy is running
-trivy --version
-
 # Confirm that Terraform is running
 terraform version
 
