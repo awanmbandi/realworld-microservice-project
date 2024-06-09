@@ -137,6 +137,14 @@ terraform apply --auto-approve
 ![JenkinsSetup1!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sdsdsdas.png)
 ![JenkinsSetup2!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sfgsfs.png)
 
+### 5C) Once The Cluster Deployment Completes, Go Ahead and Enable The OIDC Connector/Provider
+```bash
+eksctl utils associate-iam-oidc-provider \
+    --region us-east-2 \
+    --cluster EKS_Cluster \
+    --approve
+```
+
 Find **Protocol Buffers Descriptions** at the [`./protos` directory](/protos).
 
 | Service                                              | Language      | Description                                                                                                                       |
