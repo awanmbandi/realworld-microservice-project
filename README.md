@@ -1,6 +1,3 @@
-# Multi-Microservice Application Project Architecture
-![ProjectArch](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/%5BK8S%20Project%5D%20Multi-Service%20Application%20Project%20Arch%20(1).png)
-
 <p align="center">
 <img src="/src/frontend/static/icons/Hipster_HeroLogoMaroon.svg" width="300" alt="Online Boutique" />
 </p>
@@ -27,123 +24,113 @@ If you’re using this demo, please **★Star** this repository to show your int
 | ----------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
 | [![Screenshot of store homepage](/docs/img/online-boutique-frontend-1.png)](/docs/img/online-boutique-frontend-1.png) | [![Screenshot of checkout screen](/docs/img/online-boutique-frontend-2.png)](/docs/img/online-boutique-frontend-2.png) |
 
-1) Create a GitHub Repository with the name `realworld-microservice-project` and push the code in this branch *(main)* to your remote repository (your newly created repository). 
-    - Go to GitHub: https://github.com
-    - Login to `Your GitHub Account`
-    - Create a Repository called `realworld-microservice-project`
-    - Clone the Repository in the `Repository` directory/folder on your `local machine`
-    - Download the code in in this repository `"realworld-microservice-project main branch"`: https://github.com/awanmbandi/realworld-microservice-project.git
-    - `Unzip` the `code/zipped file`
-    - `Copy` and `Paste` everything `from the zipped file` into the `repository you cloned` in your local
-    - Open your `Terminal`
-        - Add the code to git, commit and push it to your upstream branch "main or master"
-        - Add the changes: `git add -A`
-        - Commit changes: `git commit -m "adding project source code"`
-        - Push to GitHub: `git push`
-    - Confirm that the code is now available on GitHub 
+## Interactive quickstart (GKE)
 
-3) Create An IAM Profile/Role For The `Jenkins-CI` Server
-- Create an EC2 Service Role in IAM with AdministratorAccess Privilege 
-- Navigate to IAM
-![IAM!](https://github.com/awanmbandi/realworld-cicd-pipeline-project/blob/zdocs/images/Screen%20Shot%202023-10-03%20at%206.20.44%20PM.png)
-    - Click on `Roles`
-    - Click on `Create Role`
-    - Select `Service Role`
-    - Use Case: Select `EC2`
-    - Click on `Next` 
-    - Attach Policy: `AdministratorAccess`
-    - Click `Next` 
-    - Role Name: `AWS-EC2-Administrator-Role`
-    - Click `Create`
-4) Jenkins CI
-    - Create a Jenkins VM instance 
-    - Name: `Jenkins-CI`
-    - AMI: `Ubuntu 22.04`
-    - Instance type: `t2.large`
-    - Key pair: `Select` or `create a new keypair`
-    - Security Group (Edit/Open): `All Traffic` to `0.0.0.0/0`
-        - Name & Description: `DevSecOps-Jenkins-CI-SG`
-        - What we actually need: `8080`, `9000` and `22` to `0.0.0.0/0`
-    - Storage: Increase to `50 GB`
-    - IAM instance profile: Select the `AWS-EC2FullAccess-Role`
-    - User data (Copy the following user data): https://github.com/awanmbandi/realworld-microservice-project/blob/dev-sec-ops-cicd-pipeline-project-one/installations.sh
-    - Launch Instance
+[![Open in Cloud Shell](https://gstatic.com/cloudssh/images/open-btn.svg)](https://ssh.cloud.google.com/cloudshell/editor?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2FGoogleCloudPlatform%2Fmicroservices-demo&shellonly=true&cloudshell_image=gcr.io/ds-artifacts-cloudshell/deploystack_custom_image)
 
-#### ⚠️ NOTE:ALERT ⚠️
-- **ONLY VISIT THIS SECTION IF YOU STOPPED AND RESTARTED YOUR JENKINS SERVER**
-- The above `Jenkins Userdata` includes a `SonarQube` container deployment task
-  - As a result, we know containers are `Ephemeral` by natuure, so if you `Stop` your `Jenkins CI Server` at any point in time... You'll have to `Deploy the Container` again when you `Start` it back or bring the instance up again.
-  - If you don't do this, you will not be able able to proceed with the project.
-  - I have also Included a `Docker Volume` setup task as well for `SonarQube`, where the Container Data will be persisted to avoid Data lost.
-```bash
-# Volume inspection, confirm the docker volume exist
-docker volume inspect volume sonarqube-volume
+## Quickstart (GKE)
 
-# Create a new conainter, provide your container name and deploy in the `Jenkins-CI` server
-docker run -d --name PROVIDE_NAME_HERE -v sonarqube-volume:/opt/sonarqube/data -p 9000:9000 sonarqube:lts-community
-```
+1. Ensure you have the following requirements:
+   - [Google Cloud project](https://cloud.google.com/resource-manager/docs/creating-managing-projects#creating_a_project).
+   - Shell environment with `gcloud`, `git`, and `kubectl`.
 
-### 5A) Verify the Following Services are running in the Jenkins Instance
-- SSH into the `Jenkins-CI` server
-    - Run the following commands and confirm that the `services` are all `Running`
-```bash
-# Confirm Java version
-sudo java --version
+2. Clone the repository.
 
-# Confirm that Jenkins is running
-sudo systemctl status jenkins
+   ```sh
+   git clone https://github.com/GoogleCloudPlatform/microservices-demo
+   cd microservices-demo/
+   ```
 
-# Confirm that docker is running
-sudo systemctl status docker
+3. Set the Google Cloud project and region and ensure the Google Kubernetes Engine API is enabled.
 
-# Confirm that Terraform is running
-terraform version
+   ```sh
+   export PROJECT_ID=<PROJECT_ID>
+   export REGION=us-central1
+   gcloud services enable container.googleapis.com \
+     --project=${PROJECT_ID}
+   ```
 
-# Confirm that the Kubectl utility is running 
-kubectl version --client
+   Substitute `<PROJECT_ID>` with the ID of your Google Cloud project.
 
-# Confirm that AWS CLI is running
-aws --version
+4. Create a GKE cluster and get the credentials for it.
 
-# Confirm that the SonarQube container is running
-docker ps | grep sonarqube:lts-community
+   ```sh
+   gcloud container clusters create-auto online-boutique \
+     --project=${PROJECT_ID} --region=${REGION}
+   ```
 
-# Lastly confirm that the `sonarqube-volume docker volume` was created
-docker volume inspect volume sonarqube-volume
-```
+   Creating the cluster may take a few minutes.
 
-### 5B) Deploy Your EKS Cluster Environment
-- `UPDATE` Your Terraform Provider Region to `Your Choice REGION`*
-    - **⚠️`NOTE:ALERT!`⚠️:** *Do Not Use North Virginia, that's US-EAST-1*
-    - **⚠️`NOTE:ALERT!`⚠️:** *Also Confirm that The Selected Region Has A `Default VPC` You're Confident Has Internet Connection*
-    - **⚠️`NOTE:ALERT!`⚠️:** *The Default Terraform Provider Region Defined In The Config Is **`Ohio(US-EAST-2)`***
-- Confirm you're still logged into the `Jenkins-CI` Server via `SSH`
-- Run the following commands to deploy the `EKS Cluster` in the `Jenkins-CI`
-```bash
-# Clone your project reporisoty
-git clone https://github.com/awanmbandi/realworld-microservice-project.git
+5. Deploy Online Boutique to the cluster.
 
-# cd and checkout into the DevSecOps project branch
-cd realworld-microservice-project 
-cd terraform/AWS/eks-cluster
+   ```sh
+   kubectl apply -f ./release/kubernetes-manifests.yaml
+   ```
 
-# Deploy EKS Environment
-terraform init
-terraform plan
-terraform apply --auto-approve
-```
-- Navigate to `EKS` and confirm your Cluster was created successfully
-- Also confirmthere's no issue regarding your Terraform execution
-![JenkinsSetup1!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sdsdsdas.png)
-![JenkinsSetup2!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sfgsfs.png)
+6. Wait for the pods to be ready.
 
-### 5C) Once The Cluster Deployment Completes, Go Ahead and Enable The OIDC Connector/Provider
-```bash
-eksctl utils associate-iam-oidc-provider \
-    --region us-east-2 \
-    --cluster EKS_Cluster \
-    --approve
-```
+   ```sh
+   kubectl get pods
+   ```
+
+   After a few minutes, you should see the Pods in a `Running` state:
+
+   ```
+   NAME                                     READY   STATUS    RESTARTS   AGE
+   adservice-76bdd69666-ckc5j               1/1     Running   0          2m58s
+   cartservice-66d497c6b7-dp5jr             1/1     Running   0          2m59s
+   checkoutservice-666c784bd6-4jd22         1/1     Running   0          3m1s
+   currencyservice-5d5d496984-4jmd7         1/1     Running   0          2m59s
+   emailservice-667457d9d6-75jcq            1/1     Running   0          3m2s
+   frontend-6b8d69b9fb-wjqdg                1/1     Running   0          3m1s
+   loadgenerator-665b5cd444-gwqdq           1/1     Running   0          3m
+   paymentservice-68596d6dd6-bf6bv          1/1     Running   0          3m
+   productcatalogservice-557d474574-888kr   1/1     Running   0          3m
+   recommendationservice-69c56b74d4-7z8r5   1/1     Running   0          3m1s
+   redis-cart-5f59546cdd-5jnqf              1/1     Running   0          2m58s
+   shippingservice-6ccc89f8fd-v686r         1/1     Running   0          2m58s
+   ```
+
+7. Access the web frontend in a browser using the frontend's external IP.
+
+   ```sh
+   kubectl get service frontend-external | awk '{print $4}'
+   ```
+
+   Visit `http://EXTERNAL_IP` in a web browser to access your instance of Online Boutique.
+
+8. Once you are done with it, delete the GKE cluster.
+
+   ```sh
+   gcloud container clusters delete online-boutique \
+     --project=${PROJECT_ID} --region=${REGION}
+   ```
+
+   Deleting the cluster may take a few minutes.
+
+## Use Terraform to provision a GKE cluster and deploy Online Boutique
+
+The [`/terraform` folder](/terraform) contains instructions for using [Terraform](https://www.terraform.io/intro) to replicate the steps from [**Quickstart (GKE)**](#quickstart-gke) above.
+
+## Other deployment variations
+
+- **Istio/Anthos Service Mesh**: [See these instructions.](/kustomize/components/service-mesh-istio/README.md)
+- **non-GKE clusters (Minikube, Kind)**: see the [Development Guide](/docs/development-guide.md)
+
+## Deploy Online Boutique variations with Kustomize
+
+The [`/kustomize` folder](/kustomize) contains instructions for customizing the deployment of Online Boutique with different variations such as:
+* integrating with [Google Cloud Operations](/kustomize/components/google-cloud-operations/)
+* replacing the in-cluster Redis cache with [Google Cloud Memorystore (Redis)](/kustomize/components/memorystore), [AlloyDB](/kustomize/components/alloydb) or [Google Cloud Spanner](/kustomize/components/spanner)
+* etc.
+
+## Architecture
+
+**Online Boutique** is composed of 11 microservices written in different
+languages that talk to each other over gRPC.
+
+[![Architecture of
+microservices](/docs/img/architecture-diagram.png)](/docs/img/architecture-diagram.png)
 
 Find **Protocol Buffers Descriptions** at the [`./protos` directory](/protos).
 
@@ -161,12 +148,31 @@ Find **Protocol Buffers Descriptions** at the [`./protos` directory](/protos).
 | [adservice](/src/adservice)                         | Java          | Provides text ads based on given context words.                                                                                   |
 | [loadgenerator](/src/loadgenerator)                 | Python/Locust | Continuously sends requests imitating realistic user shopping flows to the frontend.                                              |
 
+## Features
+
+- **[Kubernetes](https://kubernetes.io)/[GKE](https://cloud.google.com/kubernetes-engine/):**
+  The app is designed to run on Kubernetes (both locally on "Docker for
+  Desktop", as well as on the cloud with GKE).
+- **[gRPC](https://grpc.io):** Microservices use a high volume of gRPC calls to
+  communicate to each other.
+- **[Istio](https://istio.io):** Application works on Istio service mesh.
+- **[Cloud Operations (Stackdriver)](https://cloud.google.com/products/operations):** Many services
+  are instrumented with **Profiling** and **Tracing**. In
+  addition to these, using Istio enables features like Request/Response
+  **Metrics** and **Context Graph** out of the box. When it is running out of
+  Google Cloud, this code path remains inactive.
+- **[Skaffold](https://skaffold.dev):** Application
+  is deployed to Kubernetes with a single command using Skaffold.
+- **Synthetic Load Generation:** The application demo comes with a background
+  job that creates realistic usage patterns on the website using
+  [Locust](https://locust.io/) load generator.
+
+## Development
+
+See the [Development guide](/docs/development-guide.md) to learn how to run and develop this app locally.
+
 ## Demos featuring Online Boutique
 
-- [Use Azure Redis Cache with the Online Boutique sample on AKS](https://medium.com/p/981bd98b53f8)
-- [Sail Sharp, 8 tips to optimize and secure your .NET containers for Kubernetes](https://medium.com/p/c68ba253844a)
-- [Deploy multi-region application with Anthos and Google cloud Spanner](https://medium.com/google-cloud/a2ea3493ed0)
-- [Use Google Cloud Memorystore (Redis) with the Online Boutique sample on GKE](https://medium.com/p/82f7879a900d)
 - [Use Helm to simplify the deployment of Online Boutique, with a Service Mesh, GitOps, and more!](https://medium.com/p/246119e46d53)
 - [How to reduce microservices complexity with Apigee and Anthos Service Mesh](https://cloud.google.com/blog/products/application-modernization/api-management-and-service-mesh-go-together)
 - [gRPC health probes with Kubernetes 1.24+](https://medium.com/p/b5bd26253a4c)
