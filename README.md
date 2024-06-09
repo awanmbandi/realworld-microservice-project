@@ -1,4 +1,4 @@
-# Multi-Micro-Service Application Project Architecture
+# Multi-Microservice Application Project Architecture
 ![ProjectArch](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/%5BK8S%20Project%5D%20Multi-Service%20Application%20Project%20Arch%20(1).png)
 
 <p align="center">
