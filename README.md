@@ -145,6 +145,11 @@ eksctl utils associate-iam-oidc-provider \
     --approve
 ```
 
+#### Update/Get Cluster Credential: 
+```bash
+aws eks update-kubeconfig --name <clustername> --region <region>
+```
+
 Find **Protocol Buffers Descriptions** at the [`./protos` directory](/protos).
 
 | Service                                              | Language      | Description                                                                                                                       |
