@@ -24,6 +24,119 @@ If you’re using this demo, please **★Star** this repository to show your int
 | ----------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
 | [![Screenshot of store homepage](/docs/img/online-boutique-frontend-1.png)](/docs/img/online-boutique-frontend-1.png) | [![Screenshot of checkout screen](/docs/img/online-boutique-frontend-2.png)](/docs/img/online-boutique-frontend-2.png) |
 
+1) Create a GitHub Repository with the name `DevSecOps-Realworld-CICD-Project` and push the code in this branch *(dev-sec-ops-cicd-pipeline-project-one)* to your remote repository (your newly created repository). 
+    - Go to GitHub: https://github.com
+    - Login to `Your GitHub Account`
+    - Create a Repository called `DevSecOps-Realworld-CICD-Project`
+    - Clone the Repository in the `Repository` directory/folder on your `local machine`
+    - Download the code in in this repository `"dev-sec-ops-cicd-pipeline-project-one branch"`: https://github.com/awanmbandi/realworld-microservice-project.git
+    - `Unzip` the `code/zipped file`
+    - `Copy` and `Paste` everything `from the zipped file` into the `repository you cloned` in your local
+    - Open your `Terminal`
+        - Add the code to git, commit and push it to your upstream branch "main or master"
+        - Add the changes: `git add -A`
+        - Commit changes: `git commit -m "adding project source code"`
+        - Push to GitHub: `git push`
+    - Confirm that the code is now available on GitHub 
+
+3) Create An IAM Profile/Role For The `Jenkins-CI` Server
+- Create an EC2 Service Role in IAM with AdministratorAccess Privilege 
+- Navigate to IAM
+![IAM!](https://github.com/awanmbandi/realworld-cicd-pipeline-project/blob/zdocs/images/Screen%20Shot%202023-10-03%20at%206.20.44%20PM.png)
+    - Click on `Roles`
+    - Click on `Create Role`
+    - Select `Service Role`
+    - Use Case: Select `EC2`
+    - Click on `Next` 
+    - Attach Policy: `AdministratorAccess`
+    - Click `Next` 
+    - Role Name: `AWS-EC2-Administrator-Role`
+    - Click `Create`
+4) Jenkins CI
+    - Create a Jenkins VM instance 
+    - Name: `Jenkins-CI`
+    - AMI: `Ubuntu 22.04`
+    - Instance type: `t2.large`
+    - Key pair: `Select` or `create a new keypair`
+    - Security Group (Edit/Open): `All Traffic` to `0.0.0.0/0`
+        - Name & Description: `DevSecOps-Jenkins-CI-SG`
+        - What we actually need: `8080`, `9000` and `22` to `0.0.0.0/0`
+    - Storage: Increase to `50 GB`
+    - IAM instance profile: Select the `AWS-EC2FullAccess-Role`
+    - User data (Copy the following user data): https://github.com/awanmbandi/realworld-microservice-project/blob/dev-sec-ops-cicd-pipeline-project-one/installations.sh
+    - Launch Instance
+
+#### ⚠️ NOTE:ALERT ⚠️
+- **ONLY VISIT THIS SECTION IF YOU STOPPED AND RESTARTED YOUR JENKINS SERVER**
+- The above `Jenkins Userdata` includes a `SonarQube` container deployment task
+  - As a result, we know containers are `Ephemeral` by natuure, so if you `Stop` your `Jenkins CI Server` at any point in time... You'll have to `Deploy the Container` again when you `Start` it back or bring the instance up again.
+  - If you don't do this, you will not be able able to proceed with the project.
+  - I have also Included a `Docker Volume` setup task as well for `SonarQube`, where the Container Data will be persisted to avoid Data lost.
+```bash
+# Volume inspection, confirm the docker volume exist
+docker volume inspect volume sonarqube-volume
+
+# Create a new conainter, provide your container name and deploy in the `Jenkins-CI` server
+docker run -d --name PROVIDE_NAME_HERE -v sonarqube-volume:/opt/sonarqube/data -p 9000:9000 sonarqube:lts-community
+```
+
+### 5A) Verify the Following Services are running in the Jenkins Instance
+- SSH into the `Jenkins-CI` server
+    - Run the following commands and confirm that the `services` are all `Running`
+```bash
+# Confirm Java version
+sudo java --version
+
+# Confirm that Jenkins is running
+sudo systemctl status jenkins
+
+# Confirm that docker is running
+sudo systemctl status docker
+
+# Confirm that Trivy is running
+trivy --version
+
+# Confirm that Terraform is running
+terraform version
+
+# Confirm that the Kubectl utility is running 
+kubectl version --client
+
+# Confirm that AWS CLI is running
+aws --version
+
+# Confirm that the SonarQube container is running
+docker ps | grep sonarqube:lts-community
+
+# Lastly confirm that the `sonarqube-volume docker volume` was created
+docker volume inspect volume sonarqube-volume
+```
+
+### 5B) Deploy Your EKS Cluster Environment
+- `UPDATE` Your Terraform Provider Region to `Your Choice REGION`*
+    - **⚠️`NOTE:ALERT!`⚠️:** *Do Not Use North Virginia, that's US-EAST-1*
+    - **⚠️`NOTE:ALERT!`⚠️:** *Also Confirm that The Selected Region Has A `Default VPC` You're Confident Has Internet Connection*
+    - **⚠️`NOTE:ALERT!`⚠️:** *The Default Terraform Provider Region Defined In The Config Is **`Ohio(US-EAST-2)`***
+- Confirm you're still logged into the `Jenkins-CI` Server via `SSH`
+- Run the following commands to deploy the `EKS Cluster` in the `Jenkins-CI`
+```bash
+# Clone your project reporisoty
+git clone https://github.com/awanmbandi/realworld-microservice-project.git
+
+# cd and checkout into the DevSecOps project branch
+cd realworld-microservice-project && git checkout dev-sec-ops-cicd-pipeline-project-one
+cd eks-terraform
+
+# Deploy EKS Environment
+terraform init
+terraform plan
+terraform apply --auto-approve
+```
+- Navigate to `EKS` and confirm your Cluster was created successfully
+- Also confirmthere's no issue regarding your Terraform execution
+![JenkinsSetup1!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sdsdsdas.png)
+![JenkinsSetup2!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sfgsfs.png)
+
 ## Interactive quickstart (GKE)
 
 [![Open in Cloud Shell](https://gstatic.com/cloudssh/images/open-btn.svg)](https://ssh.cloud.google.com/cloudshell/editor?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2FGoogleCloudPlatform%2Fmicroservices-demo&shellonly=true&cloudshell_image=gcr.io/ds-artifacts-cloudshell/deploystack_custom_image)
