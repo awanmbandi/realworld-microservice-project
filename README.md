@@ -27,12 +27,12 @@ If you’re using this demo, please **★Star** this repository to show your int
 | ----------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
 | [![Screenshot of store homepage](/docs/img/online-boutique-frontend-1.png)](/docs/img/online-boutique-frontend-1.png) | [![Screenshot of checkout screen](/docs/img/online-boutique-frontend-2.png)](/docs/img/online-boutique-frontend-2.png) |
 
-1) Create a GitHub Repository with the name `DevSecOps-Realworld-CICD-Project` and push the code in this branch *(dev-sec-ops-cicd-pipeline-project-one)* to your remote repository (your newly created repository). 
+1) Create a GitHub Repository with the name `realworld-microservice-project` and push the code in this branch *(dev-sec-ops-cicd-pipeline-project-one)* to your remote repository (your newly created repository). 
     - Go to GitHub: https://github.com
     - Login to `Your GitHub Account`
-    - Create a Repository called `DevSecOps-Realworld-CICD-Project`
+    - Create a Repository called `realworld-microservice-project`
     - Clone the Repository in the `Repository` directory/folder on your `local machine`
-    - Download the code in in this repository `"dev-sec-ops-cicd-pipeline-project-one branch"`: https://github.com/awanmbandi/realworld-microservice-project.git
+    - Download the code in in this repository `"realworld-microservice-project main branch"`: https://github.com/awanmbandi/realworld-microservice-project.git
     - `Unzip` the `code/zipped file`
     - `Copy` and `Paste` everything `from the zipped file` into the `repository you cloned` in your local
     - Open your `Terminal`
