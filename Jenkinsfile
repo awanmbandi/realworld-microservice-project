@@ -15,7 +15,6 @@ pipeline {
                 sh 'git --version'
                 sh 'kubectl version --client'
                 sh 'npm snyk --version'
-                sh 'checkov --version'
             }
         }
         // Checkout To The Service Branch
