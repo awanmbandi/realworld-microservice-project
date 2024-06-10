@@ -3,6 +3,8 @@
 
 ![Continuous Integration](https://github.com/GoogleCloudPlatform/microservices-demo/workflows/Continuous%20Integration%20-%20Main/Release/badge.svg)
 
+![PipelineArch1](https://github.com/awanmbandi/realworld-microservice-project/blob/main/docs/architectures/%5BCI-CD%20Arch%201%5D%20Microservices%20CI-CD-1.png)
+
 **Online Boutique** is a cloud-first microservices demo application.
 Online Boutique consists of an 11-tier microservices application. The application is a
 web-based e-commerce app where users can browse items,
