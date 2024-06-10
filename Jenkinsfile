@@ -39,7 +39,7 @@ pipeline {
         // Scan Service Dockerfile With Open Policy Agent (OPA)
         stage('OPA Dockerfile Vulnerability Scan') {
             steps {
-                sh "docker run --rm -v ${WORKSPACE}:/project openpolicyagent/conftest test --policy docker-opa-security.rego Dockerfile || true"
+                sh "docker run --rm -v ${WORKSPACE}:/project openpolicyagent/conftest test --policy docker-opa-security.rego Dockerfile"
             }
         }
         // Build and Tag Service Docker Image
@@ -55,7 +55,7 @@ pipeline {
         // Execute SCA/Dependency Test on Service Docker Image
         stage('Snyk SCA Test | Dependencies') {
             steps {
-                sh "snyk test --docker awanmbandi/adservice:latest || true" 
+                sh "snyk test --docker awanmbandi/adservice:latest" 
             }
         }
         // Push Service Image to DockerHub
