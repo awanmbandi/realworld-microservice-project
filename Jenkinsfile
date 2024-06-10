@@ -5,67 +5,11 @@ def COLOR_MAP = [
 ]
 pipeline {
     agent any
-    environment {
-        SCANNER_HOME=tool 'SonarScanner'
-        SNYK_HOME   = tool name: 'Snyk'
-    }
-    tools {
-        snyk 'Snyk'
-    }
     stages {
         // Checkout To The Service Branch
         stage('Checkout To Mcroservice Branch'){
             steps{
-                git branch: 'app-frontend-service', url: 'https://github.com/awanmbandi/realworld-microservice-project.git'
-            }
-        }
-        // SonarQube SAST Code Analysis
-        stage("SonarQube SAST Analysis"){
-            steps{
-                withSonarQubeEnv('Sonar-Server') {
-                    sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=app-frontend-service \
-                    -Dsonar.projectKey=app-frontend-service '''
-                }
-            }
-        }
-        // Providing Snyk Access
-        stage('Authenticate & Authorize Snyk') {
-            steps {
-                withCredentials([string(credentialsId: 'Snyk-API-Token', variable: 'SNYK_TOKEN')]) {
-                    sh "${SNYK_HOME}/snyk-linux auth $SNYK_TOKEN"
-                }
-            }
-        }
-        // Scan Service Dockerfile With Open Policy Agent (OPA)
-        stage('OPA Dockerfile Vulnerability Scan') {
-            steps {
-                sh "docker run --rm -v ${WORKSPACE}:/project openpolicyagent/conftest test --policy docker-opa-security.rego Dockerfile || true"
-            }
-        }
-        // Build and Tag Service Docker Image
-        stage('Build & Tag Microservice Docker Image') {
-            steps {
-                script {
-                    withDockerRegistry(credentialsId: 'DockerHub-Credential', toolName: 'docker') {
-                        sh "docker build -t awanmbandi/cartservice:latest ."
-                    }
-                }
-            }
-        }
-        // Execute SCA/Dependency Test on Service Docker Image
-        stage('Snyk SCA Test | Dependencies') {
-            steps {
-                sh "${SNYK_HOME}/snyk-linux test --docker awanmbandi/cartservice:latest || true" 
-            }
-        }
-        // Push Service Image to DockerHub
-        stage('Push Microservice Docker Image') {
-            steps {
-                script {
-                    withDockerRegistry(credentialsId: 'DockerHub-Credential', toolName: 'docker') {
-                        sh "docker push awanmbandi/cartservice:latest "
-                    }
-                }
+                git branch: 'app-database', url: 'https://github.com/awanmbandi/realworld-microservice-project.git'
             }
         }
         // // Deploy to The Staging/Test Environment
