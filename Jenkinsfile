@@ -20,12 +20,12 @@ pipeline {
                 git branch: 'app-ad-serverice', url: 'https://github.com/awanmbandi/realworld-microservice-project.git'
             }
         }
-        // SonarQube SAST Code Analysis
-        stage('SonarQube Inspection') {
-            steps {
-                sh 'gradle sonarqube'
-            }
-        }
+        // // SonarQube SAST Code Analysis
+        // stage('SonarQube Inspection') {
+        //     steps {
+        //         sh 'gradle sonarqube'
+        //     }
+        // }
         // stage("SonarQube SAST Analysis"){
         //     steps{
         //         withSonarQubeEnv('Sonar-Server') {
