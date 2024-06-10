@@ -24,9 +24,9 @@ pipeline {
                 }
             }
         }
-        stage('Snyk Test') {
+        stage('Snyk Test') { 
             steps {
-                sh "snyk test --docker adijaiswal/adservice:latest"
+                sh "snyk test --docker adijaiswal/adservice:latest" 
             }
         }
         stage('Push Docker Image') {
