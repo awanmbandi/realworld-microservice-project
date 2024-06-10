@@ -11,6 +11,7 @@ pipeline {
     }
     tools {
         snyk 'Snyk'
+        gradle 'Gradle'
     }
     stages {
         // Checkout To The Service Branch
