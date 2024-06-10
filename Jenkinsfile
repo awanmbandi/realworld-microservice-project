@@ -27,8 +27,8 @@ pipeline {
         stage("SonarQube SAST Analysis"){
             steps{
                 withSonarQubeEnv('Sonar-Server') {
-                    sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=NodeJS-WebApp-Project \
-                    -Dsonar.projectKey=NodeJS-WebApp-Project '''
+                    sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=app-frontend-service \
+                    -Dsonar.projectKey=app-frontend-service '''
                 }
             }
         }
