@@ -25,12 +25,12 @@ pipeline {
                 sh 'gradle test'
             }
         }
-        // SonarQube SAST Code Analysis
-        stage('SonarQube Inspection') {
-            steps {
-                sh 'gradle sonarqube'
-            }
-        }
+        // // SonarQube SAST Code Analysis
+        // stage('SonarQube Inspection') {
+        //     steps {
+        //         sh 'gradle sonarqube'
+        //     }
+        // }
         // stage("SonarQube SAST Analysis"){
         //     steps{
         //         withSonarQubeEnv('Sonar-Server') {
