@@ -13,14 +13,6 @@ pipeline {
         snyk 'Snyk'
     }
     stages {
-        // Verifying setup
-        stage('Confirm Tools Installations') {
-            steps {
-                sh 'git --version'
-                sh 'kubectl version --client'
-                sh 'npm snyk --version'
-            }
-        }
         // Checkout To The Service Branch
         stage('Checkout To Mcroservice Branch'){
             steps{
