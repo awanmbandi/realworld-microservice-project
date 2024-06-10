@@ -16,15 +16,15 @@ pipeline {
         // Checkout To The Service Branch
         stage('Checkout To Mcroservice Branch'){
             steps{
-                git branch: 'app-frontend-service', url: 'https://github.com/awanmbandi/realworld-microservice-project.git'
+                git branch: 'app-payment-service', url: 'https://github.com/awanmbandi/realworld-microservice-project.git'
             }
         }
         // SonarQube SAST Code Analysis
         stage("SonarQube SAST Analysis"){
             steps{
                 withSonarQubeEnv('Sonar-Server') {
-                    sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=app-frontend-service \
-                    -Dsonar.projectKey=app-frontend-service '''
+                    sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=app-payment-service \
+                    -Dsonar.projectKey=app-payment-service '''
                 }
             }
         }
