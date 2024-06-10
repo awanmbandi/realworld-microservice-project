@@ -7,6 +7,10 @@ pipeline {
     agent any
     environment {
         SCANNER_HOME=tool 'SonarScanner'
+        SNYK_HOME   = tool name: 'Snyk'
+    }
+    tools {
+        snyk 'Snyk'
     }
     stages {
         // Verifying setup
