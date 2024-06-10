@@ -17,7 +17,8 @@ secrets_env = [
 deny[msg] {    
     input[i].Cmd == "env"
     val := input[i].Value
-    contains(lower(val[_]), secrets_env[_])
+    some k, l
+    contains(lower(val[k]), secrets_env[l])
     msg = sprintf("Line %d: Potential secret in ENV key found: %s", [i, val])
 }
 
@@ -29,7 +30,7 @@ deny[msg] {
     msg = sprintf("Line %d: use a trusted base image", [i])
 }
 
-# Do not use 'latest' tag for base imagedeny[msg] {
+# Do not use 'latest' tag for base images
 deny[msg] {
     input[i].Cmd == "from"
     val := split(input[i].Value[0], ":")
@@ -64,7 +65,7 @@ deny[msg] {
 # Any user...
 any_user {
     input[i].Cmd == "user"
- }
+}
 
 deny[msg] {
     not any_user
@@ -79,10 +80,11 @@ forbidden_users = [
 ]
 
 deny[msg] {
-    command := "user"
-    users := [name | input[i].Cmd == "user"; name := input[i].Value]
-    lastuser := users[count(users)-1]
-    contains(lower(lastuser[_]), forbidden_users[_])
+    input[i].Cmd == "user"
+    users := [name | input[i].Cmd == "user"; name := input[i].Value[0]]
+    lastuser := users[count(users) - 1]
+    some j, k
+    contains(lower(lastuser[j]), forbidden_users[k])
     msg = sprintf("Line %d: Last USER directive (USER %s) is forbidden", [i, lastuser])
 }
 
