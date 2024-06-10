@@ -115,13 +115,3 @@ applicationDistribution.into('bin') {
     from(adServiceClient)
     fileMode = 0755
 }
-
-// SonarQube Code Analysis Config
-sonarqube {
-    properties {
-        property "sonar.sourceEncoding", "UTF-8"
-            property "sonar.projectName", "app-ad-serverice"
-            property "sonar.host.url", "http://10.128.0.12:9000"
-            property "sonar.login", "sqa_2f101387db70593b2c6a5d23fd207e60341ea458"
-    }
-}
