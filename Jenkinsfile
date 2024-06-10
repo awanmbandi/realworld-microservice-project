@@ -10,7 +10,6 @@ pipeline {
         SNYK_HOME   = tool name: 'Snyk'
     }
     tools {
-        jdk 'JDK17'
         snyk 'Snyk'
     }
     stages {
