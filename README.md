@@ -1,7 +1,7 @@
 # Multi-Microservice Application Project Architecture
 ![ProjectArch](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/%5BK8S%20Project%5D%20Multi-Service%20Application%20Project%20Arch.png)
 
-******************************************************************************************************
+***
 
 ###### Microservices Application CI/CD Pipeline Architecture One
 ![PipelineArch1](https://github.com/awanmbandi/realworld-microservice-project/blob/main/docs/architectures/%5BCI-CD%20Arch%201%5D%20Microservices%20CI-CD-1.png)
