@@ -1,0 +1,99 @@
+def COLOR_MAP = [
+    'SUCCESS': 'good', 
+    'FAILURE': 'danger',
+    'UNSTABLE': 'danger'
+]
+pipeline {
+    agent any
+    environment {
+        PROJECT_ID = 'xenon-axe-407902'
+        CLUSTER_NAME = 'gke-cluster'
+        LOCATION = 'us-central1-c'
+        CREDENTIALS_ID = 'GKE-SA-Cluster-Credential'
+    }
+    stages {
+        // Checkout To The Service Branch
+        stage('Checkout To Mcroservice Branch'){
+            steps{
+                git branch: 'app-database', url: 'https://github.com/awanmbandi/realworld-microservice-project.git'
+            }
+        }
+        // // Deploy to The Staging/Test Environment
+        // stage('Deploy Microservice To The Stage/Test Env') {
+        //     steps {
+        //         // Set the KUBECONFIG environment variable
+        //         script {
+        //             env.KUBECONFIG = '/home/jenkinsmaster/jenkins-sa-key.json'
+        //         }
+        //         // Your kubectl command
+        //         sh 'kubectl apply -f deploy-envs/test-env/test-namespace.yaml'
+        //         sh 'kubectl apply -f deploy-envs/test-env/deployment.yaml'
+        //         sh 'kubectl apply -f deploy-envs/test-env/service.yaml'  //ClusterIP Service
+        //     }
+        // }
+        // // Deploy to The Staging/Test Environment
+        // stage('Deploy Microservice To The Stage/Test Env'){
+        //     steps{
+        //         script{
+        //             withKubeConfig(caCertificate: '', clusterName: '', contextName: '', credentialsId: 'GKE-Cluster-Credential', namespace: '', restrictKubeConfigAccess: false, serverUrl: '') {
+        //                sh 'kubectl apply -f deploy-envs/test-env/test-namespace.yaml'
+        //                sh 'kubectl apply -f deploy-envs/test-env/deployment.yaml'
+        //                sh 'kubectl apply -f deploy-envs/test-env/service.yaml'  //ClusterIP Service
+        //            }
+        //         }
+        //     }
+        // }
+        stage('Deploy to GKE') {
+            steps{
+                step([
+                    $class: 'KubernetesEngineBuilder',
+                    projectId: env.PROJECT_ID,
+                    clusterName: env.CLUSTER_NAME,
+                    location: env.LOCATION,
+                    manifestPattern: 'deploy-envs/test-env/test-namespace.yaml',
+                    credentialsId: env.CREDENTIALS_ID,
+                    verifyDeployments: true
+                ])
+            }
+        }
+        // Production Deployment Approval
+        stage('Approve Prod Deployment') {
+            steps {
+                    input('Do you want to proceed?')
+            }
+        }
+        // Deploy to The Production Environment
+        stage('Deploy Microservice To The Prod Env') {
+            steps {
+                // Set the KUBECONFIG environment variable
+                // script {
+                //     env.KUBECONFIG = '/path/to/jenkins-sa-key.json'
+                // }
+                // Your kubectl command
+                sh 'kubectl apply -f deploy-envs/prod-env/prod-namespace.yaml'
+                sh 'kubectl apply -f deploy-envs/prod-env/deployment.yaml'
+                sh 'kubectl apply -f deploy-envs/prod-env/service.yaml'  //ClusterIP Service
+            }
+        }
+        // // Deploy to The Production Environment
+        // stage('Deploy Microservice To The Prod Env'){
+        //     steps{
+        //         script{
+        //             withKubeConfig(caCertificate: '', clusterName: '', contextName: '', credentialsId: 'Kubernetes-Credential', namespace: '', restrictKubeConfigAccess: false, serverUrl: '') {
+        //                sh 'kubectl apply -f deploy-envs/prod-env/prod-namespace.yaml'
+        //                sh 'kubectl apply -f deploy-envs/prod-env/deployment.yaml'
+        //                sh 'kubectl apply -f deploy-envs/prod-env/service.yaml'  //ClusterIP Service
+        //             }
+        //         }
+        //     }
+        // }
+    }
+//     post {
+//     always {
+//         echo 'Slack Notifications.'
+//         slackSend channel: '#devops', //update and provide your channel name
+//         color: COLOR_MAP[currentBuild.currentResult],
+//         message: "*${currentBuild.currentResult}:* Job Name '${env.JOB_NAME}' build ${env.BUILD_NUMBER} \n Build Timestamp: ${env.BUILD_TIMESTAMP} \n Project Workspace: ${env.WORKSPACE} \n More info at: ${env.BUILD_URL}"
+//     }
+//   }
+}
