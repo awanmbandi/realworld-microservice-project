@@ -13,7 +13,7 @@ pipeline {
             }
         }
         // Deploy to The Staging/Test Environment
-        stage('Deploy to Kubernetes') {
+        stage('Deploy Microservice To The Stage/Test Env') {
             steps {
                 // Set the KUBECONFIG environment variable
                 script {
@@ -44,7 +44,7 @@ pipeline {
             }
         }
         // // Deploy to The Production Environment
-        stage('Deploy to Kubernetes') {
+        stage('Deploy Microservice To The Prod Env') {
             steps {
                 // Set the KUBECONFIG environment variable
                 // script {
