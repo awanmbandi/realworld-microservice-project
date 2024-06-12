@@ -18,7 +18,7 @@ pipeline {
                 git branch: 'app-database', url: 'https://github.com/awanmbandi/realworld-microservice-project.git'
             }
         }
-        stage('Deploy Dev DB Namespace') {
+        stage('Deploy to GKE') {
             steps{
                 step([
                     $class: 'KubernetesEngineBuilder',
@@ -31,79 +31,79 @@ pipeline {
                 ])
             }
         }
-    //     stage('Deploy Dev DB Deployment') {
-    //         steps{
-    //             step([
-    //                 $class: 'KubernetesEngineBuilder',
-    //                 projectId: env.PROJECT_ID,
-    //                 clusterName: env.CLUSTER_NAME,
-    //                 location: env.LOCATION,
-    //                 manifestPattern: 'deploy-envs/test-env/deployment.yaml',
-    //                 credentialsId: env.CREDENTIALS_ID,
-    //                 verifyDeployments: true
-    //             ])
-    //         }
-    //     }
-    //     stage('Deploy Dev DB Service') {
-    //         steps{
-    //             step([
-    //                 $class: 'KubernetesEngineBuilder',
-    //                 projectId: env.PROJECT_ID,
-    //                 clusterName: env.CLUSTER_NAME,
-    //                 location: env.LOCATION,
-    //                 manifestPattern: 'deploy-envs/test-env/service.yaml',
-    //                 credentialsId: env.CREDENTIALS_ID,
-    //                 verifyDeployments: true
-    //             ])
-    //         }
-    //     }
-    //     // Production Deployment Approval
-    //     stage('Approve Prod Deployment') {
-    //         steps {
-    //                 input('Do you want to proceed?')
-    //         }
-    //     }
-    //     // // Deploy to The Production Environment
-    //     stage('Deploy Prod DB Namespace') {
-    //         steps{
-    //             step([
-    //                 $class: 'KubernetesEngineBuilder',
-    //                 projectId: env.PROJECT_ID,
-    //                 clusterName: env.CLUSTER_NAME,
-    //                 location: env.LOCATION,
-    //                 manifestPattern: 'deploy-envs/prod-env/prod-namespace.yaml,deployment.yaml,service.yaml',
-    //                 credentialsId: env.CREDENTIALS_ID,
-    //                 verifyDeployments: true
-    //             ])
-    //         }
-    //     }
-    //     stage('Deploy Prod DB Deployment') {
-    //         steps{
-    //             step([
-    //                 $class: 'KubernetesEngineBuilder',
-    //                 projectId: env.PROJECT_ID,
-    //                 clusterName: env.CLUSTER_NAME,
-    //                 location: env.LOCATION,
-    //                 manifestPattern: 'deploy-envs/prod-env/deployment.yaml',
-    //                 credentialsId: env.CREDENTIALS_ID,
-    //                 verifyDeployments: true
-    //             ])
-    //         }
-    //     }
-    //     stage('Deploy Prod DB Service') {
-    //         steps{
-    //             step([
-    //                 $class: 'KubernetesEngineBuilder',
-    //                 projectId: env.PROJECT_ID,
-    //                 clusterName: env.CLUSTER_NAME,
-    //                 location: env.LOCATION,
-    //                 manifestPattern: 'deploy-envs/prod-env/service.yaml',
-    //                 credentialsId: env.CREDENTIALS_ID,
-    //                 verifyDeployments: true
-    //             ])
-    //         }
-    //     }
-    // }
+        // stage('Deploy Dev DB Deployment') {
+        //     steps{
+        //         step([
+        //             $class: 'KubernetesEngineBuilder',
+        //             projectId: env.PROJECT_ID,
+        //             clusterName: env.CLUSTER_NAME,
+        //             location: env.LOCATION,
+        //             manifestPattern: 'deploy-envs/test-env/deployment.yaml',
+        //             credentialsId: env.CREDENTIALS_ID,
+        //             verifyDeployments: true
+        //         ])
+        //     }
+        // }
+        // stage('Deploy Dev DB Service') {
+        //     steps{
+        //         step([
+        //             $class: 'KubernetesEngineBuilder',
+        //             projectId: env.PROJECT_ID,
+        //             clusterName: env.CLUSTER_NAME,
+        //             location: env.LOCATION,
+        //             manifestPattern: 'deploy-envs/test-env/service.yaml',
+        //             credentialsId: env.CREDENTIALS_ID,
+        //             verifyDeployments: true
+        //         ])
+        //     }
+        // }
+        // // Production Deployment Approval
+        // stage('Approve Prod Deployment') {
+        //     steps {
+        //             input('Do you want to proceed?')
+        //     }
+        // }
+        // // // Deploy to The Production Environment
+        // stage('Deploy Prod DB Namespace') {
+        //     steps{
+        //         step([
+        //             $class: 'KubernetesEngineBuilder',
+        //             projectId: env.PROJECT_ID,
+        //             clusterName: env.CLUSTER_NAME,
+        //             location: env.LOCATION,
+        //             manifestPattern: 'deploy-envs/prod-env/prod-namespace.yaml,deployment.yaml,service.yaml',
+        //             credentialsId: env.CREDENTIALS_ID,
+        //             verifyDeployments: true
+        //         ])
+        //     }
+        // }
+        // stage('Deploy Prod DB Deployment') {
+        //     steps{
+        //         step([
+        //             $class: 'KubernetesEngineBuilder',
+        //             projectId: env.PROJECT_ID,
+        //             clusterName: env.CLUSTER_NAME,
+        //             location: env.LOCATION,
+        //             manifestPattern: 'deploy-envs/prod-env/deployment.yaml',
+        //             credentialsId: env.CREDENTIALS_ID,
+        //             verifyDeployments: true
+        //         ])
+        //     }
+        // }
+        // stage('Deploy Prod DB Service') {
+        //     steps{
+        //         step([
+        //             $class: 'KubernetesEngineBuilder',
+        //             projectId: env.PROJECT_ID,
+        //             clusterName: env.CLUSTER_NAME,
+        //             location: env.LOCATION,
+        //             manifestPattern: 'deploy-envs/prod-env/service.yaml',
+        //             credentialsId: env.CREDENTIALS_ID,
+        //             verifyDeployments: true
+        //         ])
+        //     }
+        // }
+    }
     post {
     always {
         echo 'Slack Notifications.'
