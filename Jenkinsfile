@@ -17,7 +17,7 @@ pipeline {
             steps {
                 // Set the KUBECONFIG environment variable
                 script {
-                    env.KUBECONFIG = '/path/to/jenkins-sa-key.json'
+                    env.KUBECONFIG = '/home/jenkinsmaster/jenkins-sa-key.json'
                 }
                 // Your kubectl command
                 sh 'kubectl apply -f deploy-envs/test-env/test-namespace.yaml'
