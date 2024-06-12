@@ -8,7 +8,7 @@ pipeline {
     environment {
         PROJECT_ID = 'xenon-axe-407902'
         CLUSTER_NAME = 'gke-cluster'
-        LOCATION = 'us-central1'
+        LOCATION = 'us-central1-c'
         CREDENTIALS_ID = 'GKE-SA-Cluster-Credential'
     }
     stages {
