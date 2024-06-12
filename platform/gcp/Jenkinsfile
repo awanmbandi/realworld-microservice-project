@@ -18,14 +18,40 @@ pipeline {
                 git branch: 'app-database', url: 'https://github.com/awanmbandi/realworld-microservice-project.git'
             }
         }
-        stage('Deploy to The Test/Stage Environment') {
+        stage('Deploy Dev DB Namespace') {
             steps{
                 step([
                     $class: 'KubernetesEngineBuilder',
                     projectId: env.PROJECT_ID,
                     clusterName: env.CLUSTER_NAME,
                     location: env.LOCATION,
-                    manifestPattern: 'deploy-envs/test-env/*',
+                    manifestPattern: 'deploy-envs/test-env/test-namespace.yaml',
+                    credentialsId: env.CREDENTIALS_ID,
+                    verifyDeployments: true
+                ])
+            }
+        }
+        stage('Deploy Dev DB Deployment') {
+            steps{
+                step([
+                    $class: 'KubernetesEngineBuilder',
+                    projectId: env.PROJECT_ID,
+                    clusterName: env.CLUSTER_NAME,
+                    location: env.LOCATION,
+                    manifestPattern: 'deploy-envs/test-env/deployment.yaml',
+                    credentialsId: env.CREDENTIALS_ID,
+                    verifyDeployments: true
+                ])
+            }
+        }
+        stage('Deploy Dev DB Service') {
+            steps{
+                step([
+                    $class: 'KubernetesEngineBuilder',
+                    projectId: env.PROJECT_ID,
+                    clusterName: env.CLUSTER_NAME,
+                    location: env.LOCATION,
+                    manifestPattern: 'deploy-envs/test-env/service.yaml',
                     credentialsId: env.CREDENTIALS_ID,
                     verifyDeployments: true
                 ])
@@ -38,7 +64,7 @@ pipeline {
             }
         }
         // // Deploy to The Production Environment
-        stage('Deploy Microservice To The Prod Env') {
+        stage('Deploy Prod DB Namespace') {
             steps{
                 step([
                     $class: 'KubernetesEngineBuilder',
@@ -46,6 +72,32 @@ pipeline {
                     clusterName: env.CLUSTER_NAME,
                     location: env.LOCATION,
                     manifestPattern: 'deploy-envs/prod-env/prod-namespace.yaml,deployment.yaml,service.yaml',
+                    credentialsId: env.CREDENTIALS_ID,
+                    verifyDeployments: true
+                ])
+            }
+        }
+        stage('Deploy Prod DB Deployment') {
+            steps{
+                step([
+                    $class: 'KubernetesEngineBuilder',
+                    projectId: env.PROJECT_ID,
+                    clusterName: env.CLUSTER_NAME,
+                    location: env.LOCATION,
+                    manifestPattern: 'deploy-envs/prod-env/deployment.yaml',
+                    credentialsId: env.CREDENTIALS_ID,
+                    verifyDeployments: true
+                ])
+            }
+        }
+        stage('Deploy Prod DB Service') {
+            steps{
+                step([
+                    $class: 'KubernetesEngineBuilder',
+                    projectId: env.PROJECT_ID,
+                    clusterName: env.CLUSTER_NAME,
+                    location: env.LOCATION,
+                    manifestPattern: 'deploy-envs/prod-env/service.yaml',
                     credentialsId: env.CREDENTIALS_ID,
                     verifyDeployments: true
                 ])
