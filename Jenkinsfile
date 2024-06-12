@@ -20,9 +20,9 @@ pipeline {
                     env.KUBECONFIG = '/home/jenkinsmaster/jenkins-sa-key.json'
                 }
                 // Your kubectl command
-                sh 'sudo kubectl apply -f deploy-envs/test-env/test-namespace.yaml'
-                sh 'sudo kubectl apply -f deploy-envs/test-env/deployment.yaml'
-                sh 'sudo kubectl apply -f deploy-envs/test-env/service.yaml'  //ClusterIP Service
+                sh 'kubectl apply -f deploy-envs/test-env/test-namespace.yaml'
+                sh 'kubectl apply -f deploy-envs/test-env/deployment.yaml'
+                sh 'kubectl apply -f deploy-envs/test-env/service.yaml'  //ClusterIP Service
             }
         }
         // // Deploy to The Staging/Test Environment
@@ -51,9 +51,9 @@ pipeline {
                 //     env.KUBECONFIG = '/path/to/jenkins-sa-key.json'
                 // }
                 // Your kubectl command
-                sh 'sudo kubectl apply -f deploy-envs/prod-env/prod-namespace.yaml'
-                sh 'sudo kubectl apply -f deploy-envs/prod-env/deployment.yaml'
-                sh 'sudo kubectl apply -f deploy-envs/prod-env/service.yaml'  //ClusterIP Service
+                sh 'kubectl apply -f deploy-envs/prod-env/prod-namespace.yaml'
+                sh 'kubectl apply -f deploy-envs/prod-env/deployment.yaml'
+                sh 'kubectl apply -f deploy-envs/prod-env/service.yaml'  //ClusterIP Service
             }
         }
         // // Deploy to The Production Environment
