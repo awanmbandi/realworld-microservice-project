@@ -13,17 +13,30 @@ pipeline {
             }
         }
         // Deploy to The Staging/Test Environment
-        stage('Deploy Microservice To The Stage/Test Env'){
-            steps{
-                script{
-                    withKubeConfig(caCertificate: '', clusterName: '', contextName: '', credentialsId: 'Kubernetes-Credential', namespace: '', restrictKubeConfigAccess: false, serverUrl: '') {
-                       sh 'kubectl apply -f deploy-envs/test-env/test-namespace.yaml'
-                       sh 'kubectl apply -f deploy-envs/test-env/deployment.yaml'
-                       sh 'kubectl apply -f deploy-envs/test-env/service.yaml'  //ClusterIP Service
-                   }
+        stage('Deploy to Kubernetes') {
+            steps {
+                // Set the KUBECONFIG environment variable
+                script {
+                    env.KUBECONFIG = '/path/to/jenkins-sa-key.json'
                 }
+                // Your kubectl command
+                sh 'kubectl apply -f deploy-envs/test-env/test-namespace.yaml'
+                sh 'kubectl apply -f deploy-envs/test-env/deployment.yaml'
+                sh 'kubectl apply -f deploy-envs/test-env/service.yaml'  //ClusterIP Service
             }
         }
+        // // Deploy to The Staging/Test Environment
+        // stage('Deploy Microservice To The Stage/Test Env'){
+        //     steps{
+        //         script{
+        //             withKubeConfig(caCertificate: '', clusterName: '', contextName: '', credentialsId: 'Kubernetes-Credential', namespace: '', restrictKubeConfigAccess: false, serverUrl: '') {
+        //                sh 'kubectl apply -f deploy-envs/test-env/test-namespace.yaml'
+        //                sh 'kubectl apply -f deploy-envs/test-env/deployment.yaml'
+        //                sh 'kubectl apply -f deploy-envs/test-env/service.yaml'  //ClusterIP Service
+        //            }
+        //         }
+        //     }
+        // }
         // Production Deployment Approval
         stage('Approve Prod Deployment') {
             steps {
@@ -31,17 +44,30 @@ pipeline {
             }
         }
         // // Deploy to The Production Environment
-        stage('Deploy Microservice To The Prod Env'){
-            steps{
-                script{
-                    withKubeConfig(caCertificate: '', clusterName: '', contextName: '', credentialsId: 'Kubernetes-Credential', namespace: '', restrictKubeConfigAccess: false, serverUrl: '') {
-                       sh 'kubectl apply -f deploy-envs/prod-env/prod-namespace.yaml'
-                       sh 'kubectl apply -f deploy-envs/prod-env/deployment.yaml'
-                       sh 'kubectl apply -f deploy-envs/prod-env/service.yaml'  //ClusterIP Service
-                    }
-                }
+        stage('Deploy to Kubernetes') {
+            steps {
+                // Set the KUBECONFIG environment variable
+                // script {
+                //     env.KUBECONFIG = '/path/to/jenkins-sa-key.json'
+                // }
+                // Your kubectl command
+                sh 'kubectl apply -f deploy-envs/prod-env/prod-namespace.yaml'
+                sh 'kubectl apply -f deploy-envs/prod-env/deployment.yaml'
+                sh 'kubectl apply -f deploy-envs/prod-env/service.yaml'  //ClusterIP Service
             }
         }
+        // // Deploy to The Production Environment
+        // stage('Deploy Microservice To The Prod Env'){
+        //     steps{
+        //         script{
+        //             withKubeConfig(caCertificate: '', clusterName: '', contextName: '', credentialsId: 'Kubernetes-Credential', namespace: '', restrictKubeConfigAccess: false, serverUrl: '') {
+        //                sh 'kubectl apply -f deploy-envs/prod-env/prod-namespace.yaml'
+        //                sh 'kubectl apply -f deploy-envs/prod-env/deployment.yaml'
+        //                sh 'kubectl apply -f deploy-envs/prod-env/service.yaml'  //ClusterIP Service
+        //             }
+        //         }
+        //     }
+        // }
     }
     post {
     always {
