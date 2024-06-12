@@ -25,7 +25,7 @@ pipeline {
                     projectId: env.PROJECT_ID,
                     clusterName: env.CLUSTER_NAME,
                     location: env.LOCATION,
-                    manifestPattern: 'deploy-envs/test-env/test-namespace.yaml,deployment.yaml,service.yaml',
+                    manifestPattern: 'deploy-envs/test-env/*',
                     credentialsId: env.CREDENTIALS_ID,
                     verifyDeployments: true
                 ])
