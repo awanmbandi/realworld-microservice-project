@@ -5,12 +5,6 @@ def COLOR_MAP = [
 ]
 pipeline {
     agent any
-    environment {
-        PROJECT_ID = 'xenon-axe-407902'
-        CLUSTER_NAME = 'gke-cluster'
-        LOCATION = 'us-central1'
-        CREDENTIALS_ID = 'GKE-SA-Cluster-Credential'
-    }
     stages {
         // Checkout To The Service Branch
         stage('Checkout To Mcroservice Branch'){
@@ -31,29 +25,22 @@ pipeline {
         //         sh 'kubectl apply -f deploy-envs/test-env/service.yaml'  //ClusterIP Service
         //     }
         // }
-        // // Deploy to The Staging/Test Environment
-        // stage('Deploy Microservice To The Stage/Test Env'){
-        //     steps{
-        //         script{
-        //             withKubeConfig(caCertificate: '', clusterName: '', contextName: '', credentialsId: 'GKE-Cluster-Credential', namespace: '', restrictKubeConfigAccess: false, serverUrl: '') {
-        //                sh 'kubectl apply -f deploy-envs/test-env/test-namespace.yaml'
-        //                sh 'kubectl apply -f deploy-envs/test-env/deployment.yaml'
-        //                sh 'kubectl apply -f deploy-envs/test-env/service.yaml'  //ClusterIP Service
-        //            }
-        //         }
-        //     }
-        // }
+        // Deploy to The Staging/Test Environment
+        stage('Deploy Microservice To The Stage/Test Env'){
+            steps{
+                script{
+                    withKubeConfig(caCertificate: '', clusterName: '', contextName: '', credentialsId: 'GKE-Cluster-Credential', namespace: '', restrictKubeConfigAccess: false, serverUrl: '') {
+                       sh 'kubectl apply -f deploy-envs/test-env/test-namespace.yaml'
+                       sh 'kubectl apply -f deploy-envs/test-env/deployment.yaml'
+                       sh 'kubectl apply -f deploy-envs/test-env/service.yaml'  //ClusterIP Service
+                   }
+                }
+            }
+        }
         stage('Deploy to GKE') {
             steps{
-                step([
-                    $class: 'KubernetesEngineBuilder',
-                    projectId: env.PROJECT_ID,
-                    clusterName: env.CLUSTER_NAME,
-                    location: env.LOCATION,
-                    manifestPattern: 'deploy-envs/test-env/test-namespace.yaml',
-                    credentialsId: env.CREDENTIALS_ID,
-                    verifyDeployments: true
-                ])
+                sh "sed -i 's/hello:latest/hello:${env.BUILD_ID}/g' deployment.yaml"
+                step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION, manifestPattern: 'deployment.yaml', credentialsId: env.CREDENTIALS_ID, verifyDeployments: true])
             }
         }
         // Production Deployment Approval
