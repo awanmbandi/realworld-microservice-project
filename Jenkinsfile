@@ -29,7 +29,7 @@ pipeline {
         stage('Deploy Microservice To The Stage/Test Env'){
             steps{
                 script{
-                    withCredentials([file(credentialsId: 'Kubernetes-SA-Credential', variable: 'KUBECONFIG')]) {
+                    withKubeConfig(caCertificate: '', clusterName: '', contextName: '', credentialsId: 'Kubeconfig-Credential', namespace: '', restrictKubeConfigAccess: false, serverUrl: '') {
                        sh 'kubectl apply -f deploy-envs/test-env/test-namespace.yaml'
                        sh 'kubectl apply -f deploy-envs/test-env/deployment.yaml'
                        sh 'kubectl apply -f deploy-envs/test-env/service.yaml'  //ClusterIP Service
