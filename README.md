@@ -155,6 +155,7 @@ docker volume inspect volume sonarqube-volume
     - **⚠️`NOTE:ALERT!`⚠️:** *The Default Terraform Provider Region Defined In The Config Is **`Ohio(US-EAST-2)`***
 - Confirm you're still logged into the `Jenkins-CI` Server via `SSH`
 - Run the following commands to deploy the `EKS Cluster` in the `Jenkins-CI`
+- **NOTE:** *You Can As Well Deploy The Cluster Using Terraform From Your Local System*
 ```bash
 # Clone your project reporisoty
 git clone https://github.com/awanmbandi/realworld-microservice-project.git
