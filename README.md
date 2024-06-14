@@ -578,7 +578,7 @@ aws eks update-kubeconfig --name <clustername> --region <region>
 11. Frontend
 12. Load Generator
 
-  ### A. Test Application Access From the `Test-Environment` Using `NodePort` of one of your Workers
+  ### A. Test Application Access From the `Test/Stagging-Environment` Using `NodePort` of one of your Workers
   - SSH Back into your `Jenkins-CI` Server
       - RUN: `kubectl get svc -n test-env`
       - **NOTE:** COPY the Exposed `NodePort Pod Number`
@@ -591,10 +591,28 @@ aws eks update-kubeconfig --name <clustername> --region <region>
     - Click on `Edit Inbound Rules`: Port = `30000` and Source `0.0.0.0/0`
   - Open your Browser
   - Go to: http://YOUR_KUBERNETES_WORKER_NODE_IP
-  ![TestEnv](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/test.png)
+  ![TestEnv]()
 
   - Stage Deployment Succeeded
   ![TestEnv](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sdsdsdsdsds.png)
+
+### PERFORM THE DEPLOYMENT NOW TO THE PRODUCTION ENVIRONMENT/NAMESPACE (EKS CLUSTER)
+- To perform the DEPLOYMENT to the Prod Envrionment 
+- You Just Have To `UNCOMMENT` the `DEPLOY STAGE` in the `Jenkinsfiles.....` and `PUSH` to GitHub
+- DEPLOY the Microservices to the Prod Environment in the following ORDER (To Resolve DEPENDENCIES around the SERVICES)
+
+1. Redis DB
+2. Product Catalog Service
+3. Email Service
+4. Currency Service
+5. Payment Service
+6. Shipping Service
+7. Cart Service
+8. Ad Service
+9. Recommendation Service
+10. Checkout Service
+11. Frontend
+12. Load Generator
 
   - Production Deployment Succeeded
   ![ProdEnv](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/dffdffdd.png) 
@@ -602,13 +620,10 @@ aws eks update-kubeconfig --name <clustername> --region <region>
       - Navigate back to the `Jenkins-CI` shell 
       - RUN: `kubectl get svc`
       - Copy the LoadBalancer DNS and Open on a TAB on your choice Browser http://PROD_LOADBALANCER_DNS
-      ![TestEnv](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/test.png)
-  
-  - You can as well get this from the LoadBalancer Service in EC2:
-  ![TestEnv](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/SDSDDS.png)
+      ![TestEnv]()
 
   - SonarQube Code Inspection Result
-  ![SonarQubeResult!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sdsdsdsdsdsdsdsds.png)
+  ![SonarQubeResult!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sonarqube-test.png)
 
   - OWASP Dependency Inspection Result
   ![SonarQubeResult!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/OWASP.png)
