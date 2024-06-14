@@ -247,15 +247,6 @@ aws eks update-kubeconfig --name <clustername> --region <region>
       - Enable: `Install automatically` 
       - Version: Select `16.2.0`
       ![SonarQubeScanner!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sdvsvsd.png)
-
-    - **Dependency-Check installations** 
-      - Click on `Add Dependency-Check`
-      - Name: `OWASP-Dependency-Check`
-      - Click on `Add installer`
-        - Select `Install from github.com` 
-      - Enable: `Install automatically`
-      - Version: Select `6.5.1`
-      ![SonarQubeScanner!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/SDSVFSD.png)
     
     - **Docker installations** 
       - Click on `Add Docker` 
@@ -265,14 +256,6 @@ aws eks update-kubeconfig --name <clustername> --region <region>
         - Docker version: `latest`
       - Enable: `Install automatically` 
       ![SonarQubeScanner!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/svfdsv.png)
-    
-    - **Terraform Installation** 
-      - Click on `Add Terraform` 
-      - Name: `Terraform`
-      - Disable/Uncheck: `Install automatically` 
-        - NOTE: *Please Do Not Check The ``Install automatically`*
-      - Install directory: provide `/usr/bin/`
-      ![SonarQubeScanner!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/ASFADAD.png)
 
 4)  #### Credentials setup(SonarQube, Slack, DockerHub, Kubernetes and ZAP):
     - Click on `Manage Jenkins` 
@@ -289,10 +272,10 @@ aws eks update-kubeconfig --name <clustername> --region <region>
                 - Old Password: **`admin`**
                 - New Password: **`adminadmin`**
                 - Confirm Password: **`adminadmin`**
-              - Click on `Manually`
-                - Project display name: `NodeJS-WebApp-Project`
-                - Display key: `NodeJS-WebApp-Project`
-                - Main branch name: `dev-sec-ops-cicd-pipeline-project-one` 
+              - Click on `Manually` *(Create the **app-shipping-service**)*
+                - Project display name: `app-shipping-service-analysis`
+                - Display key: `app-shipping-service-analysis`
+                - Main branch name: `app-shipping-service` 
               - Click on `Set Up`
                 - Click on `Locally` 
                 - Token Name ``NodeJS-WebApp-SonarQube-Token``
