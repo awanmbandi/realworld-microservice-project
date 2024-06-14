@@ -496,7 +496,71 @@ aws eks update-kubeconfig --name <clustername> --region <region>
   - Click on `Add Rule`
   - Port Number: `30000`, Source: `0.0.0.0/0`
   - Click on `SAVE`
-                                        |
+
+### Pipeline creation (Make Sure To Make The Following Updates First)
+- UPDATE YOUR ``Jenkinsfile``
+- Update your `OWASP Zap Server IP (Which is Jenkins IP)` in the `Jenkinsfile` on `Line 87`
+- Update the `EKS Worker Node IP` with yours in the `Jenkinsfile` on `Line 87`
+- Update your `Slack Channel Name` in the `Jenkinsfile` on `Line 104`
+- Update `SonarQube projectName` in your `Jenkinsfile` On `Line 34`
+- Update the `SonarQube projectKey` in your `Jenkinsfile` On `Line 35`
+- Update the `DockerHub username` in the `Jenkinsfile` on `Line 62`, `Line 63` and `Line 70` provide Yours
+    
+    - Log into Jenkins: http://Jenkins-Public-IP:8080/
+    - Click on `New Item`
+    - Enter an item name: `DevSecOps-CICD-Pipeline-Automation` 
+    - Select the category as **`Pipeline`**
+    - Click `OK`
+    - GitHub hook trigger for GITScm polling: `Check the box` 
+      - **NOTE:** Make sure to also configure it on *GitHub's side*
+    - Pipeline Definition: Select `Pipeline script from SCM`
+      - SCM: `Git`
+      - Repositories
+        - Repository URL: `Provide Your Project Repo Git URL` (the one you created in the initial phase)
+        - Credentials: `none` *since the repository is public*
+        - Branch Specifier (blank for 'any'): ``*/dev-sec-ops-cicd-pipeline-project-one``
+        - Script Path: ``Jenkinsfile``
+    - Click on `SAVE`
+    - Click on `Build Now` to *TEST Pipeline* 
+
+    ### A. Test Application Access From the `Test-Environment` Using `NodePort` of one of your Workers
+    - SSH Back into your `Jenkins-CI` Server
+        - RUN: `kubectl get svc -n test-env`
+        - **NOTE:** COPY the Exposed `NodePort Pod Number`
+        ![NodeportTestEnv](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/dssdsdsds.png)
+    
+    - Access The Application Running in the `Test Environment` within the Cluster
+    - `Update` the EKS Cluster Security Group ***(If you've not already)***
+      - To do this, navigate to `EC2`
+      - Select one of the `Worker Nodes` --> Click on `Security` --> Click on `The Security Group ID`
+      - Click on `Edit Inbound Rules`: Port = `30000` and Source `0.0.0.0/0`
+    - Open your Browser
+    - Go to: http://YOUR_KUBERNETES_WORKER_NODE_IP
+    ![TestEnv](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/test.png)
+
+    - Stage Deployment Succeeded
+    ![TestEnv](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sdsdsdsdsds.png)
+
+    - Production Deployment Succeeded
+    ![ProdEnv](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/dffdffdd.png) 
+        - To access the application running in the `Prod-Env`
+        - Navigate back to the `Jenkins-CI` shell 
+        - RUN: `kubectl get svc`
+        - Copy the LoadBalancer DNS and Open on a TAB on your choice Browser http://PROD_LOADBALANCER_DNS
+        ![TestEnv](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/test.png)
+    
+    - You can as well get this from the LoadBalancer Service in EC2:
+    ![TestEnv](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/SDSDDS.png)
+
+    - SonarQube Code Inspection Result
+    ![SonarQubeResult!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sdsdsdsdsdsdsdsds.png)
+
+    - OWASP Dependency Inspection Result
+    ![SonarQubeResult!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/OWASP.png)
+
+    - Slack Continuous Feedback Alert
+    ![SlackResult!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sdsddsdsdsdsds.png)
+    
 
 **Online Boutique** is a cloud-first microservices demo application.
 Online Boutique consists of an 11-tier microservices application. The application is a
