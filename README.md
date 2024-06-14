@@ -203,8 +203,7 @@ aws eks update-kubeconfig --name <clustername> --region <region>
     - Search and Install the following Plugings and `"Install"`
         - **SonarQube Scanner**
         - **Snyk**
-        - **NodeJS**
-        - **Eclipse Temurin installer**
+        - **Multibranch Scan Webhook Trigger**
         - **Docker**
         - **Docker Commons**
         - **Docker Pipeline**
@@ -526,58 +525,96 @@ aws eks update-kubeconfig --name <clustername> --region <region>
     
     - Log into Jenkins: http://Jenkins-Public-IP:8080/
     - Click on `New Item`
-    - Enter an item name: `DevSecOps-CICD-Pipeline-Automation` 
-    - Select the category as **`Pipeline`**
+    - Enter an item name: `Online-Shop-Microservices-CICD-Automation` 
+    - Select the category as **`Multibranch Pipeline`**
     - Click `OK`
-    - GitHub hook trigger for GITScm polling: `Check the box` 
-      - **NOTE:** Make sure to also configure it on *GitHub's side*
-    - Pipeline Definition: Select `Pipeline script from SCM`
-      - SCM: `Git`
-      - Repositories
-        - Repository URL: `Provide Your Project Repo Git URL` (the one you created in the initial phase)
-        - Credentials: `none` *since the repository is public*
-        - Branch Specifier (blank for 'any'): ``*/dev-sec-ops-cicd-pipeline-project-one``
-        - Script Path: ``Jenkinsfile``
-    - Click on `SAVE`
-    - Click on `Build Now` to *TEST Pipeline* 
-
-    ### A. Test Application Access From the `Test-Environment` Using `NodePort` of one of your Workers
-    - SSH Back into your `Jenkins-CI` Server
-        - RUN: `kubectl get svc -n test-env`
-        - **NOTE:** COPY the Exposed `NodePort Pod Number`
-        ![NodeportTestEnv](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/dssdsdsds.png)
+    - BRANCH SOURCES:
+      - Git:
+        - Project Repository
+          - Repository URL: `Provide Your Project Repo Git URL` (the one you created at the beginning)
+    - Property strategy: `All branches get the same properties`
+    - BUILD CONFIGURATION
+      - Mode: Select `by Jenkinsfile`
+      - Script Path: `Jenkinsfile`
+    - SCAN MULTIBRANCH PIPELINE TRIGGER
+      - Select `Scan by webhook`
+      - Trigger token: `automation`
+    - Click on `Apply` and `Save`
     
-    - Access The Application Running in the `Test Environment` within the Cluster
-    - `Update` the EKS Cluster Security Group ***(If you've not already)***
-      - To do this, navigate to `EC2`
-      - Select one of the `Worker Nodes` --> Click on `Security` --> Click on `The Security Group ID`
-      - Click on `Edit Inbound Rules`: Port = `30000` and Source `0.0.0.0/0`
-    - Open your Browser
-    - Go to: http://YOUR_KUBERNETES_WORKER_NODE_IP
-    ![TestEnv](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/test.png)
+    - CONFIGURE MULTIBRANCH PIPELINE WEBHOOK
+      - Copy this URL and Update the Jenkins IP (to yours): http://PROVIDE_YOUR_JENKINS_IP:8080/multibranch-webhook-trigger/invoke?token=automation
+      - Navigate to your `Project Repository`
+        - Click on `Settings` in the Repository
+        - Click on `Webhooks`
+        - Click on `Add Webhook`
+        - Payload URL: http://PROVIDE_YOUR_JENKINS_IP:8080/multibranch-webhook-trigger/invoke?token=automation
+        - Content type: `application/json`
+        - Which events would you like to trigger this webhook: Select `Just the push event`
+        - Enable `Active`
+        - Click `ADD WEBHOOK`
 
-    - Stage Deployment Succeeded
-    ![TestEnv](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sdsdsdsdsds.png)
+### Navigate Back To Jenkins and Confirm That All 12 Pipeline Jobs Are Running (11 Microservices Jobs and 1 DB Job)
+  - Click on the `Jenkins Pipeline Job Name`
+  ![MicroservicesPipelineJobs]()
 
-    - Production Deployment Succeeded
-    ![ProdEnv](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/dffdffdd.png) 
-        - To access the application running in the `Prod-Env`
-        - Navigate back to the `Jenkins-CI` shell 
-        - RUN: `kubectl get svc`
-        - Copy the LoadBalancer DNS and Open on a TAB on your choice Browser http://PROD_LOADBALANCER_DNS
-        ![TestEnv](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/test.png)
-    
-    - You can as well get this from the LoadBalancer Service in EC2:
-    ![TestEnv](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/SDSDDS.png)
+### Confirm, Make Sure The Pipelines All Succeed (If Not, Troubleshoot)
 
-    - SonarQube Code Inspection Result
-    ![SonarQubeResult!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sdsdsdsdsdsdsdsds.png)
 
-    - OWASP Dependency Inspection Result
-    ![SonarQubeResult!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/OWASP.png)
+### PERFORM THE DEPLOYMENT IN THE STAGING ENVIRONMENT/NAMESPACE (EKS CLUSTER)
+- To perform the DEPLOYMENT in the staging Envrionment 
+- You Just Have To `UNCOMMENT` the `DEPLOY STAGE` in the `Jenkinsfiles.....` and `PUSH` to GitHub
+- DEPLOY the Microservices in the STAGING Environment in the following ORDER (To Resolve DEPENDENCIES around the SERVICES)
 
-    - Slack Continuous Feedback Alert
-    ![SlackResult!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sdsddsdsdsdsds.png)
+1. Redis DB
+2. Product Catalog Service
+3. Email Service
+4. Currency Service
+5. Payment Service
+6. Shipping Service
+7. Cart Service
+8. Ad Service
+9. Recommendation Service
+10. Checkout Service
+11. Frontend
+12. Load Generator
+
+  ### A. Test Application Access From the `Test-Environment` Using `NodePort` of one of your Workers
+  - SSH Back into your `Jenkins-CI` Server
+      - RUN: `kubectl get svc -n test-env`
+      - **NOTE:** COPY the Exposed `NodePort Pod Number`
+      ![NodeportTestEnv](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/dssdsdsds.png)
+  
+  - Access The Application Running in the `Test Environment` within the Cluster
+  - `Update` the EKS Cluster Security Group ***(If you've not already)***
+    - To do this, navigate to `EC2`
+    - Select one of the `Worker Nodes` --> Click on `Security` --> Click on `The Security Group ID`
+    - Click on `Edit Inbound Rules`: Port = `30000` and Source `0.0.0.0/0`
+  - Open your Browser
+  - Go to: http://YOUR_KUBERNETES_WORKER_NODE_IP
+  ![TestEnv](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/test.png)
+
+  - Stage Deployment Succeeded
+  ![TestEnv](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sdsdsdsdsds.png)
+
+  - Production Deployment Succeeded
+  ![ProdEnv](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/dffdffdd.png) 
+      - To access the application running in the `Prod-Env`
+      - Navigate back to the `Jenkins-CI` shell 
+      - RUN: `kubectl get svc`
+      - Copy the LoadBalancer DNS and Open on a TAB on your choice Browser http://PROD_LOADBALANCER_DNS
+      ![TestEnv](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/test.png)
+  
+  - You can as well get this from the LoadBalancer Service in EC2:
+  ![TestEnv](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/SDSDDS.png)
+
+  - SonarQube Code Inspection Result
+  ![SonarQubeResult!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sdsdsdsdsdsdsdsds.png)
+
+  - OWASP Dependency Inspection Result
+  ![SonarQubeResult!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/OWASP.png)
+
+  - Slack Continuous Feedback Alert
+  ![SlackResult!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sdsddsdsdsdsds.png)
 
 
 **Online Boutique** is a cloud-first microservices demo application.
