@@ -465,7 +465,24 @@ aws eks update-kubeconfig --name <clustername> --region <region>
               - Key: `Paste The Private Key Content You Copied`
             - Click on `Create`
         ![KubeCredential!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/afdafdsfgfg.png)
-
+      
+      6) ##### Create Your Snyk Test (SCA) Credential
+         - ###### Navigate to: https://snyk.com/
+            - Click on `Sign Up`
+            - Select `GitHub`
+                - *Once you're login to your **Snyk** account*
+            - Click on `Your Name` below `Help` on the Botton left hand side of your Snyk Account
+            - Click on `Account Settings`
+            - Auth Token (KEY): Click on `Click To Show`
+            - **COPY** the TOKEN and SAVE somewhere
+        
+        - ###### Create SNYK Credential in Jenkins
+            - Click on ``Add Credentials``
+            - Kind: `Secret text`
+            - Secret: `Paste the SNYK TOKEN` 
+            - ID: ``Snyk-API-Token``
+            - Description: `Snyk-API-Token`
+            - Click on `Create`
 
 3)  #### Configure system:    
     1)  - Click on ``Manage Jenkins`` 
@@ -498,13 +515,13 @@ aws eks update-kubeconfig --name <clustername> --region <region>
   - Click on `SAVE`
 
 ### Pipeline creation (Make Sure To Make The Following Updates First)
-- UPDATE YOUR ``Jenkinsfile``
-- Update your `OWASP Zap Server IP (Which is Jenkins IP)` in the `Jenkinsfile` on `Line 87`
+- UPDATE YOUR ``Jenkinsfiles...``
+- Update your `Frontend Service` - `OWASP Zap Server IP (Which is Jenkins IP)` in the `Jenkinsfile` on `Line 87`
 - Update the `EKS Worker Node IP` with yours in the `Jenkinsfile` on `Line 87`
-- Update your `Slack Channel Name` in the `Jenkinsfile` on `Line 104`
-- Update `SonarQube projectName` in your `Jenkinsfile` On `Line 34`
-- Update the `SonarQube projectKey` in your `Jenkinsfile` On `Line 35`
-- Update the `DockerHub username` in the `Jenkinsfile` on `Line 62`, `Line 63` and `Line 70` provide Yours
+- Update your `Slack Channel Name` in the `Jenkinsfiles...` - `All Microservices`
+- Update `SonarQube projectName` of you Microservices in the `Jenkinsfiles...` - `All Microservices`
+- Update the `SonarQube projectKey` of you Microservices in the `Jenkinsfiles...` - `All Microservices`
+- Update the `DockerHub username` of you Microservices in the `Jenkinsfiles...` - `All Microservices`, provide Yours
     
     - Log into Jenkins: http://Jenkins-Public-IP:8080/
     - Click on `New Item`
@@ -560,7 +577,7 @@ aws eks update-kubeconfig --name <clustername> --region <region>
 
     - Slack Continuous Feedback Alert
     ![SlackResult!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sdsddsdsdsdsds.png)
-    
+
 
 **Online Boutique** is a cloud-first microservices demo application.
 Online Boutique consists of an 11-tier microservices application. The application is a
