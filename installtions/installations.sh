@@ -79,7 +79,8 @@ echo "zapuser:zapuser" | chpasswd  ## Ubuntu
 
 ## Enable Password Authentication and Authorization
 sed -i 's/^#PasswordAuthentication yes/PasswordAuthentication yes/' /etc/ssh/sshd_config
-echo 'ChallengeResponseAuthentication yes' | sudo tee -a /etc/ssh/sshd_config
+sed -i '/^#PermitEmptyPasswords no/a ChallengeResponseAuthentication yes' /etc/ssh/sshd_config
+systemctl restart ssh
 systemctl restart sshd
 echo "zapuser ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 
