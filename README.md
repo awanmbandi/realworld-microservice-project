@@ -601,9 +601,9 @@ aws eks update-kubeconfig --name <clustername> --region <region>
 - You Just Have To `UNCOMMENT` the `DEPLOY STAGE` in the `Jenkinsfiles.....` and `PUSH` to GitHub
 - DEPLOY the Microservices to the Prod Environment in the following ORDER (To Resolve DEPENDENCIES around the SERVICES)
 
-1. Redis DB
-2. Product Catalog Service
-3. Email Service
+1. *Redis DB*
+2. *Product Catalog Service*
+3. *Email Service*
 4. Currency Service
 5. Payment Service
 6. Shipping Service
