@@ -241,13 +241,6 @@ aws eks update-kubeconfig --name <clustername> --region <region>
       - Enable: `Install automatically` 
       ![SonarQubeScanner!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/dcsdsvsvd.png)
     
-    - **NodeJS installations** 
-      - Click on `Add NodeJS` 
-      - Name: `NodeJS16`
-      - Enable: `Install automatically` 
-      - Version: Select `16.2.0`
-      ![SonarQubeScanner!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sdvsvsd.png)
-    
     - **Docker installations** 
       - Click on `Add Docker` 
       - Name: `Docker`
@@ -272,7 +265,6 @@ aws eks update-kubeconfig --name <clustername> --region <region>
         - Update policy interval (hours): `24`
         - OS platform architecture: `Auto-detection`
       ![SnykInstallation!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/snyk-install.png)
-
 
 
 4)  #### Credentials setup(SonarQube, Slack, DockerHub, Kubernetes and ZAP):
