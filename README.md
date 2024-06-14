@@ -204,7 +204,7 @@ If you’re using this demo, please **★Star** this repository to show your int
 
 ## Screenshots
 
-| Home Page                                                                                                         | Checkout Screen                                                                                                    |
+| Home Page                                                                                                         | Checkout Page                                                                                                    |
 | ----------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
 | [![Screenshot of store homepage](/docs/img/online-boutique-frontend-1.png)](/docs/img/online-boutique-frontend-1.png) | [![Screenshot of checkout screen](/docs/img/online-boutique-frontend-2.png)](/docs/img/online-boutique-frontend-2.png) |
 
