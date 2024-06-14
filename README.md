@@ -348,16 +348,8 @@ aws eks update-kubeconfig --name <clustername> --region <region>
                 - Project display name: `app-ad-serverice`
                 - Display key: `app-ad-serverice`
                 - Main branch name: `app-ad-serverice` 
-
               - Click on `Set Up`
-                - Click on `Locally` 
-                - Token Name ``Multi-Microservice-SonarQube-Token``
-                - **NOTE:** *Copy the TOKEN and SAVE somwhere on your NodePad*
-              - Click on `Generate`
-              - Click on `Continue`
-              - Run analysis on your project: Select `Other (for JS, TS, Go, Python, PHP, ...)`
-              - What is your OS?: Select `Linux`
-              - `COPY` the Execute the Scanner and `SAVE` on your NodePad as well
+
             - Generate a `Global Analysis Token`    *This is the Token you need for Authorization*
               - Click on the `User Profile` icon at top right of SonarQube
               - Click on `My Account`
