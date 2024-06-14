@@ -646,7 +646,7 @@ If you’re using this demo, please **★Star** this repository to show your int
 
 **Note to Googlers (Google employees):** Please fill out the form at [go/microservices-demo](http://go/microservices-demo).
 
-## Congratulations, Your Deployment Was Successful
+## Congratulations Your Deployment Was Successful
 
 | Home Page                                                                                                         | Checkout Page                                                                                                    |
 | ----------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
