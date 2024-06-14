@@ -590,7 +590,7 @@ aws eks update-kubeconfig --name <clustername> --region <region>
     - Select one of the `Worker Nodes` --> Click on `Security` --> Click on `The Security Group ID`
     - Click on `Edit Inbound Rules`: Port = `30000` and Source `0.0.0.0/0`
   - Open your Browser
-  - Go to: http://YOUR_KUBERNETES_WORKER_NODE_IP
+  - Go to: http://YOUR_KUBERNETES_WORKER_NODE_IP:30000
   ![TestEnv]()
 
   - Stage Deployment Succeeded
