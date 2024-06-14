@@ -11,26 +11,6 @@
 
 ![Continuous Integration](https://github.com/GoogleCloudPlatform/microservices-demo/workflows/Continuous%20Integration%20-%20Main/Release/badge.svg)
 
-**Online Boutique** is a cloud-first microservices demo application.
-Online Boutique consists of an 11-tier microservices application. The application is a
-web-based e-commerce app where users can browse items,
-add them to the cart, and purchase them.
-
-Google uses this application to demonstrate the use of technologies like
-Kubernetes, GKE, Istio, Stackdriver, and gRPC. This application
-works on any Kubernetes cluster, like Google
-Kubernetes Engine (GKE). It’s **easy to deploy with little to no configuration**.
-
-If you’re using this demo, please **★Star** this repository to show your interest!
-
-**Note to Googlers (Google employees):** Please fill out the form at [go/microservices-demo](http://go/microservices-demo).
-
-## Screenshots
-
-| Home Page                                                                                                         | Checkout Screen                                                                                                    |
-| ----------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
-| [![Screenshot of store homepage](/docs/img/online-boutique-frontend-1.png)](/docs/img/online-boutique-frontend-1.png) | [![Screenshot of checkout screen](/docs/img/online-boutique-frontend-2.png)](/docs/img/online-boutique-frontend-2.png) |
-
 1) Create a GitHub Repository with the name `multi-microservices-application-project` and push the code in this branch *(main)* to your remote repository (your newly created repository). 
     - Go to GitHub: https://github.com
     - Login to `Your GitHub Account`
@@ -207,6 +187,26 @@ Find **Protocol Buffers Descriptions** at the [`./protos` directory](/protos).
 | [recommendationservice](/src/recommendationservice) | Python        | Recommends other products based on what's given in the cart.                                                                      |
 | [adservice](/src/adservice)                         | Java          | Provides text ads based on given context words.                                                                                   |
 | [loadgenerator](/src/loadgenerator)                 | Python/Locust | Continuously sends requests imitating realistic user shopping flows to the frontend.                                              |
+
+**Online Boutique** is a cloud-first microservices demo application.
+Online Boutique consists of an 11-tier microservices application. The application is a
+web-based e-commerce app where users can browse items,
+add them to the cart, and purchase them.
+
+Google uses this application to demonstrate the use of technologies like
+Kubernetes, GKE, Istio, Stackdriver, and gRPC. This application
+works on any Kubernetes cluster, like Google
+Kubernetes Engine (GKE). It’s **easy to deploy with little to no configuration**.
+
+If you’re using this demo, please **★Star** this repository to show your interest!
+
+**Note to Googlers (Google employees):** Please fill out the form at [go/microservices-demo](http://go/microservices-demo).
+
+## Screenshots
+
+| Home Page                                                                                                         | Checkout Screen                                                                                                    |
+| ----------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| [![Screenshot of store homepage](/docs/img/online-boutique-frontend-1.png)](/docs/img/online-boutique-frontend-1.png) | [![Screenshot of checkout screen](/docs/img/online-boutique-frontend-2.png)](/docs/img/online-boutique-frontend-2.png) |
 
 ## Demos featuring Online Boutique
 
