@@ -167,10 +167,15 @@ eksctl utils associate-iam-oidc-provider \
 aws eks update-kubeconfig --name <clustername> --region <region>
 ```
 
-#### Update Your EKS Cluster Security Group and OPEN The Following Ports
-  * 30000-32767
-  * 80 
-  * 22
+### Update the EKS Cluster Security Group (Add A NodePort and Frontend Port)
+- Navigate to `EC2`
+  - Select any of the `Cluster Worker Nodes`
+  - Click on `Security`
+  - Click on the `EKS Cluster Security Group ID`
+  - Click on `Edit Inbound Rules`
+  - Click on `Add Rule`
+  - Port Number: `30000-32767`, `80`, `22` Source: `0.0.0.0/0`
+  - Click on `SAVE`
 
 ### Jenkins setup
 1) #### Access Jenkins
@@ -459,28 +464,37 @@ aws eks update-kubeconfig --name <clustername> --region <region>
             - Click on `Create`
         ![KubeCredential!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/afdafdsfgfg.png)
 
-### SonarQube Configuration
-1)  ### Setup SonarQube GateKeeper
-    - Click on `Quality Gate` 
-    - Click on `Create`
-    - Name: `NodeJS-Webapp-QualityGate`
-    ![SonarQubeSetup2!](https://github.com/awanmbandi/realworld-cicd-pipeline-project/blob/zdocs/images/dsdsdsdsdsdsds.png)
-    - Click on `Save` to Create
-    ![SonarQubeSetup2!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sdsds.png)
-    - Click on `Unlock Editing`
-        - **NOTE:** *IMPORTANT*
-    - Click `Add Condition` to Add a Quality Gate Condition to Validate the Code Against (Code Smells or Bugs)
-    ![SonarQubeSetup3!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sdsdsdsd.png)
-    
-    - Add Quality to SonarQube Project
-    -  ``NOTE:`` Make sure to update the `SonarQube` stage in your `Jenkinsfile` and Test the Pipeline so your project will be visible on the SonarQube Project Dashboard.
-    - Click on `Projects` 
-    - Click on your project name `NodeJS-Webapp-Project` 
-      - Click on `Project Settings`
-      - Click on `Quality Gate`
-      - Select your QG `NodeJS-Webapp-QualityGate`
 
-    ![SonarQubeSetup3!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sdvfsv.png)
+3)  #### Configure system:    
+    1)  - Click on ``Manage Jenkins`` 
+        - Click on ``System`` and navigate to the `SonarQube Servers` section
+        - Click on Add `SonarQube`
+        - Name: `Sonar-Server`
+        - Server URL: http://YOUR_JENKINS_PRIVATE_IP:9000
+        - Server authentication token: Select `SonarQube-Credential`
+        ![SonarQubeServerSetup!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/vfsvfs.png)
+
+    2)  - Still on `Manage Jenkins` and `Configure System`
+        - Scroll down to the `Slack` Section (at the very bottom)
+        - Go to section `Slack`
+            - `NOTE:` *Make sure you still have the Slack Page that has the `team subdomain` & `integration token` open*
+            - Workspace: **Provide the `Team Subdomain` value** (created above)
+            - Credentials: select the `Slack-Credential` credentials (created above) 
+            - Default channel / member id: `#PROVIDE_YOUR_CHANNEL_NAME_HERE`
+            - Click on `Test Connection`
+            - Click on `Apply` and `Save`
+        ![SlackSetup!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sdgsdfg.png)
+
+### Update the EKS Cluster Security Group (Add A NodePort)
+- Navigate to `EC2`
+  - Select any of the `Cluster Worker Nodes`
+  - Click on `Security`
+  - Click on the `EKS Cluster Security Group ID`
+  - Click on `Edit Inbound Rules`
+  - Click on `Add Rule`
+  - Port Number: `30000`, Source: `0.0.0.0/0`
+  - Click on `SAVE`
+
 
 Find **Protocol Buffers Descriptions** at the [`./protos` directory](/protos).
 
