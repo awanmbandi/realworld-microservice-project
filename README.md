@@ -117,7 +117,7 @@ docker run -d --name PROVIDE_NAME_HERE -v sonarqube-volume:/opt/sonarqube/data -
       - Click `Add Jenkins CI Integration`
       - Scrol Down and Click `SAVE SETTINGS/CONFIGURATIONS`
       - Leave this page open
-      ![SlackConfig!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/efafdf.png)
+      ![SlackConfig!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/slack-multi-microservices-project.png)
 
 ### 5A) Verify the Following Services are running in the Jenkins Instance
 - SSH into the `Jenkins-CI` server
