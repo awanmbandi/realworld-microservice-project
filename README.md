@@ -1,4 +1,5 @@
 # Multi-Microservice Application Project Architecture
+**Online Boutique:** This is a cloud-first microservices application. The Online Boutique consists of about 11-12 microservices that makes up the application. 
 ![ProjectArch](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/%5BK8S%20Project%5D%20Multi-Service%20Application%20Project%20Arch.png)
 ***
 
