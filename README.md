@@ -530,6 +530,12 @@ aws eks update-kubeconfig --name <clustername> --region <region>
       - Git:
         - Project Repository
           - Repository URL: `Provide Your Project Repo Git URL` (the one you created at the beginning)
+    - BEHAVIORS
+      - Delete the `Discover branches` 
+      - Click `ADD`
+        - Select `Filter by name (with wildcards)`
+        - Include: `app-*`
+
     - Property strategy: `All branches get the same properties`
     - BUILD CONFIGURATION
       - Mode: Select `by Jenkinsfile`
@@ -540,7 +546,7 @@ aws eks update-kubeconfig --name <clustername> --region <region>
     - Click on `Apply` and `Save`
     
     - CONFIGURE MULTIBRANCH PIPELINE WEBHOOK
-      - Copy this URL and Update the Jenkins IP (to yours): http://PROVIDE_YOUR_JENKINS_IP:8080/multibranch-webhook-trigger/invoke?token=automation
+      - Copy this URL and Update the Jenkins IP (to yours): http://PROVIDE_YOUR_JENKINS_IP:8080/multibranch-webhook-trigger/invoke?token=automation 
       - Navigate to your `Project Repository`
         - Click on `Settings` in the Repository
         - Click on `Webhooks`
