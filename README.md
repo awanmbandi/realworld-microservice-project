@@ -204,6 +204,7 @@ aws eks update-kubeconfig --name <clustername> --region <region>
         - **SonarQube Scanner**
         - **Snyk**
         - **Multibranch Scan Webhook Trigger**
+        - **Eclipse Temurin installer**
         - **Docker**
         - **Docker Commons**
         - **Docker Pipeline**
