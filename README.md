@@ -354,7 +354,7 @@ aws eks update-kubeconfig --name <clustername> --region <region>
               - Click on the `User Profile` icon at top right of SonarQube
               - Click on `My Account`
               - Click `Security`
-              - Generate Token:   *Generate this TOKEN and Use in the Next Step to Create The SonarQube Credential* 
+              - `Generate Token:`   *Generate this TOKEN and Use in the Next Step to Create The SonarQube Credential* 
                 - Name: `microservices-web-app-token`
                 - Type: `Global Analysis Token`
                 - Expires in: `30 days`
