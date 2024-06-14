@@ -625,8 +625,8 @@ aws eks update-kubeconfig --name <clustername> --region <region>
   - SonarQube Code Inspection Result For All Microservices Source Code
   ![SonarQubeResult!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sonarqube-test.png)
 
-  - OWASP Dependency Inspection Result
-  ![SonarQubeResult!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/OWASP.png)
+  - Snyk SCA Test Result
+  ![SnykResult!]()
 
   - Slack Continuous Feedback Alert
   ![SlackResult!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sdsddsdsdsdsds.png)
