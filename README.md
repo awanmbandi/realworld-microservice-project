@@ -1,5 +1,5 @@
 # Multi-Microservice Application Project Architecture
-**Online Shopping Application:** This online shopping application was architected and built using cloud-first related principles and methodologies that promotes the adoption of application management strategies such as Microservices. The Online Shopping Application consists of about 11-12 microservices.
+**Online Shopping Application:** This online shopping application was architected and built using cloud-first related principles and methodologies that promotes the adoption of application management strategies such as Microservices. The Online Shopping Application consists of about 11 microservices.
 
 ![ProjectArch](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/%5BK8S%20Project%5D%20Multi-Service%20Application%20Project%20Arch.png)
 ***
