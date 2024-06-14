@@ -71,3 +71,15 @@ docker run -d --name sonarqube -v sonarqube-volume:/opt/sonarqube/data -p 9000:9
 
 # Installing Git
 sudo apt install git -y
+
+## Provision ZAP User Access For DAST Automation Testing
+sudo su
+useradd zapuser -m
+echo "zapuser:zapuser" | chpasswd  ## Ubuntu
+
+## Enable Password Authentication and Authorization
+sed -i 's/^#PasswordAuthentication yes/PasswordAuthentication yes/' /etc/ssh/sshd_config
+echo 'ChallengeResponseAuthentication yes' | sudo tee -a /etc/ssh/sshd_config
+systemctl restart sshd
+echo "zapuser ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+

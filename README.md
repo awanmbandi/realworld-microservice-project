@@ -266,10 +266,9 @@ aws eks update-kubeconfig --name <clustername> --region <region>
         - OS platform architecture: `Auto-detection`
       ![SnykInstallation!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/snyk-install.png)
 
-
 4)  #### Credentials setup(SonarQube, Slack, DockerHub, Kubernetes and ZAP):
-    - Click on `Manage Jenkins` 
-      - Click on `Credentials` 
+    - Click on `Manage Jenkins`
+      - Click on `Credentials`
       - Click on `Jenkins - System`
       - Click on `Global Credentials (Unrestricted)`
       - Click on `Add Credentials`
