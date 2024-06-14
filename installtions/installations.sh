@@ -64,3 +64,4 @@ docker run -d --name sonarqube -v sonarqube-volume:/opt/sonarqube/data -p 9000:9
 
 # Installing Git
 sudo apt install git -y
+
