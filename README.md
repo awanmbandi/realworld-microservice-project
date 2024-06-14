@@ -82,11 +82,11 @@ If you’re using this demo, please **★Star** this repository to show your int
     - Instance type: `t2.large`
     - Key pair: `Select` or `create a new keypair`
     - Security Group (Edit/Open): `All Traffic` to `0.0.0.0/0`
-        - Name & Description: `DevSecOps-Jenkins-CI-SG`
+        - Name & Description: `Multi-Microservices-Jenkins-CI-SG`
         - What we actually need: `8080`, `9000` and `22` to `0.0.0.0/0`
     - Storage: Increase to `50 GB`
     - IAM instance profile: Select the `AWS-EC2FullAccess-Role`
-    - User data (Copy the following user data): https://github.com/awanmbandi/realworld-microservice-project/blob/dev-sec-ops-cicd-pipeline-project-one/installations.sh
+    - User data (Copy the following user data): https://github.com/awanmbandi/realworld-microservice-project/blob/main/installtions/installations.sh
     - Launch Instance
 
 #### ⚠️ NOTE:ALERT ⚠️
@@ -113,7 +113,7 @@ docker run -d --name PROVIDE_NAME_HERE -v sonarqube-volume:/opt/sonarqube/data -
       - Click on the `Channel Drop Down` and select `Integrations` and Click on `Add an App`
       - Search for `Jenkins` and Click on `View`
       - Click on `Configuration/Install` and Click `Add to Slack` 
-      - On Post to Channel: Click the Drop Down and select your channel above `YOUR_INITIAL-devsecops-cicd-alerts`
+      - On Post to Channel: Click the Drop Down and select your channel above `YOUR_INITIAL-multi-microservices-alerts`
       - Click `Add Jenkins CI Integration`
       - Scrol Down and Click `SAVE SETTINGS/CONFIGURATIONS`
       - Leave this page open
