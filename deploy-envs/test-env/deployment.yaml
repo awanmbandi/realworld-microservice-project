@@ -17,7 +17,7 @@ spec:
       terminationGracePeriodSeconds: 5
       containers:
       - name: server
-        image: awanmbandi/paymentservice:latest
+        image: awanmbandi/paymentservice:latest  # Update it to yours (just the username mostly)
         ports:
         - containerPort: 50051
         env:
