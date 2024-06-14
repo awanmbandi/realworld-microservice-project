@@ -272,7 +272,7 @@ aws eks update-kubeconfig --name <clustername> --region <region>
                 - Old Password: **`admin`**
                 - New Password: **`adminadmin`**
                 - Confirm Password: **`adminadmin`**
-              - Click on `Manually` *(Create the **app-shipping-service**)*
+              - Click on `Manually` *(Create the `app-shipping-service`)*
                 - Project display name: `app-shipping-service-analysis`
                 - Display key: `app-shipping-service-analysis`
                 - Main branch name: `app-shipping-service` 
