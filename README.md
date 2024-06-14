@@ -103,6 +103,22 @@ docker volume inspect volume sonarqube-volume
 docker run -d --name PROVIDE_NAME_HERE -v sonarqube-volume:/opt/sonarqube/data -p 9000:9000 sonarqube:lts-community
 ```
 
+5) Slack 
+    - Go to the bellow Workspace and create a Private Slack Channel and name it "yourfirstname-jenkins-cicd-pipeline-alerts"
+    - Link: https://join.slack.com/t/jjtechtowerba-zuj7343/shared_invite/zt-24mgawshy-EhixQsRyVuCo8UD~AbhQYQ  
+      - You can either join through the browser or your local Slack App
+      - Create a `Private Channel` using the naming convention `YOUR_INITIAL--multi-microservices-alerts`
+        - **NOTE:** *`(The Channel Name Must Be Unique, meaning it must be available for use)`*
+      - Visibility: Select `Private`
+      - Click on the `Channel Drop Down` and select `Integrations` and Click on `Add an App`
+      - Search for `Jenkins` and Click on `View`
+      - Click on `Configuration/Install` and Click `Add to Slack` 
+      - On Post to Channel: Click the Drop Down and select your channel above `YOUR_INITIAL-devsecops-cicd-alerts`
+      - Click `Add Jenkins CI Integration`
+      - Scrol Down and Click `SAVE SETTINGS/CONFIGURATIONS`
+      - Leave this page open
+      ![SlackConfig!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/efafdf.png)
+
 ### 5A) Verify the Following Services are running in the Jenkins Instance
 - SSH into the `Jenkins-CI` server
     - Run the following commands and confirm that the `services` are all `Running`
