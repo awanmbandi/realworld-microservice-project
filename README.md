@@ -31,12 +31,12 @@ If you’re using this demo, please **★Star** this repository to show your int
 | ----------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
 | [![Screenshot of store homepage](/docs/img/online-boutique-frontend-1.png)](/docs/img/online-boutique-frontend-1.png) | [![Screenshot of checkout screen](/docs/img/online-boutique-frontend-2.png)](/docs/img/online-boutique-frontend-2.png) |
 
-1) Create a GitHub Repository with the name `realworld-microservice-project` and push the code in this branch *(main)* to your remote repository (your newly created repository). 
+1) Create a GitHub Repository with the name `multi-microservices-application-project` and push the code in this branch *(main)* to your remote repository (your newly created repository). 
     - Go to GitHub: https://github.com
     - Login to `Your GitHub Account`
-    - Create a Repository called `realworld-microservice-project`
+    - Create a Repository called `multi-microservices-application-project`
     - Clone the Repository in the `Repository` directory/folder on your `local machine`
-    - Download the code in in this repository `"realworld-microservice-project main branch"`: https://github.com/awanmbandi/realworld-microservice-project.git
+    - Download the code in in this repository `"multi-microservices-application-project main branch"`: https://github.com/awanmbandi/realworld-microservice-project.git
     - `Unzip` the `code/zipped file`
     - `Copy` and `Paste` everything `from the zipped file` into the `repository you cloned` in your local
     - Open your `Terminal`
@@ -45,6 +45,22 @@ If you’re using this demo, please **★Star** this repository to show your int
         - Commit changes: `git commit -m "adding project source code"`
         - Push to GitHub: `git push`
     - Confirm that the code is now available on GitHub 
+2) Download the code from ALL the other BRANCHES as well
+  - Create the following branches in the Repository, you just created above
+    * `app-ad-serverice`
+    * `app-cart-service`
+    * `app-checkout-service`
+    * `app-currency-service`
+    * `app-database`
+    * `app-email-service`
+    * `app-frontend-service`
+    * `app-loadgenerator-service`
+    * `app-payment-service`
+    * `app-product-catalog-service`
+    * `app-recommendation-service`
+    * `app-shipping-service`
+  - Download the Source Code of each microservice, from their respective branches from this Repository https://github.com/awanmbandi/realworld-microservice-project.git
+  - And Push the Code based on the Microservice to the specific Branch you Created for that Service.
 
 3) Create An IAM Profile/Role For The `Jenkins-CI` Server
 - Create an EC2 Service Role in IAM with AdministratorAccess Privilege 
