@@ -60,3 +60,14 @@ docker volume create sonarqube-volume
 docker volume inspect volume sonarqube-volume
 docker run -d --name sonarqube -v sonarqube-volume:/opt/sonarqube/data -p 9000:9000 sonarqube:lts-community
 
+# # Install Snyk and NPM (We'll Be Using A Jenkins Plugin, For The Setup)
+# curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.32.0/install.sh | bash
+# . ~/.nvm/nvm.sh
+# nvm install 15.0.0
+# node -e "console.log('Running Node.js ' + process.version)"
+# npm --version
+# # Installing Snyk (We'll Be Using A Jenkins Plugin, For The Setup)
+# npm install -g snyk
+
+# Installing Git
+sudo apt install git -y
