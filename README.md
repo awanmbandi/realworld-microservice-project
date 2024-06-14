@@ -565,18 +565,18 @@ aws eks update-kubeconfig --name <clustername> --region <region>
 - You Just Have To `UNCOMMENT` the `DEPLOY STAGE` in the `Jenkinsfiles.....` and `PUSH` to GitHub
 - DEPLOY the Microservices in the STAGING Environment in the following ORDER (To Resolve DEPENDENCIES around the SERVICES)
 
-1. Redis DB
-2. Product Catalog Service
-3. Email Service
-4. Currency Service
-5. Payment Service
-6. Shipping Service
-7. Cart Service
-8. Ad Service
-9. Recommendation Service
-10. Checkout Service
-11. Frontend
-12. Load Generator
+1. *`Redis DB`*
+2. *`Product Catalog Service`*
+3. *`Email Service`*
+4. *`Currency Service`*
+5. *`Payment Service`*
+6. *`Shipping Service`*
+7. *`Cart Service`*
+8. *`Ad Service`*
+9. *`Recommendation Service`*
+10. *`Checkout Service`*
+11. *`Frontend`*
+12. *`Load Generator`*
 
   ### A. Test Application Access From the `Test/Stagging-Environment` Using `NodePort` of one of your Workers
   - SSH Back into your `Jenkins-CI` Server
@@ -603,16 +603,16 @@ aws eks update-kubeconfig --name <clustername> --region <region>
 
 1. *`Redis DB`*
 2. *`Product Catalog Service`*
-3. Email Service
-4. Currency Service
-5. Payment Service
-6. Shipping Service
-7. Cart Service
-8. Ad Service
-9. Recommendation Service
-10. Checkout Service
-11. Frontend
-12. Load Generator
+3. *`Email Service`*
+4. *`Currency Service`*
+5. *`Payment Service`*
+6. *`Shipping Service`*
+7. *`Cart Service`*
+8. *`Ad Service`*
+9. *`Recommendation Service`*
+10. *`Checkout Service`*
+11. *`Frontend`*
+12. *`Load Generator`*
 
   - Production Deployment Succeeded
   ![ProdEnv](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/dffdffdd.png) 
