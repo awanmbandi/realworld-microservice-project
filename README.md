@@ -172,6 +172,268 @@ aws eks update-kubeconfig --name <clustername> --region <region>
   * 80 
   * 22
 
+### Jenkins setup
+1) #### Access Jenkins
+    Copy your Jenkins Public IP Address and paste on the browser = ExternalIP:8080
+    - Login to your Jenkins instance using your Shell (GitBash or your Mac Terminal)
+    - Copy the Path from the Jenkins UI to get the Administrator Password
+        - Run: `sudo cat /var/lib/jenkins/secrets/initialAdminPassword`
+        - Copy the password and login to Jenkins
+    ![JenkinsSetup1!](https://github.com/awanmbandi/realworld-cicd-pipeline-project/raw/zdocs/images/jenkins-signup.png) 
+    - Plugins: Choose `Install Suggested Plugings` 
+    - Provide 
+        - Username: **`admin`**
+        - Password: **`admin`**
+        - `Name` and `Email` can also be admin. You can use `admin` all, as its a poc.
+    - Click `Continue`
+    - Click on `Start using Jenkins`
+    ![JenkinsSetup2!](https://github.com/awanmbandi/realworld-cicd-pipeline-project/raw/zdocs/images/Screen%20Shot%202023-04-24%20at%208.49.43%20AM.png) 
+
+2)  #### Plugin installations:
+    - Click on `Manage Jenkins`
+    - Click on `Plugins`
+    - Click `Available`
+    - Search and Install the following Plugings and `"Install"`
+        - **SonarQube Scanner**
+        - **NodeJS**
+        - **Eclipse Temurin installer**
+        - **Docker**
+        - **Docker Commons**
+        - **Docker Pipeline**
+        - **docker-build-step**
+        - **Docker API**
+        - **OWASP Dependency-Check**
+        - **Terraform**
+        - **Kubernetes**
+        - **Kubernetes CLI**
+        - **Kubernetes Credentials**
+        - **Kubernetes Client API**
+        - **Kubernetes Credentials Provider**
+        - **Kubernetes :: Pipeline :: DevOps Steps**
+        - **Slack Notification**
+        - **ssh-agent**
+        - **BlueOcean**
+        - **Build Timestamp (Needed for Artifact versioning)**
+    - Click on `Install`
+    - Once all plugins are installed
+    - Select/Check the Box **Restart Jenkins when installation is complete and no jobs are running**
+    ![PluginInstallation!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/afda.png)
+    - Refresh your Browser and Log back into Jenkins
+    - Once you log back into Jenkins
+
+3)  #### Global tools configuration:
+    - Click on Manage Jenkins -->> Global Tool Configuration
+    ![JDKSetup!](https://github.com/awanmbandi/realworld-cicd-pipeline-project/blob/zdocs/images/sdsdsdsdsd.png)
+
+    - **JDK** 
+        - Click on `Add JDK` -->> Make sure **Install automatically** is enabled 
+        
+        **Note:** By default the **Install Oracle Java SE Development Kit from the website** make sure to close that option by clicking on the image as shown below.
+        * Name: `JDK17`
+        * Click on `Add installer`
+        * Select `Install from adoptium.net` 
+        * Version: **`jdk-17.0.8.1+1`**
+
+        ![JDKSetup!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sdfbdasb.png)
+    
+    - **SonarQube Scanner** 
+      - Click on `Add SonarQube Scanner` 
+      - Name: `SonarScanner`
+      - Enable: `Install automatically` 
+      ![SonarQubeScanner!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/dcsdsvsvd.png)
+    
+    - **NodeJS installations** 
+      - Click on `Add NodeJS` 
+      - Name: `NodeJS16`
+      - Enable: `Install automatically` 
+      - Version: Select `16.2.0`
+      ![SonarQubeScanner!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sdvsvsd.png)
+
+    - **Dependency-Check installations** 
+      - Click on `Add Dependency-Check`
+      - Name: `OWASP-Dependency-Check`
+      - Click on `Add installer`
+        - Select `Install from github.com` 
+      - Enable: `Install automatically`
+      - Version: Select `6.5.1`
+      ![SonarQubeScanner!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/SDSVFSD.png)
+    
+    - **Docker installations** 
+      - Click on `Add Docker` 
+      - Name: `Docker`
+      - Click on `Add installer`
+        - Select `Download from docker.com`
+        - Docker version: `latest`
+      - Enable: `Install automatically` 
+      ![SonarQubeScanner!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/svfdsv.png)
+    
+    - **Terraform Installation** 
+      - Click on `Add Terraform` 
+      - Name: `Terraform`
+      - Disable/Uncheck: `Install automatically` 
+        - NOTE: *Please Do Not Check The ``Install automatically`*
+      - Install directory: provide `/usr/bin/`
+      ![SonarQubeScanner!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/ASFADAD.png)
+
+4)  #### Credentials setup(SonarQube, Slack, DockerHub, Kubernetes and ZAP):
+    - Click on `Manage Jenkins` 
+      - Click on `Credentials` 
+      - Click on `Jenkins - System`
+      - Click on `Global Credentials (Unrestricted)`
+      - Click on `Add Credentials`
+      1)  ##### SonarQube secret token (SonarQube-Token)
+          - ###### Generating SonarQube secret token:
+              - Login to your SonarQube Application (http://SonarServer-Sublic-IP:9000)
+                - Default username: **`admin`** 
+                - Default password: **`admin`**
+            - Click on `Login`
+                - Old Password: **`admin`**
+                - New Password: **`adminadmin`**
+                - Confirm Password: **`adminadmin`**
+              - Click on `Manually`
+                - Project display name: `NodeJS-WebApp-Project`
+                - Display key: `NodeJS-WebApp-Project`
+                - Main branch name: `dev-sec-ops-cicd-pipeline-project-one` 
+              - Click on `Set Up`
+                - Click on `Locally` 
+                - Token Name ``NodeJS-WebApp-SonarQube-Token``
+                - **NOTE:** *Copy the TOKEN and SAVE somwhere on your NodePad*
+              - Click on `Generate`
+              - Click on `Continue`
+              - Run analysis on your project: Select `Other (for JS, TS, Go, Python, PHP, ...)`
+              - What is your OS?: Select `Linux`
+              - `COPY` the Execute the Scanner and `SAVE` on your NodePad as well
+            - Generate a `Global Analysis Token`    *This is the Token you need for Authorization*
+              - Click on the `User Profile` icon at top right of SonarQube
+              - Click on `My Account`
+              - Generate Token:   *Generate this TOKEN and Use in the Next Step to Create The SonarQube Credential* 
+              ![Sonar!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sdsdsddsd.png) 
+              - Click `Generate` 
+
+          - ###### Store SonarQube Secret Token in Jenkins:
+              - Navigate back to Jenkins http://JENKINS_PUBLIC_IP:8080
+              - Click on `Manage Jenkins` 
+                - Click on `Jenkins System`
+                - Click `Global credentials (unrestricted)`
+              - Click on ``Add Credentials``
+              - Kind: `Secret text`
+              - Secret: `Paste the SonarQube TOKEN` value that we have created on the SonarQube server
+              - ID: ``SonarQube-Credential``
+              - Description: `SonarQube-Credential`
+              - Click on `Create`
+
+      2)  ##### Slack secret token (slack-token)
+          - ###### Get The Slack Token: 
+              - Slack: https://join.slack.com/t/jjtechtowerba-zuj7343/shared_invite/zt-24mgawshy-EhixQsRyVuCo8UD~AbhQYQ
+              - Navigate to the Slack "Channel you created": `YOUR_INITIAL-devsecops-cicd-alerts`
+              - Click on your `Channel Drop Down`
+              - Click on `Integrations` and Click on `Add an App`
+              - Click on `Jenkins CI VIEW` and Click on `Configuration`
+              - Click on `Add to Slack`, Click on the Drop Down and `Select your Channel`
+              - Click on `Add Jenkins CI Integration`
+              - **`NOTE:`** *The TOKEN is on Step 3*
+
+          - ###### Create The Slack Credential For Jenkins:
+              - Click on ``Add Credentials``
+                - Click on `Jenkins System`
+                - Click `Global credentials (unrestricted)`
+              - Kind: Secret text            
+              - Secret: Place the Integration Token Credential ID (Note: Generate for slack setup)
+              - ID: ``Slack-Credential``
+              - Description: `Slack-Credential`
+              - Click on `Create`  
+
+      3)  ##### DockerHub Credential (Username and Password)
+          - ###### Login to Your DockerHub Account (You can CREATE one if you Don't have an Account)
+              - Access DockerHub at: https://hub.docker.com/
+              - Provide Username: `YOUR USERNAME`
+              - Provide Username: `YOUR PASSWORD`
+              - Click on `Sign In` or `Sign Up`    
+                - **NOTE:** *If you have an account `Sign in` If not `Sign up`*
+
+          - ###### DockerHub Credential (Username and Password)
+	          - Click on ``Add Credentials``
+                - Click on `Jenkins System`
+                - Click `Global credentials (unrestricted)`
+	          - Kind: Username with password                  
+	          - Username: ``YOUR USERNAME``
+	          - Password: ``YOUR PASSWORD``
+	          - ID: ``DockerHub-Credential``
+	          - Description: `DockerHub-Credential`
+	          - Click on `Create`   
+
+      4)  ##### Kubernetes Cluster Credential (kubeconfig)
+        - ###### Start By Increasing The `EBS Volume Size` of Your Kubernetes Cluster Worker Nodes
+            - Navigate to `EC2`
+            - Click on `Volumes`
+            - Select and `Modify` *Both Nodes Volumes*
+            - Size: `130 GB`
+            - Click `Modify`
+
+        - ###### Get Cluster Credential From Kube Config
+            - `SSH` back into your `Jenkins-CI` server
+            - RUN the command: `aws eks update-kubeconfig --name <clustername> --region <region>`
+            - COPY the Cluster KubeConfig: `cat ~/.kube/config`
+            - `COPY` the KubeConfig file content
+                - Create a File Locally
+                - RUN: `touch ~/Downloads/kubeconfig-secret.txt`
+                - RUN: `vi ~/Downloads/kubeconfig-secret.txt`
+                - `PASTE` and `SAVE` the KubeConfig content in the file
+
+         - ###### Create The Kubernetes Credential In Jenkins
+            - Navigate back to Jenkins
+            - Click on ``Add Credentials``
+                - Click on `Jenkins System`
+                - Click `Global credentials (unrestricted)`
+            - Kind: `Secret File`          
+            - File: Click ``Choose File``
+                - **NOTE:** *Seletct the KubeConfig file you saved locally*
+            - ID: ``Kubernetes-Credential``
+            - Description: `Kubernetes-Credential`
+            - Click on `Create`   
+      
+      5) ##### Create the ZAP Dynamic Application Security Testing Server Credential
+         - ###### Start by Copy the `EC2 SSH Private Key File Content` of your `Jenkins-CI` Server
+            - Open your `GitBash Terminal` or `MacOS Terminal` 
+            - Navigate to the Location where your `Jenkins-CI` Server SSH Key is Stored *(Usually in **Downloads**)*
+            - Run the Command `cat YOUR_SSH_KEY_FILE_NAME.pem`
+            - COPY the KEY content and Navigate back to Jenkins to store it...
+        
+         - ###### Create The ZAP Server SSH Key Credential in Jenkins
+            - Navigate to the `Jenkins Global Credential Dash`
+            - Click on `Create Credentials`
+            - Scope: Select `Global......`
+            - ID and Description: `OWASP-Zap-Credential`
+            - Username: `ubuntu`
+            - Private key: Select
+              - Key: Click on `Add`
+              - Key: `Paste The Private Key Content You Copied`
+            - Click on `Create`
+        ![KubeCredential!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/afdafdsfgfg.png)
+
+### SonarQube Configuration
+1)  ### Setup SonarQube GateKeeper
+    - Click on `Quality Gate` 
+    - Click on `Create`
+    - Name: `NodeJS-Webapp-QualityGate`
+    ![SonarQubeSetup2!](https://github.com/awanmbandi/realworld-cicd-pipeline-project/blob/zdocs/images/dsdsdsdsdsdsds.png)
+    - Click on `Save` to Create
+    ![SonarQubeSetup2!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sdsds.png)
+    - Click on `Unlock Editing`
+        - **NOTE:** *IMPORTANT*
+    - Click `Add Condition` to Add a Quality Gate Condition to Validate the Code Against (Code Smells or Bugs)
+    ![SonarQubeSetup3!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sdsdsdsd.png)
+    
+    - Add Quality to SonarQube Project
+    -  ``NOTE:`` Make sure to update the `SonarQube` stage in your `Jenkinsfile` and Test the Pipeline so your project will be visible on the SonarQube Project Dashboard.
+    - Click on `Projects` 
+    - Click on your project name `NodeJS-Webapp-Project` 
+      - Click on `Project Settings`
+      - Click on `Quality Gate`
+      - Select your QG `NodeJS-Webapp-QualityGate`
+
+    ![SonarQubeSetup3!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sdvfsv.png)
+    
 Find **Protocol Buffers Descriptions** at the [`./protos` directory](/protos).
 
 | Service                                              | Language      | Description                                                                                                                       |
