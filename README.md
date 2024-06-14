@@ -455,6 +455,7 @@ aws eks update-kubeconfig --name <clustername> --region <region>
             - Navigate to the `Jenkins Global Credential Dash`
             - Click on `Create Credentials`
             - Scope: Select `Global......`
+            - Type: Select `SSH Username with Private Key`
             - ID and Description: `OWASP-Zap-Credential`
             - Username: `ubuntu`
             - Private key: Select
@@ -471,8 +472,6 @@ aws eks update-kubeconfig --name <clustername> --region <region>
             - Click on `Account Settings`
             - Auth Token (KEY): Click on `Click To Show`
             - **COPY** the TOKEN and SAVE somewhere
-      ![KubeCredential!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/afdafdsfgfg.png)
-
         
         - ###### Create SNYK Credential in Jenkins
             - Click on ``Add Credentials``
@@ -481,6 +480,7 @@ aws eks update-kubeconfig --name <clustername> --region <region>
             - ID: ``Snyk-API-Token``
             - Description: `Snyk-API-Token`
             - Click on `Create`
+        ![KubeCredential!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/credentials-jenkins.png)
 
 3)  #### Configure system:    
     1)  - Click on ``Manage Jenkins`` 
