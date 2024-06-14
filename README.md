@@ -631,7 +631,6 @@ aws eks update-kubeconfig --name <clustername> --region <region>
   - Slack Continuous Feedback Alert
   ![SlackResult!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sdsddsdsdsdsds.png)
 
-
 ## Congratulations Your Deployment Was Successful
 
 | Home Page                                                                                                         | Checkout Page                                                                                                    |
