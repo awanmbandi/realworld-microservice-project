@@ -85,7 +85,7 @@ If you’re using this demo, please **★Star** this repository to show your int
         - Name & Description: `Multi-Microservices-Jenkins-CI-SG`
         - What we actually need: `8080`, `9000` and `22` to `0.0.0.0/0`
     - Storage: Increase to `50 GB`
-    - IAM instance profile: Select the `AWS-EC2FullAccess-Role`
+    - IAM instance profile: Select the `AWS-EC2-Administrator-Role`
     - User data (Copy the following user data): https://github.com/awanmbandi/realworld-microservice-project/blob/main/installtions/installations.sh
     - Launch Instance
 
@@ -186,6 +186,11 @@ eksctl utils associate-iam-oidc-provider \
 ```bash
 aws eks update-kubeconfig --name <clustername> --region <region>
 ```
+
+#### Update Your EKS Cluster Security Group and OPEN The Following Ports
+  * 30000-32767
+  * 80 
+  * 22
 
 Find **Protocol Buffers Descriptions** at the [`./protos` directory](/protos).
 
