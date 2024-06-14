@@ -195,6 +195,7 @@ aws eks update-kubeconfig --name <clustername> --region <region>
     - Click `Available`
     - Search and Install the following Plugings and `"Install"`
         - **SonarQube Scanner**
+        - **Snyk**
         - **NodeJS**
         - **Eclipse Temurin installer**
         - **Docker**
@@ -202,8 +203,6 @@ aws eks update-kubeconfig --name <clustername> --region <region>
         - **Docker Pipeline**
         - **docker-build-step**
         - **Docker API**
-        - **OWASP Dependency-Check**
-        - **Terraform**
         - **Kubernetes**
         - **Kubernetes CLI**
         - **Kubernetes Credentials**
@@ -213,7 +212,7 @@ aws eks update-kubeconfig --name <clustername> --region <region>
         - **Slack Notification**
         - **ssh-agent**
         - **BlueOcean**
-        - **Build Timestamp (Needed for Artifact versioning)**
+        - **Build Timestamp**
     - Click on `Install`
     - Once all plugins are installed
     - Select/Check the Box **Restart Jenkins when installation is complete and no jobs are running**
@@ -433,7 +432,7 @@ aws eks update-kubeconfig --name <clustername> --region <region>
       - Select your QG `NodeJS-Webapp-QualityGate`
 
     ![SonarQubeSetup3!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sdvfsv.png)
-    
+
 Find **Protocol Buffers Descriptions** at the [`./protos` directory](/protos).
 
 | Service                                              | Language      | Description                                                                                                                       |
