@@ -278,57 +278,57 @@ aws eks update-kubeconfig --name <clustername> --region <region>
                 - Display key: `app-shipping-service-analysis`
                 - Main branch name: `app-shipping-service` 
               
-              - Click on `Manually` *(Create the `app-recommendation-service` microservice test project)*
+              - Click on `Projects` *(Create the `app-recommendation-service` microservice test project)*
                 - Project display name: `app-recommendation-service-analysis`
                 - Display key: `app-recommendation-service-analysis`
                 - Main branch name: `app-recommendation-service` 
               
-              - Click on `Manually` *(Create the `app-product-catalog-service` microservice test project)*
+              - Click on `Projects` *(Create the `app-product-catalog-service` microservice test project)*
                 - Project display name: `app-product-catalog-service-analysis`
                 - Display key: `app-product-catalog-service-analysis`
                 - Main branch name: `app-product-catalog-service` 
               
-              - Click on `Manually` *(Create the `app-payment-service` microservice test project)*
+              - Click on `Projects` *(Create the `app-payment-service` microservice test project)*
                 - Project display name: `app-payment-service-analysis`
                 - Display key: `app-payment-service-analysis`
                 - Main branch name: `app-payment-service` 
               
-              - Click on `Manually` *(Create the `app-loadgenerator-service` microservice test project)*
+              - Click on `Projects` *(Create the `app-loadgenerator-service` microservice test project)*
                 - Project display name: `app-loadgenerator-service-analysis`
                 - Display key: `app-loadgenerator-service-analysis`
                 - Main branch name: `app-loadgenerator-service` 
               
-              - Click on `Manually` *(Create the `app-frontend-service` microservice test project)*
+              - Click on `Projects` *(Create the `app-frontend-service` microservice test project)*
                 - Project display name: `app-frontend-service-analysis`
                 - Display key: `app-frontend-service-analysis`
                 - Main branch name: `app-frontend-service`
               
-              - Click on `Manually` *(Create the `app-email-service` microservice test project)*
+              - Click on `Projects` *(Create the `app-email-service` microservice test project)*
                 - Project display name: `app-email-service-analysis`
                 - Display key: `app-email-service-analysis`
                 - Main branch name: `app-email-service` 
               
-              - Click on `Manually` *(Create the `app-database` microservice test project)*
+              - Click on `Projects` *(Create the `app-database` microservice test project)*
                 - Project display name: `app-database-analysis`
                 - Display key: `app-database-analysis`
                 - Main branch name: `app-database` 
               
-              - Click on `Manually` *(Create the `app-currency-service` microservice test project)*
+              - Click on `Projects` *(Create the `app-currency-service` microservice test project)*
                 - Project display name: `app-currency-service-analysis`
                 - Display key: `app-currency-service-analysis`
                 - Main branch name: `app-currency-service` 
               
-              - Click on `Manually` *(Create the `app-checkout-service` microservice test project)*
+              - Click on `Projects` *(Create the `app-checkout-service` microservice test project)*
                 - Project display name: `app-checkout-service-analysis`
                 - Display key: `app-checkout-service-analysis`
                 - Main branch name: `app-checkout-service` 
               
-              - Click on `Manually` *(Create the `app-cart-service` microservice test project)*
+              - Click on `Projects` *(Create the `app-cart-service` microservice test project)*
                 - Project display name: `app-cart-service-analysis`
                 - Display key: `app-cart-service-analysis`
                 - Main branch name: `app-cart-service` 
               
-              - Click on `Manually` *(Create the `app-ad-serverice` microservice test project)*
+              - Click on `Projects` *(Create the `app-ad-serverice` microservice test project)*
                 - Project display name: `app-ad-serverice-analysis`
                 - Display key: `app-ad-serverice-analysis`
                 - Main branch name: `app-ad-serverice` 
