@@ -464,7 +464,6 @@ aws eks update-kubeconfig --name <clustername> --region <region>
               - Key: Click on `Add`
               - Key: `Paste The Private Key Content You Copied`
             - Click on `Create`
-        ![KubeCredential!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/afdafdsfgfg.png)
       
       6) ##### Create Your Snyk Test (SCA) Credential
          - ###### Navigate to: https://snyk.com/
@@ -475,6 +474,8 @@ aws eks update-kubeconfig --name <clustername> --region <region>
             - Click on `Account Settings`
             - Auth Token (KEY): Click on `Click To Show`
             - **COPY** the TOKEN and SAVE somewhere
+      ![KubeCredential!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/afdafdsfgfg.png)
+
         
         - ###### Create SNYK Credential in Jenkins
             - Click on ``Add Credentials``
