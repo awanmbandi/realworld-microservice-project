@@ -563,7 +563,8 @@ aws eks update-kubeconfig --name <clustername> --region <region>
   ![MicroservicesPipelineJobs](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/scan_all_branch_pipelines.png)
 
 ### Confirm, Make Sure The Pipelines All Succeed (If Not, Troubleshoot)
-![MicroservicesPipelineJobs]()
+![MicroservicesPipelineJobs](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/piepline1.png)
+![MicroservicesPipelineJobs](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/piepline2.png)
 
 ### PERFORM THE DEPLOYMENT IN THE STAGING ENVIRONMENT/NAMESPACE (EKS CLUSTER)
 - To perform the DEPLOYMENT in the staging Envrionment 
