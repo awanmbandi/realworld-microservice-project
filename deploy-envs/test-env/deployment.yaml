@@ -18,7 +18,7 @@ spec:
       serviceAccountName: default
       containers:
         - name: server
-          image: awanmbandi/frontend:latest  # Update it to yours (just the username mostly)
+          image: awanmbandi/frontendservice:latest  # Update it to yours (just the username mostly)
           ports:
           - containerPort: 8080
           readinessProbe:
