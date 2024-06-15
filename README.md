@@ -1,8 +1,8 @@
 # productcatalogservice
 
-Run the following command to restore dependencies to `vendor/` directory:
+Run the following command to restore dependencies to `vendor/` directory: 
 
-    dep ensure --vendor-only
+    dep ensure --vendor-only 
 
 ## Dynamic catalog reloading / artificial delay
 
