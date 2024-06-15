@@ -59,15 +59,15 @@ pipeline {
             }
         }
         // Push Service Image to DockerHub
-        stage('Push Microservice Docker Image') {
-            steps {
-                script {
-                    withDockerRegistry(credentialsId: 'DockerHub-Credential', toolName: 'docker') {
-                        sh "docker push masumabinesh/shippingservice:latest "
-                    }
-                }
-            }
-        }
+        // stage('Push Microservice Docker Image') {
+        //     steps {
+        //         script {
+        //             withDockerRegistry(credentialsId: 'DockerHub-Credential', toolName: 'docker') {
+        //                 sh "docker push masumabinesh/shippingservice:latest "
+        //             }
+        //         }
+        //     }
+        // }
         // // Deploy to The Staging/Test Environment
         // stage('Deploy Microservice To The Stage/Test Env'){
         //     steps{
@@ -102,7 +102,7 @@ pipeline {
     post {
     always {
         echo 'Slack Notifications.'
-        slackSend channel: '#ma-multi-microservices-alerts', //update and provide your channel name
+        slackSend channel: '#mb88-microservice-alert', //update and provide your channel name
         color: COLOR_MAP[currentBuild.currentResult],
         message: "*${currentBuild.currentResult}:* Job Name '${env.JOB_NAME}' build ${env.BUILD_NUMBER} \n Build Timestamp: ${env.BUILD_TIMESTAMP} \n Project Workspace: ${env.WORKSPACE} \n More info at: ${env.BUILD_URL}"
     }
