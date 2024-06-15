@@ -532,8 +532,10 @@ aws eks update-kubeconfig --name <clustername> --region <region>
         - Project Repository
           - Repository URL: `Provide Your Project Repo Git URL` (the one you created at the beginning)
     - BEHAVIORS
-      - Discover Branches
-
+      - Set it to: `Discover Branches` and
+      - Click `Add`
+        - Select: `Filter by name (with wildcards)`
+        - Include: `app-*`
     - Property strategy: `All branches get the same properties`
     - BUILD CONFIGURATION
       - Mode: Select `by Jenkinsfile`
