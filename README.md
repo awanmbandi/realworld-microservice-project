@@ -562,9 +562,15 @@ aws eks update-kubeconfig --name <clustername> --region <region>
   - Click on `Scan Multibranch Pipeline Now`
   ![MicroservicesPipelineJobs](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/scan_all_branch_pipelines.png)
 
-### Confirm, Make Sure The Pipelines All Succeed (If Not, Troubleshoot)
+### Confirm That All Microservices Branch Pipelines Succeeded (If Not, Troubleshoot)
 ![MicroservicesPipelineJobs](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/piepline1.png)
 ![MicroservicesPipelineJobs](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/piepline2.png)
+
+### SonarQube Code Inspection Result For All Microservices Source Code
+  ![SonarQubeResult!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sonarqube-test.png)
+
+### Also Confirm You Have All Service Deployment/Docker Artifacts In DockerHub
+![DockerHubImages](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/microservices-artifacts.png)
 
 ### PERFORM THE DEPLOYMENT IN THE STAGING ENVIRONMENT/NAMESPACE (EKS CLUSTER)
 - To perform the DEPLOYMENT in the staging Envrionment 
