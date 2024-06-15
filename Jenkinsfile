@@ -40,8 +40,8 @@ pipeline {
         //                sh 'kubectl apply -f deploy-envs/prod-env/service.yaml'  //ClusterIP Service
         //             }
         //         }
-        //     }
-        // }
+        //     } 
+        // } 
     }
     post {
     always {
