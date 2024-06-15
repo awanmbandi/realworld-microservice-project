@@ -626,8 +626,8 @@ aws eks update-kubeconfig --name <clustername> --region <region>
 11. *`Frontend`*
 12. *`Load Generator`*
 
-  - Production Deployment Succeeded
-  ![ProdEnv](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/dffdffdd.png) 
+  - Confirm That Your Production Deployment Succeeded
+  ![ProdEnv]() 
       - To access the application running in the `Prod-Env`
       - Navigate back to the `Jenkins-CI` shell 
       - RUN: `kubectl get svc`
