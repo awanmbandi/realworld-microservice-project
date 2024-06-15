@@ -640,6 +640,9 @@ aws eks update-kubeconfig --name <clustername> --region <region>
   - Snyk SCA Test Result
   ![SnykResult!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/snyk-sdcsvbfgddx.png)
 
+  - Test/Scan Dockerfiles with Open Policy Agent (OPA)
+  ![OPATest!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/OPA-Analysis.png)
+
   - Slack Continuous Feedback Alert
   ![SlackResult!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/asasasdsffghgjkjhjtyreew.png)
 
