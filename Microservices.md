@@ -113,3 +113,7 @@ This YAML file describes the configuration for deploying a set of microservices 
     - Connects to: None mentioned in this YAML, but likely used by other services
 
 In summary, these microservices are interconnected through their respective services, and the Frontend service acts as the entry point for external communication. The connections between services are established using Kubernetes services and the specified ports. Additionally, some services, like Cart Service, use external services like Redis for data storage.
+
+
+
+http://34.71.9.167:8080/multibranch-webhook-trigger/invoke?token=automation

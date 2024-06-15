@@ -205,6 +205,7 @@ aws eks update-kubeconfig --name <clustername> --region <region>
         - **Snyk**
         - **Multibranch Scan Webhook Trigger**
         - **Eclipse Temurin installer**
+        - **Pipeline: Stage View**
         - **Docker**
         - **Docker Commons**
         - **Docker Pipeline**
@@ -531,10 +532,7 @@ aws eks update-kubeconfig --name <clustername> --region <region>
         - Project Repository
           - Repository URL: `Provide Your Project Repo Git URL` (the one you created at the beginning)
     - BEHAVIORS
-      - Delete the `Discover branches` 
-      - Click `ADD`
-        - Select `Filter by name (with wildcards)`
-        - Include: `app-*`
+      - Discover Branches
 
     - Property strategy: `All branches get the same properties`
     - BUILD CONFIGURATION
@@ -546,12 +544,12 @@ aws eks update-kubeconfig --name <clustername> --region <region>
     - Click on `Apply` and `Save`
     
     - CONFIGURE MULTIBRANCH PIPELINE WEBHOOK
-      - Copy this URL and Update the Jenkins IP (to yours): http://PROVIDE_YOUR_JENKINS_IP:8080/multibranch-webhook-trigger/invoke?token=automation 
+      - Copy this URL and Update the Jenkins IP (to yours): `http://PROVIDE_YOUR_JENKINS_IP:8080/multibranch-webhook-trigger/invoke?token=automation` 
       - Navigate to your `Project Repository`
         - Click on `Settings` in the Repository
         - Click on `Webhooks`
         - Click on `Add Webhook`
-        - Payload URL: http://PROVIDE_YOUR_JENKINS_IP:8080/multibranch-webhook-trigger/invoke?token=automation
+        - Payload URL: `http://PROVIDE_YOUR_JENKINS_IP:8080/multibranch-webhook-trigger/invoke?token=automation`
         - Content type: `application/json`
         - Which events would you like to trigger this webhook: Select `Just the push event`
         - Enable `Active`
@@ -559,10 +557,11 @@ aws eks update-kubeconfig --name <clustername> --region <region>
 
 ### Navigate Back To Jenkins and Confirm That All 12 Pipeline Jobs Are Running (11 Microservices Jobs and 1 DB Job)
   - Click on the `Jenkins Pipeline Job Name`
-  ![MicroservicesPipelineJobs]()
+  - Click on `Scan Multibranch Pipeline Now`
+  ![MicroservicesPipelineJobs](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/scan_all_branch_pipelines.png)
 
 ### Confirm, Make Sure The Pipelines All Succeed (If Not, Troubleshoot)
-
+![MicroservicesPipelineJobs]()
 
 ### PERFORM THE DEPLOYMENT IN THE STAGING ENVIRONMENT/NAMESPACE (EKS CLUSTER)
 - To perform the DEPLOYMENT in the staging Envrionment 
