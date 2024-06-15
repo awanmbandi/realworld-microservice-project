@@ -27,7 +27,7 @@ spec:
               - ALL
           privileged: false
           readOnlyRootFilesystem: true
-        image: adijaiswal/loadgenerator:latest
+        image: awanmbandi/loadgenerator:latest
         env:
         - name: FRONTEND_ADDR
           value: "frontend:80"
