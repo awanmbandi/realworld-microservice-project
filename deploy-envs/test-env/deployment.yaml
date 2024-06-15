@@ -16,7 +16,7 @@ spec:
       serviceAccountName: default
       containers:
       - name: server
-        image: awanmbandi/shippingservice:latest  # Update it to yours (just the username mostly)
+        image: mexia419/shippingservice:latest  # Update it to yours (just the username mostly)
         ports:
         - containerPort: 50051
         env:
