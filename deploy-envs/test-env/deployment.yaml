@@ -28,7 +28,7 @@ spec:
               - ALL
           privileged: false
           readOnlyRootFilesystem: true
-        image: awanmbandi/loadgenerator:latest  # Update it to yours (just the username mostly)
+        image: awanmbandi/loadgeneratorapi:latest  # Update it to yours (just the username mostly)
         env:
         - name: FRONTEND_ADDR
           value: "frontend:80"
