@@ -606,7 +606,7 @@ aws eks update-kubeconfig --name <clustername> --region <region>
   ![TestEnv]()
 
   - Stage Deployment Succeeded
-  ![TestEnv](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sdsdsdsdsds.png)
+  ![TestEnv](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/piepline2.png)
 
 ### PERFORM THE DEPLOYMENT NOW TO THE PRODUCTION ENVIRONMENT/NAMESPACE (EKS CLUSTER)
 - To perform the DEPLOYMENT to the Prod Envrionment 
