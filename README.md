@@ -638,10 +638,10 @@ aws eks update-kubeconfig --name <clustername> --region <region>
   ![SonarQubeResult!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sonarqube-test.png)
 
   - Snyk SCA Test Result
-  ![SnykResult!]()
+  ![SnykResult!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/snyk-sdcsvbfgddx.png)
 
   - Slack Continuous Feedback Alert
-  ![SlackResult!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sdsddsdsdsdsds.png)
+  ![SlackResult!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/asasasdsffghgjkjhjtyreew.png)
 
 ### Congratulations Your Deployment Was Successful
 
