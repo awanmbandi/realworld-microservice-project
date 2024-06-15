@@ -587,7 +587,7 @@ aws eks update-kubeconfig --name <clustername> --region <region>
   - SSH Back into your `Jenkins-CI` Server
       - RUN: `kubectl get svc -n test-env`
       - **NOTE:** COPY the Exposed `NodePort Pod Number`
-      ![NodeportTestEnv](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/dssdsdsds.png)
+      ![NodeportTestEnv](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/dssdsdsdsasasfdghjkjnbf.png)
   
   - Access The Application Running in the `Test Environment` within the Cluster
   - `Update` the EKS Cluster Security Group ***(If you've not already)***
