@@ -16,7 +16,7 @@ pipeline {
         // Checkout To The Service Branch
         stage('Checkout To Mcroservice Branch'){
             steps{
-                git branch: 'app-shipping-service', url: 'https://github.com/awanmbandi/realworld-microservice-project.git'
+                git branch: 'app-shipping-service', url: 'https://github.com/Mbinesh2022/realworld-microservice-project.git'
             }
         }
         // SonarQube SAST Code Analysis
@@ -47,7 +47,7 @@ pipeline {
             steps {
                 script {
                     withDockerRegistry(credentialsId: 'DockerHub-Credential', toolName: 'docker') {
-                        sh "docker build -t awanmbandi/shippingservice:latest ."
+                        sh "docker build -t masumabinesh/shippingservice:latest ."
                     }
                 }
             }
@@ -55,7 +55,7 @@ pipeline {
         // Execute SCA/Dependency Test on Service Docker Image
         stage('Snyk SCA Test | Dependencies') {
             steps {
-                sh "${SNYK_HOME}/snyk-linux test --docker awanmbandi/shippingservice:latest || true" 
+                sh "${SNYK_HOME}/snyk-linux test --docker masumabinesh/shippingservice:latest || true" 
             }
         }
         // Push Service Image to DockerHub
@@ -63,7 +63,7 @@ pipeline {
             steps {
                 script {
                     withDockerRegistry(credentialsId: 'DockerHub-Credential', toolName: 'docker') {
-                        sh "docker push awanmbandi/shippingservice:latest "
+                        sh "docker push masumabinesh/shippingservice:latest "
                     }
                 }
             }
