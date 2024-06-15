@@ -20,8 +20,8 @@ pipeline {
         //                sh 'kubectl apply -f deploy-envs/test-env/test-namespace.yaml'
         //                sh 'kubectl apply -f deploy-envs/test-env/deployment.yaml'
         //                sh 'kubectl apply -f deploy-envs/test-env/service.yaml'  //ClusterIP Service
-        //            }
-        //         }
+        //            } 
+        //         } 
         //     }
         // }
         // // Production Deployment Approval
