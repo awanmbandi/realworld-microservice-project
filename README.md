@@ -158,7 +158,7 @@ terraform apply --auto-approve
 ![JenkinsSetup1!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sdsdsdas.png)
 ![JenkinsSetup2!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sfgsfs.png)
 
-### **⚠️`NOTE:ALERT!`⚠️:** FOLLOW THESE STEPS ONLY IF YOUR CLUSTER CREATION FAILED
+#### **⚠️`NOTE:ALERT!`⚠️:** FOLLOW THESE STEPS ONLY IF YOUR CLUSTER CREATION FAILED
 - If the Error Message says anything about `EKS IAM Roles` then...
 - Destroy everything by running: `terraform destroy --auto-approve`
 - Wait for everything to get destroy/terminated successfully.
@@ -172,7 +172,7 @@ terraform apply --auto-approve
   - Re-run: `terraform apply --auto-approve`
   - Wait for another `10 Minute` 
 
-### 5C) Once The Cluster Deployment Completes, Go Ahead and Enable The OIDC Connector/Provider
+#### 5C) Once The Cluster Deployment Completes, Go Ahead and Enable The OIDC Connector/Provider
 - Run this command from the `Jenkins-CI` instance
 ```bash
 eksctl utils associate-iam-oidc-provider \
@@ -181,13 +181,13 @@ eksctl utils associate-iam-oidc-provider \
     --approve
 ```
 
-### 5D) Update/Get Cluster Credential: 
+#### 5D) Update/Get Cluster Credential: 
 - Run this command from the `Jenkins-CI` instance
 ```bash
 aws eks update-kubeconfig --name <clustername> --region <region>
 ```
 
-### 5E) Update the EKS Cluster Security Group (Add A NodePort and Frontend Port)
+#### 5E) Update the EKS Cluster Security Group (Add A NodePort and Frontend Port)
 - Navigate to `EC2`
   - Select any of the `Cluster Worker Nodes`
   - Click on `Security`
