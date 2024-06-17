@@ -187,7 +187,7 @@ eksctl utils associate-iam-oidc-provider \
 aws eks update-kubeconfig --name <clustername> --region <region>
 ```
 
-### Update the EKS Cluster Security Group (Add A NodePort and Frontend Port)
+### 5E) Update the EKS Cluster Security Group (Add A NodePort and Frontend Port)
 - Navigate to `EC2`
   - Select any of the `Cluster Worker Nodes`
   - Click on `Security`
