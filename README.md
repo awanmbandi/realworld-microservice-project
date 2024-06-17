@@ -151,12 +151,29 @@ terraform init
 terraform plan
 terraform apply --auto-approve
 ```
-- Navigate to `EKS` and confirm your Cluster was created successfully
-- Also confirmthere's no issue regarding your Terraform execution
+- Give it about `10 MINUTES` for the cluster creation to complete
+- Then `Duplicate or Open` a New Console `Tab` and `Switch` to the `Ohio(us-east-2) Region`
+- Navigate to `EKS` and confirm that your Cluster was created successfully with the name `EKS_Cluster`
+- Also confirm there's no issue regarding your Terraform execution
 ![JenkinsSetup1!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sdsdsdas.png)
 ![JenkinsSetup2!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sfgsfs.png)
 
+### **⚠️`NOTE:ALERT!`⚠️:** FOLLOW THESE STEPS ONLY IF YOUR CLUSTER CREATION FAILED
+- If the Error Message says anything about `EKS IAM Roles` then...
+- Destroy everything by running: `terraform destroy --auto-approve`
+- Wait for everything to get destroy/terminated successfully.
+
+- Then Navigate to `IAM`
+  - In the `Search section`
+  - Search for the word `EKS` and select ALL the EKS Role that shows up
+  - Delete every one of them
+
+- Go back to where you're executing Terraform(that's the Jenkins Instance)
+  - Re-run: `terraform apply --auto-approve`
+  - Wait for another `10 Minute` 
+
 ### 5C) Once The Cluster Deployment Completes, Go Ahead and Enable The OIDC Connector/Provider
+- Run this command from the `Jenkins-CI` instance
 ```bash
 eksctl utils associate-iam-oidc-provider \
     --region us-east-2 \
@@ -165,6 +182,7 @@ eksctl utils associate-iam-oidc-provider \
 ```
 
 #### Update/Get Cluster Credential: 
+- Run this command from the `Jenkins-CI` instance
 ```bash
 aws eks update-kubeconfig --name <clustername> --region <region>
 ```
