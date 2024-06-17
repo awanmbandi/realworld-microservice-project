@@ -201,11 +201,14 @@ aws eks update-kubeconfig --name <clustername> --region <region>
 ### Jenkins setup
 1) #### Access Jenkins
     Copy your Jenkins Public IP Address and paste on the browser = ExternalIP:8080
-    - Login to your Jenkins instance using your Shell (GitBash or your Mac Terminal)
     - Copy the Path from the Jenkins UI to get the Administrator Password
         - Run: `sudo cat /var/lib/jenkins/secrets/initialAdminPassword`
         - Copy the password and login to Jenkins
     ![JenkinsSetup1!](https://github.com/awanmbandi/realworld-cicd-pipeline-project/raw/zdocs/images/jenkins-signup.png) 
+    - Make sure you're still logged into your Jenkins Instance
+      - Use `EC2 Instance Connect` or `Your local Shell/Terminal` *(GitBash or Mac Terminal)*
+      - Run the command: `sudo cat /var/lib/jenkins/secrets/initialAdminPassword`
+      - **`NOTE:`** Copy the Outputed Password and Paste in the `Administrator password` in Jenkins
     - Plugins: Choose `Install Suggested Plugings` 
     - Provide 
         - Username: **`admin`**
