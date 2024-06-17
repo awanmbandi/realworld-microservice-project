@@ -49,9 +49,9 @@ unzip awscliv2.zip
 sudo ./aws/install
 
 # Deploy a SonarQube Container
-docker volume create sonarqube-volume
-docker volume inspect volume sonarqube-volume
-docker run -d --name sonarqube -v sonarqube-volume:/opt/sonarqube/data -p 9000:9000 sonarqube:lts-community
+sudo docker volume create sonarqube-volume
+sudo docker volume inspect volume sonarqube-volume
+sudo docker run -d --name sonarqube -v sonarqube-volume:/opt/sonarqube/data -p 9000:9000 sonarqube:lts-community
 
 # # Install Snyk and NPM (We'll Be Using A Jenkins Plugin, For The Setup)
 # curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.32.0/install.sh | bash
