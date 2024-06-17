@@ -181,7 +181,7 @@ eksctl utils associate-iam-oidc-provider \
     --approve
 ```
 
-#### Update/Get Cluster Credential: 
+### Update/Get Cluster Credential: 
 - Run this command from the `Jenkins-CI` instance
 ```bash
 aws eks update-kubeconfig --name <clustername> --region <region>
