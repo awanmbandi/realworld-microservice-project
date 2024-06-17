@@ -206,7 +206,7 @@ aws eks update-kubeconfig --name <clustername> --region <region>
         - Copy the password and login to Jenkins
     ![JenkinsSetup1!](https://github.com/awanmbandi/realworld-cicd-pipeline-project/raw/zdocs/images/jenkins-signup.png) 
     - Make sure you're still logged into your Jenkins Instance
-      - Use `EC2 Instance Connect` or `Your local Shell/Terminal` *(GitBash or Mac Terminal)*
+      - If Not, Use `EC2 Instance Connect` or `Your local Shell/Terminal` *(GitBash or Mac Terminal)*
       - Run the command: `sudo cat /var/lib/jenkins/secrets/initialAdminPassword`
       - **`NOTE:`** Copy the Outputed Password and Paste in the `Administrator password` in Jenkins
     - Plugins: Choose `Install Suggested Plugings` 
