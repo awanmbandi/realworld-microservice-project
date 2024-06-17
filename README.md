@@ -196,6 +196,7 @@ aws eks update-kubeconfig --name <clustername> --region <region>
   - Click on `Add Rule`
   - Port Number: `30000-32767`, `80`, `22` Source: `0.0.0.0/0`
   - Click on `SAVE`
+![EKS-Sec-Group-Ports](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sec_group.png)
 
 ### Jenkins setup
 1) #### Access Jenkins
