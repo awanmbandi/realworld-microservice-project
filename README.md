@@ -265,11 +265,27 @@ aws eks update-kubeconfig --name <clustername> --region <region>
 
         ![JDKSetup!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sdfbdasb.png)
     
+    - **Gradle Installation**
+      - Click on `Add Gradle`
+      - Name: `Gradle`
+      - Enable `Install automatically`
+      - Version: *Go with the latest*
+      ![GradleInstallation!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/gradle-setup.png)
+
     - **SonarQube Scanner** 
       - Click on `Add SonarQube Scanner` 
       - Name: `SonarScanner`
       - Enable: `Install automatically` 
       ![SonarQubeScanner!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/dcsdsvsvd.png)
+
+    - **Snyk Installations** 
+      - Click on ``Add Snyk`
+      - Name: `Snyk`
+      - Enable: `Install automatically` 
+        - Version: `latest`
+        - Update policy interval (hours): `24`
+        - OS platform architecture: `Auto-detection`
+      ![SnykInstallation!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/snyk-install.png)
     
     - **Docker installations** 
       - Click on `Add Docker` 
@@ -279,22 +295,6 @@ aws eks update-kubeconfig --name <clustername> --region <region>
         - Docker version: `latest`
       - Enable: `Install automatically` 
       ![SonarQubeScanner!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/svfdsv.png)
-    
-    - **Gradle Installation**
-      - Click on `Add Gradle`
-      - Name: `Gradle`
-      - Enable `Install automatically`
-      - Version: *Go with the latest*
-      ![GradleInstallation!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/gradle-setup.png)
-    
-    - **Snyk Installations** 
-      - Click on ``Add Snyk`
-      - Name: `Snyk`
-      - Enable: `Install automatically` 
-        - Version: `latest`
-        - Update policy interval (hours): `24`
-        - OS platform architecture: `Auto-detection`
-      ![SnykInstallation!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/snyk-install.png)
 
 4)  #### Credentials setup(SonarQube, Slack, DockerHub, Kubernetes and ZAP):
     - Click on `Manage Jenkins`
