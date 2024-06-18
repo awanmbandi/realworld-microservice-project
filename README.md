@@ -522,7 +522,8 @@ aws eks update-kubeconfig --name <clustername> --region <region>
 
 ### Pipeline creation (Make Sure To Make The Following Updates First)
 - UPDATE YOUR ``Jenkinsfiles...``
-- Update your `Frontend Service` - `OWASP Zap Server IP (Which is Jenkins IP)` in the `Jenkinsfile` on `Line 87`
+- Update your `Frontend Service` - `OWASP Zap Server IP` and `EKS Worker Node IP` in the `Jenkinsfile` on `Line 87`
+  - `NOTE` to update the `Frontend Service`, you must `Switch` to the `Frontend Branch`
 - Update the `EKS Worker Node IP` with yours in the `Jenkinsfile` on `Line 87`
 - Update your `Slack Channel Name` in the `Jenkinsfiles...` - `All Microservices`
 - Update `SonarQube projectName` of you Microservices in the `Jenkinsfiles...` - `All Microservices`
