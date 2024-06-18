@@ -437,19 +437,13 @@ aws eks update-kubeconfig --name <clustername> --region <region>
 	          - Description: `DockerHub-Credential`
 	          - Click on `Create`   
 
-      4)  ##### Kubernetes Cluster Credential (kubeconfig)
-        - ###### Start By Increasing The `EBS Volume Size` of Your Kubernetes Cluster Worker Nodes
-            - Navigate to `EC2`
-            - Click on `Volumes`
-            - Select and `Modify` *Both Nodes Volumes*
-            - Size: `130 GB`
-            - Click `Modify`
-
         - ###### Get Cluster Credential From Kube Config
             - `SSH` back into your `Jenkins-CI` server
             - RUN the command: `aws eks update-kubeconfig --name <clustername> --region <region>`
             - COPY the Cluster KubeConfig: `cat ~/.kube/config`
             - `COPY` the KubeConfig file content
+                - You can use your `Notepad` or any other `Text Editor` as well
+                - Open your Local `GitBash` or `Terminal`
                 - Create a File Locally
                 - RUN: `touch ~/Downloads/kubeconfig-secret.txt`
                 - RUN: `vi ~/Downloads/kubeconfig-secret.txt`
@@ -471,7 +465,8 @@ aws eks update-kubeconfig --name <clustername> --region <region>
          - ###### Start by Copy the `EC2 SSH Private Key File Content` of your `Jenkins-CI` Server
             - Open your `GitBash Terminal` or `MacOS Terminal` 
             - Navigate to the Location where your `Jenkins-CI` Server SSH Key is Stored *(Usually in **Downloads**)*
-            - Run the Command `cat YOUR_SSH_KEY_FILE_NAME.pem`
+            - Run the Command `cat /Your_Key_PATH/YOUR_SSH_KEY_FILE_NAME.pem`
+              - `Note:` Your `.pem` private key will most like be in `Downloads`
             - COPY the KEY content and Navigate back to Jenkins to store it...
         
          - ###### Create The ZAP Server SSH Key Credential in Jenkins
