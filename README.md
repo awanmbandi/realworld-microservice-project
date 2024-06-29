@@ -537,7 +537,7 @@ kubectl get ns
 - Update `SonarQube projectName` of your Microservices in the `Jenkinsfiles...` - `All Microservices`
 - Update the `SonarQube projectKey` of your Microservices in the `Jenkinsfiles...` - `All Microservices`
 - Update the `DockerHub username` of your Microservices in the `Jenkinsfiles...` - `All Microservices`, provide Yours
-- Update the `DockerHub username/Image name` in the `deployment.yaml` and `service.yaml` in the different `test-env` and `prod-env` folders across `Every Single Microservice`
+- Update the `DockerHub username/Image name` in all the `deployment.yaml` files for the different environments `test-env` and `prod-env` folders across `Every Single Microservice Branch`
     
     - Log into Jenkins: http://Jenkins-Public-IP:8080/
     - Click on `New Item`
