@@ -217,12 +217,10 @@ kubectl get ns
 1) #### Access Jenkins
     Copy your Jenkins Public IP Address and paste on the browser = ExternalIP:8080
     - Copy the Path from the Jenkins UI to get the Administrator Password
-        - Run: `sudo cat /var/lib/jenkins/secrets/initialAdminPassword`
+        - Make sure you're still logged into your Jenkins Instance
+        - Run the command: `sudo cat /var/lib/jenkins/secrets/initialAdminPassword`
         - Copy the password and login to Jenkins
     ![JenkinsSetup1!](https://github.com/awanmbandi/realworld-cicd-pipeline-project/raw/zdocs/images/jenkins-signup.png) 
-    - Make sure you're still logged into your Jenkins Instance
-      - If Not, Use `EC2 Instance Connect` or `Your local Shell/Terminal` *(GitBash or Mac Terminal)*
-      - Run the command: `sudo cat /var/lib/jenkins/secrets/initialAdminPassword`
       - **`NOTE:`** Copy the Outputed Password and Paste in the `Administrator password` in Jenkins
     - Plugins: Choose `Install Suggested Plugings` 
     - Provide 
