@@ -13,7 +13,7 @@ pipeline {
         snyk 'Snyk'
     }
     stages {
-        // Checkout To The Service Branch
+        // Checkout To The Service Branch  
         stage('Checkout To Mcroservice Branch'){
             steps{
                 git branch: 'app-email-service', url: 'https://github.com/awanmbandi/realworld-microservice-project.git'
