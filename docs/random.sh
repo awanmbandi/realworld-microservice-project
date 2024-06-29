@@ -22,8 +22,7 @@ git checkout app-frontend-service        #11
 git checkout app-loadgenerator-service   #12
 
 # Files to Update | Applies to All Microservices
-1. Update Jenkinsfiles               FILES  (Git Repository, Dockerhub Repo Username, and Slack Channel Name)
-  - Git Repository URL: Line 19  (All Microservices)
+1. Update Jenkinsfiles               FILES  (Dockerhub Repo Username, and Slack Channel Name)
   - Dockerhub Repo Username: replace `awanmbandi` with your Dockerhub username everywhere (All Microservices) (CTRL + F)
   - Slack Channel Name (All Microservices)
 - test-env/deployment.yaml  FILES  (Dockerhub Repo Username)
