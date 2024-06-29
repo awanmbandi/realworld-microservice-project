@@ -188,6 +188,7 @@ aws eks update-kubeconfig --name <clustername> --region <region>
 ```
 
 #### 5E) Create Your Test and Prod Environment Namespaces
+- Run this command from the `Jenkins-CI` instance
 ```bash
 kubectl create ns test-env
 kubectl create ns prod-env
