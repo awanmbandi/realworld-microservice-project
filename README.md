@@ -187,7 +187,14 @@ eksctl utils associate-iam-oidc-provider \
 aws eks update-kubeconfig --name <clustername> --region <region>
 ```
 
-#### 5E) Update the EKS Cluster Security Group (Add A NodePort and Frontend Port)
+#### 5E) Create Your Test and Prod Environment Namespaces
+```bash
+kubectl create ns test-env
+kubectl create ns prod-env
+kubectl get ns
+```
+
+#### 5F) Update the EKS Cluster Security Group (Add A NodePort and Frontend Port)
 - Navigate to `EC2`
   - Select any of the `Cluster Worker Nodes`
   - Click on `Security`
