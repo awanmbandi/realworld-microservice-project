@@ -13,12 +13,6 @@ pipeline {
         snyk 'Snyk'
     }
     stages {
-        // Checkout To The Service Branch
-        stage('Checkout To Mcroservice Branch'){
-            steps{
-                git branch: 'app-currency-service', url: 'https://github.com/awanmbandi/realworld-microservice-project.git'
-            }
-        }
         // SonarQube SAST Code Analysis
         stage("SonarQube SAST Analysis"){
             steps{
