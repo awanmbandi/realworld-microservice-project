@@ -458,6 +458,7 @@ kubectl get ns
                 - You can use your `Notepad` or any other `Text Editor` as well
                 - Open your Local `GitBash` or `Terminal`
                 - Create a File Locally
+                - RUN: `rm ~/Downloads/kubeconfig-secret.txt`
                 - RUN: `touch ~/Downloads/kubeconfig-secret.txt`
                 - RUN: `vi ~/Downloads/kubeconfig-secret.txt`
                 - `PASTE` and `SAVE` the KubeConfig content in the file
