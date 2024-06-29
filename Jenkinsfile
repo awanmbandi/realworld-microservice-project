@@ -14,12 +14,6 @@ pipeline {
         gradle 'Gradle'
     }
     stages {
-        // Checkout To The Service Branch
-        stage('Checkout To Mcroservice Branch'){
-            steps{
-                git branch: 'app-ad-serverice', url: 'https://github.com/awanmbandi/realworld-microservice-project.git'
-            }
-        }
         // // SonarQube SAST Code Analysis
         // stage('SonarQube Inspection') {
         //     steps {
