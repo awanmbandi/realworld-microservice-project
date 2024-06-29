@@ -386,17 +386,17 @@ kubectl get ns
                 - Main branch name: `app-ad-serverice` 
               - Click on `Set Up`
 
-            - Generate a `Global Analysis Token`    *This is the Token you need for Authorization*
-              - Click on the `User Profile` icon at top right of SonarQube
-              - Click on `My Account`
-              - Click `Security`
-              - `Generate Token:`   *Generate this TOKEN and Use in the Next Step to Create The SonarQube Credential* 
-                - Name: `microservices-web-app-token`
-                - Type: `Global Analysis Token`
-                - Expires in: `30 days`
-              ![Sonar!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sdsdsddsd.png) 
-              - Click on `GENERATE`
-              - NOTE: *`Save The Token Somewhere...`*
+      2) Generate a `Global Analysis Token`    *This is the Token you need for Authorization*
+        - Click on the `User Profile` icon at top right of SonarQube
+        - Click on `My Account`
+        - Click `Security`
+        - `Generate Token:`   *Generate this TOKEN and Use in the Next Step to Create The SonarQube Credential* 
+          - Name: `microservices-web-app-token`
+          - Type: `Global Analysis Token`
+          - Expires in: `30 days`
+        ![Sonar!](https://github.com/awanmbandi/realworld-microservice-project/blob/zdocs/images/sdsdsddsd.png) 
+        - Click on `GENERATE`
+        - NOTE: *`Save The Token Somewhere...`*
 
           - ###### Store SonarQube Secret Token in Jenkins:
               - Navigate back to Jenkins http://JENKINS_PUBLIC_IP:8080
