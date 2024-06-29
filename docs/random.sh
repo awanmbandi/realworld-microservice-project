@@ -22,7 +22,7 @@ git checkout app-frontend-service        #11
 git checkout app-loadgenerator-service   #12
 
 # Files to Update | Applies to All Microservices
-- Jenkinsfile               FILES  (Dockerhub Repo Username and Slack Channel Name)
+- Jenkinsfile               FILES  (Git Repository, Dockerhub Repo Username, and Slack Channel Name)
 - test-env/deployment.yaml  FILES  (Dockerhub Repo Username)
 - prod-env/deployment.yaml  FILES  (Dockerhub Repo Username)
 
