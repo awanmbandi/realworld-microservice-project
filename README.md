@@ -57,7 +57,7 @@
     - Click `Next` 
     - Role Name: `AWS-EC2-Administrator-Role`
     - Click `Create`
-4) Jenkins CI
+4) Jenkins CI  *(Use th Ohio Region)*
     - Create a Jenkins VM instance 
     - Name: `Jenkins-CI`
     - AMI: `Ubuntu 22.04`
@@ -129,6 +129,12 @@ docker ps | grep sonarqube:lts-community
 # Lastly confirm that the `sonarqube-volume docker volume` was created
 docker volume inspect volume sonarqube-volume
 ```
+
+### 5C.2) Before Creating The Cluster, Delete Any EKS IAM Role In Your Account
+- Navigate to the `IAM Servce`
+  - Click on `Roles`
+  - Use the `Search Bar` to file roles that starts with `eks`
+  - Delete any Role with the name `eks`
 
 ### 5B) Deploy Your EKS Cluster Environment
 - `UPDATE` Your Terraform Provider Region to `Your Choice REGION`*
