@@ -68,17 +68,16 @@ pipeline {
                 }
             }
         }
-        // // Deploy to The Staging/Test Environment
-        // stage('Deploy Microservice To The Stage/Test Env'){
-        //     steps{
-        //         script{
-        //             withKubeConfig(caCertificate: '', clusterName: '', contextName: '', credentialsId: 'Kubernetes-Credential', namespace: '', restrictKubeConfigAccess: false, serverUrl: '') {
-        //                sh 'kubectl apply -f deploy-envs/test-env/deployment.yaml'
-        //                sh 'kubectl apply -f deploy-envs/test-env/service.yaml'  //ClusterIP Service
-        //            }
-        //         }
-        //     }
-        // }
+        // Deploy to The Staging/Test Environment
+        stage('Deploy Microservice To The Stage/Test Env'){
+            steps{
+                script{
+                    withKubeConfig(caCertificate: '', clusterName: '', contextName: '', credentialsId: 'Kubernetes-Credential', namespace: '', restrictKubeConfigAccess: false, serverUrl: '') {
+                       sh 'kubectl apply -f deploy-envs/test-env/deployment.yaml'
+                   }
+                }
+            }
+        }
         // // Production Deployment Approval
         // stage('Approve Prod Deployment') {
         //     steps {
@@ -91,7 +90,6 @@ pipeline {
         //         script{
         //             withKubeConfig(caCertificate: '', clusterName: '', contextName: '', credentialsId: 'Kubernetes-Credential', namespace: '', restrictKubeConfigAccess: false, serverUrl: '') {
         //                sh 'kubectl apply -f deploy-envs/prod-env/deployment.yaml'
-        //                sh 'kubectl apply -f deploy-envs/prod-env/service.yaml'  //ClusterIP Service
         //             }
         //         }
         //     }
