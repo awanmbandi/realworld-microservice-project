@@ -57,7 +57,8 @@
     - Click `Next` 
     - Role Name: `AWS-EC2-Administrator-Role`
     - Click `Create`
-4) Jenkins CI  *(Use th Ohio Region)*
+4) Jenkins CI  
+    - Region: `Ohio - us-east-2`
     - Create a Jenkins VM instance 
     - Name: `Jenkins-CI`
     - AMI: `Ubuntu 22.04`
