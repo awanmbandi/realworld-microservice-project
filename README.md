@@ -534,9 +534,10 @@ kubectl get ns
   - `NOTE` to update the `Frontend Service`, you must `Switch` to the `Frontend Branch`
 - Update the `EKS Worker Node IP` with yours in the `Jenkinsfile` on `Line 87`
 - Update your `Slack Channel Name` in the `Jenkinsfiles...` - `All Microservices`
-- Update `SonarQube projectName` of you Microservices in the `Jenkinsfiles...` - `All Microservices`
-- Update the `SonarQube projectKey` of you Microservices in the `Jenkinsfiles...` - `All Microservices`
-- Update the `DockerHub username` of you Microservices in the `Jenkinsfiles...` - `All Microservices`, provide Yours
+- Update `SonarQube projectName` of your Microservices in the `Jenkinsfiles...` - `All Microservices`
+- Update the `SonarQube projectKey` of your Microservices in the `Jenkinsfiles...` - `All Microservices`
+- Update the `DockerHub username` of your Microservices in the `Jenkinsfiles...` - `All Microservices`, provide Yours
+- Update the `DockerHub username/Image name` in the `deployment.yaml` and `service.yaml` in the different `test-env` and `prod-env` folders across `Every Single Microservice`
     
     - Log into Jenkins: http://Jenkins-Public-IP:8080/
     - Click on `New Item`
