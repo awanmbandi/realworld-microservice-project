@@ -536,10 +536,9 @@ kubectl get ns
 
 ### Pipeline creation (Make Sure To Make The Following Updates First)
 - UPDATE YOUR ``Jenkinsfiles...``
-- Update the `Repository URL` in the `Checkout To Mcroservice Branch STAGE` on all Microservices Jenkinsfiles `Line 19`
-- Update your `Frontend Service` - `OWASP Zap Server IP` and `EKS Worker Node IP` in the `Jenkinsfile` on `Line 86`
+- Update your `Frontend Service` - `OWASP Zap Server IP` and `EKS Worker Node IP` in the `Jenkinsfile` on `Line 80`
   - `NOTE` to update the `Frontend Service`, you must `Switch` to the `Frontend Branch`
-- Update the `EKS Worker Node IP` with yours in the `Jenkinsfile` on `Line 86`
+- Update the `EKS Worker Node IP` with yours in the `Jenkinsfile` on `Line 80`
 - Update your `Slack Channel Name` in the `Jenkinsfiles...` - `All Microservices`
 - Update `SonarQube projectName` of your Microservices in the `Jenkinsfiles...` - `All Microservices`
 - Update the `SonarQube projectKey` of your Microservices in the `Jenkinsfiles...` - `All Microservices`
