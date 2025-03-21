@@ -1,0 +1,16 @@
+{
+  "module": {
+    "aks": {
+      "source": "./..",
+      "deploy_id": "${var.deploy_id}",
+      "resource_group": "${azurerm_resource_group.ci.id}",
+      "api_server_authorized_ip_ranges": "${var.api_server_authorized_ip_ranges}",
+      "tags": "${var.tags}",
+      "namespaces": {
+        "platform": "domino-platform",
+        "compute": "domino-compute"
+      },
+      "kubeconfig_output_path": "${path.cwd}/kubeconfig"
+    }
+  }
+}
